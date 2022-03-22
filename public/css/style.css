@@ -1,0 +1,547 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-family: -apple-system, Arial, Segoe UI, Roboto, Helvetica, BlinkMacSystemFont, sans-serif;
+}
+
+:root {
+    --achtergrond: #fff;
+    --secundair: gainsboro;
+    --tertiair: #fff;
+
+    --messageform: #D3D3D3;
+    --loginform: #8fceff;
+
+    --yourmsg: lightblue;
+    --servermsg: #b00020;
+
+    --tekst: #000;
+    --tekstalt: #fff;
+    --placeholder: #a9a9a9;
+    
+    --accentkleur: #2568FB;
+
+    --zwart: #000;
+    --wit: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --achtergrond: #262626;
+        --secundair: #333333;
+        --tertiair: #404040;
+        
+        --loginform: #8fceff;
+        --messageform: #D3D3D3;
+
+        --yourmsg: #2568FB;
+        --servermsg: #cf6679;
+    
+        --tekst: #fff;
+        --tekstalt: #000;
+        --placeholder: #c3c3c3;
+    }
+}
+
+
+/* container voor paginas */
+body > div {
+    min-width: fit-content;
+}
+
+
+
+/*****************************
+filters section 1 (filters)
+*****************************/
+.filter section:first-of-type {
+    margin: 2em;
+}
+
+.filter section:first-of-type h3 {
+    text-align: center;
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+.filter section:first-of-type form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter section:first-of-type fieldset {
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.filter section:first-of-type button {
+    padding: 1em 1.5em;
+    font-size: 1em;
+    margin: 1em 100%;
+}
+
+.filter section:first-of-type input {
+    margin: 0.2em 0.5em 0em 0em;
+}
+
+.filter section:first-of-type label {
+    padding: 0em 2em 0em 0em;
+}
+
+.filter section:first-of-type label:last-child {
+    padding: 0em;
+}
+
+/*****************************
+Filters section 2 (resultaten)
+*****************************/
+.filter section:nth-of-type(2) ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 1em 0em 2em;
+}
+
+.filter section:nth-of-type(2) li {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.filter section:nth-of-type(2) a {
+    scroll-snap-align: center;
+    text-decoration: none;
+    background-color: pink;
+    width: 16em;
+    height: 20.5em;
+    border-radius: 1em;
+    border: solid 0.1em black;
+    position: relative;
+    margin: 1em 3em;
+}
+
+.filter section:nth-of-type(2) a img {
+    max-width: 15.9em;
+    border-radius: 1em;
+}
+
+.filter section:nth-of-type(2) a div {
+    color: var(--BasisZwart);
+    position: absolute;
+    bottom: 1em;
+    padding-left: 1em;
+}
+
+.filter section:nth-of-type(2) a div h3 {
+    padding: 0.5em 0em;
+    font-size: 1.5em;
+}
+
+.filter section:nth-of-type(2) a div button {
+    padding: 0.5em 1.5em;
+    margin: 1em 4.5em 0em;
+    font-size: 0.9em;
+}
+
+
+
+
+
+/*****************************
+chat (messages)
+*****************************/
+.chat main {
+    width: 70%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: var(--achtergrond);
+}
+
+.chat main > ul {
+    height: calc(100% - 7.75em - 1px);   /* som van header en form + padding + header border */
+    width: calc(100% - 2em);
+    padding: 0 1em;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    overflow-x: hidden;
+}
+
+.chat main > ul li {
+    background: var(--achtergrond);
+    align-self: start;
+    position: relative;
+    font-size: 1rem;
+    padding: 0.5em 1em;
+    width: 80%;
+    border: solid 1px var(--tekst);
+    border-radius: 3em;
+    border-bottom-left-radius: 0;
+    color: var(--tekst);
+}
+
+.chat main > ul > li.yourmsg {
+    align-self: end;
+    background: var(--yourmsg);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 3em;
+}
+
+.chat main > ul > li.servermsg {
+    align-self: center;
+    background: var(--achtergrond);
+    color: var(--tekst);
+    border-color: var(--servermsg);
+    width: 40%;
+    text-align: center;
+}
+
+.chat main > ul > li.servermsg div {
+    justify-content: center;
+}
+
+.chat main > ul > li:first-of-type {
+    margin-top: 1em;
+}
+
+.chat main > ul > li:last-of-type {
+    margin-bottom: 1em;
+}
+
+.chat main > ul > li div {
+    display: flex;
+    gap: .5em;
+}
+
+.chat main > ul > li div strong {
+    font-size: .8rem;
+}
+
+.chat main > ul > li div small {
+    font-size: .7rem;
+}
+
+.chat main > ul > li svg {
+    fill: var(--tekst);
+    display: none;
+    position: absolute;
+    right: -1.1em;
+    top: .5em;
+    width: 3em;
+}
+
+.chat main > ul > li.yourmsg:hover svg,
+.chat main > ul > li.yourmsg:focus svg {
+    display: inline;
+}
+
+
+
+/*****************************
+chat (sidebar)
+*****************************/
+.chat aside {
+    background: var(--achtergrond);
+    overflow-x: hidden;
+    width: 30%;
+    height: 100%;
+    border-right: var(--tekst) solid 2px;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+}
+
+.chat aside > div {
+    color: var(--tekst);
+    font-size: 1.2rem;
+    max-height: 2em;
+    padding: 1em;
+    border-bottom: var(--accentkleur) 2px solid;
+    border-top: var(--accentkleur) 2px solid;
+}
+
+.chat aside ul {
+    width: 100%;
+    overflow-y: auto;
+    height: calc(50% - 4.29em);
+}
+
+.chat aside ul::-webkit-scrollbar {
+    width: .8em;
+}
+  
+/* Track */
+.chat aside ul::-webkit-scrollbar-track {
+    background: var(--secundair);
+    border-radius: 100em;
+    box-shadow: 0 0 5px var(--tekst);
+}
+  
+/* Handle */
+.chat aside ul::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 100em;
+}
+  
+/* Handle on hover */
+.chat aside ul::-webkit-scrollbar-thumb:hover {
+    background: var(--tertiair);
+} 
+
+.chat aside ul:first-of-type li {
+    display: inline-block;
+    border-bottom: solid 1px var(--tekst);
+    transition: all .15s;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: all .2s ease-in-out;
+}
+
+.chat aside ul li:not(:first-of-type) {
+    border-top: solid 1px var(--tekst);
+}
+
+.chat aside ul:first-of-type li a {
+    padding: 2em 0;
+    display: block;
+    height: 1em;
+    text-decoration: none;
+    color: var(--tekst);
+}
+
+.chat aside ul:first-of-type li:hover,
+.chat aside ul:first-of-type li:focus-within {
+    background: var(--accentkleur);
+    color: var(--wit);
+}
+
+.chat aside ul:first-of-type li span {
+    display: block;
+}
+
+.chat aside ul:last-of-type li {
+    color: var(--tekst);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 2em);
+    height: 2em;
+    border-bottom: 1px var(--tekst) solid;
+    padding: 1em;
+}
+
+.chat main form {
+    position: absolute;
+    right: 0;
+    background: var(--secundair);
+    height: 2.75em;
+    width: calc(100% - 1em);
+    padding: .5em;
+    display: flex;
+}
+
+.chat main form input[type=text] {
+    background: var(--tertiair);
+    color: var(--tekst);
+    border: none;
+    padding: 0 1em;
+    flex-grow: 1;
+    border-radius: 999em;
+    margin: .3em;
+}
+
+.chat main form input[type=text]:focus { 
+    border: var(--tekst) 2px solid;
+    outline: none;
+}
+.chat main form > button { 
+    background: var(--accentkleur); 
+    border: none;
+    padding: 0 2em; 
+    margin: 0.25em; 
+    border-radius: .2em; 
+    outline: none; 
+    color: var(--wit); 
+}
+
+.chat main form > button:hover,
+.chat main form > button:focus {
+    transform: scale(1.03);
+    cursor: pointer;
+    border: solid 1px var(--tekst);
+}
+
+
+
+
+
+/*****************************
+chat (header)
+*****************************/
+.chat main > div:first-of-type {
+    height: 4em;
+    background: var(--achtergrond);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--tekst);
+}
+
+.chat main > div:first-of-type h2 {
+    color: var(--tekst);
+    font-weight: normal;
+    font-size: 1.5rem;
+    margin-left: 1em;
+}
+
+.chat main > div:first-of-type svg {
+    display: none;
+}
+
+
+
+/*****************************
+login
+*****************************/
+.login {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: var(--achtergrond);
+    justify-content: center;
+    align-items: center;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    background: var(--loginform);
+    padding: 3em;
+    border-radius: 1em;
+    gap: 2em;
+}
+
+.login form h2 {
+    font-weight: normal;
+    align-self: center;
+    font-size: 1.8rem;
+}
+
+.login form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    gap: .1em;
+    position: relative;
+}
+
+.login form label input, 
+.login form label select {
+    background: var(--achtergrond);
+    color: var(--tekst);
+    border: solid 2px var(--achtergrond);
+    border-radius: 100em;
+    font-size: 1.2rem;
+    padding: .5em;
+}
+
+.login form label input::placeholder,
+.chat main form input[type=text]::placeholder {
+    color: var(--placeholder);
+}
+
+.login form label input:focus::placeholder,
+.chat main form input[type=text]:focus::placeholder {
+    color: transparent;
+}
+
+.login *:focus {
+    outline: dashed 3px var(--accentkleur);
+    border-color: transparent;
+    background: var(--tertiair)
+}
+
+.login form label select {
+    appearance: none;
+}
+
+.login form label svg {
+    width: 1em;
+    position: absolute;
+    right: .5em;
+    top: 55%;
+    pointer-events: none;
+}
+
+.login form label svg path {
+    fill: var(--tekst);
+}
+
+.login form input[type=submit] {
+    width: 50%;
+    align-self: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background: var(--achtergrond);
+    border: solid 2px var(--accentkleur);
+    color: var(--tekst);
+    border-radius: 100em;
+    padding: .75em 1.5em;
+    transition: all .2s ease-in-out;
+}
+
+.login form input[type=submit]:hover, 
+.login form input[type=submit]:hover {
+    background: var(--accentkleur);
+    color: var(--wit);
+}
+
+
+
+
+/*****************************
+mobile styles, media query   
+*****************************/
+@media only screen and (max-width: 768px) {
+    .chat main {
+        width: 100%;
+        top: 0;
+        bottom: 0;
+    }
+
+    .chat aside {
+        width: 0%;
+        background: var(--achtergrond);
+        transition: all .3s;
+        border: none;
+    }
+
+    .chat aside.active {
+        width: 100%;
+    }
+    
+    .chat main > ul li {
+        font-size: 1.1rem;
+    }
+
+    .chat main > div:first-of-type h2 {
+        margin-left: .5em;
+    }
+
+    .chat main > div:first-of-type svg {
+        display: inline;
+        width: 2.5em;
+    }
+
+    .chat main > div:first-of-type svg polygon {
+        fill: var(--tekst);
+    }
+}

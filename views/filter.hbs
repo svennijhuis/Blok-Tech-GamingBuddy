@@ -1,0 +1,46 @@
+<div class="filter">
+
+    {{!-- Section 1 --}}
+    <section>
+        <h3>Kies wat voor een dier je zoekt:</h3>
+
+        {{!-- Wanneer er op verzonden wordt gedrukt verstuurt browser naar de server,
+        browser wordt naar /formulier geleid --}}
+        <form action="/filter" method="POST">
+            <fieldset>
+                {{!-- Radiobuttons met diersoorten --}}
+                <input type="radio" id="nl" name="taal" value="nl" required />
+                <label for="nl">Ik zoek Nederlands</label>
+                <input type="radio" id="en" name="taal" value="en" />
+                <label for="nl">Ik zoek Engels</label>
+                <input type="radio" id="de" name="taal" value="de" />
+                <label for="de">Ik zoek Duits</label>
+                <input type="radio" id="ch" name="taal" value="ch" />
+                <label for="ch">Ik zoek Chinees</label>
+            </fieldset>
+            <input type="submit"></input>
+        </form>
+
+    </section>
+
+    {{!-- Section 2 --}}
+    <section>
+        <h2>Mijn matches !!!!!</h2>
+        <ul>
+            <li>
+                {{!-- Loop met hbs om alle dieren te weergeven uit database. --}}
+                {{#each gameRooms}}
+                <a href="#">
+                    {{!-- <img src={{this.imgSrc}} alt="foto van de gameroom" /> --}}
+                    <div>
+                        <h3>{{this.roomNaam}}</h3>
+                        <h4>{{this.taal}}</h4>
+                        {{!-- <p>{{this.locatie}}</p> --}}
+                    </div>
+                </a>
+                {{/each}}
+            </li>
+        </ul>
+    </section>
+
+</div>

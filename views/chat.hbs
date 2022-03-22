@@ -1,0 +1,32 @@
+<div class="chat">
+<aside>
+    <div>Rooms</div>
+    <ul>
+        <li><a href="#" id="minecraft">Minecraft</a></li>
+        <li><a href="#" id="pvz">Plants vs Zombies</a></li>
+        <li><a href="#" id="brawlhalla">Brawlhalla</a></li>
+        <li><a href="#" id="valorant">Valorant</a></li>
+    </ul>
+
+    <div>Users in room: {{groepsnaam}}</div>
+    <ul>
+
+    </ul>
+</aside>
+
+<main>
+    <div>
+        <a href="#" id="chatbackbutton"><svg viewBox="0 0 512 512"><polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 "/></svg></a>
+        <h2>{{groepsnaam}}</h2>
+    </div>
+    <ul>
+
+    </ul>
+    <form>
+        <input id="input" autocomplete="off" type="text" placeholder="Type something..."/><button>Send</button>
+    </form>
+</main>
+</div>
+
+{{!-- script om username en room uit url te halen --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.3/qs.js" integrity="sha512-Qv1OSKmVsG3Y4WAKqvlcL/KllfceErp2+ZfNsQtox5nZtQKL86CVfbjmak7A+ka3jo7BwvFXa47vHEBs8QKq7Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
