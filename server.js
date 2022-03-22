@@ -30,6 +30,10 @@ const {
   getRoomUsers
 } = require("./utils/io/users");
 
+const {
+  checkRoomData
+} = require("./utils/filters/roomInfo");
+
 // map voor static files (stylesheet etc)
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
@@ -53,6 +57,7 @@ app.use("/messages", require("./routes/chat"));
 
 io.on("connect", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
+    checkRoomData(room);
     // wordt uitgevoerd wanneer gebruiker room joined, user object wordt in users array gezet voor sidebar info (utils/users.js)
     const user = userJoin(socket.id, username, room);
 

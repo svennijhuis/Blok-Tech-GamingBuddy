@@ -11,10 +11,11 @@ module.exports = {
     ecmaVersion: "latest"
   },
   rules: {
-    semi: ["error", "always"],
-    quotes: ["error", "double"],
+    semi: [2, "always"],
+    quotes: [2, "double"],
     "prefer-template": 2,
-    "no-multiple-empty-lines": [2, { max: 3, maxBOF: 0 }]
+    "no-multiple-empty-lines": [2, { max: 3, maxBOF: 0 }],
+    indent: 0
   },
   globals: {
     io: "readonly",

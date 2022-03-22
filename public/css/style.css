@@ -107,12 +107,12 @@ Filters section 2 (resultaten)
     margin: 1em 0em 2em;
 }
 
-.filter section:nth-of-type(2) li {
+.filter section:nth-of-type(2) ul li {
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
-.filter section:nth-of-type(2) a {
+.filter section:nth-of-type(2) ul li a {
     scroll-snap-align: center;
     text-decoration: none;
     background-color: pink;
@@ -124,24 +124,24 @@ Filters section 2 (resultaten)
     margin: 1em 3em;
 }
 
-.filter section:nth-of-type(2) a img {
+.filter section:nth-of-type(2) ul li a img {
     max-width: 15.9em;
     border-radius: 1em;
 }
 
-.filter section:nth-of-type(2) a div {
+.filter section:nth-of-type(2) ul li a div {
     color: var(--BasisZwart);
     position: absolute;
     bottom: 1em;
     padding-left: 1em;
 }
 
-.filter section:nth-of-type(2) a div h3 {
+.filter section:nth-of-type(2) ul li a div h3 {
     padding: 0.5em 0em;
     font-size: 1.5em;
 }
 
-.filter section:nth-of-type(2) a div button {
+.filter section:nth-of-type(2) ul li a div button {
     padding: 0.5em 1.5em;
     margin: 1em 4.5em 0em;
     font-size: 0.9em;
