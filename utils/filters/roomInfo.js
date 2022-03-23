@@ -27,6 +27,7 @@ const createRoomInfo = async (roomName) => {
         img: ""
     };
 
+    // insert room metadata in database
     try {
       client.db("filters")
         .collection("rooms")

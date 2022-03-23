@@ -161,6 +161,7 @@ chat (messages)
     bottom: 0;
     right: 0;
     background: var(--achtergrond);
+    overflow-x: hidden;
 }
 
 .chat main > ul {
@@ -337,7 +338,7 @@ chat (sidebar)
     padding: 1em;
 }
 
-.chat main form {
+.chat main > form {
     position: absolute;
     right: 0;
     background: var(--secundair);
@@ -347,7 +348,7 @@ chat (sidebar)
     display: flex;
 }
 
-.chat main form input[type=text] {
+.chat main > form input[type=text] {
     background: var(--tertiair);
     color: var(--tekst);
     border: none;
@@ -357,11 +358,11 @@ chat (sidebar)
     margin: .3em;
 }
 
-.chat main form input[type=text]:focus { 
+.chat main > form input[type=text]:focus { 
     border: var(--tekst) 2px solid;
     outline: none;
 }
-.chat main form > button { 
+.chat main > form > button { 
     background: var(--accentkleur); 
     border: none;
     padding: 0 2em; 
@@ -371,8 +372,8 @@ chat (sidebar)
     color: var(--wit); 
 }
 
-.chat main form > button:hover,
-.chat main form > button:focus {
+.chat main > form > button:hover,
+.chat main > form > button:focus {
     transform: scale(1.03);
     cursor: pointer;
     border: solid 1px var(--tekst);
@@ -391,7 +392,6 @@ chat (header)
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid var(--tekst);
-    z-index: 6;
 }
 
 .chat main > div:first-of-type > div {
@@ -446,10 +446,11 @@ chat main aside (roominfo)
 *****************************/
 .chat main > aside {
     width: 0;
-    height: 100%;
+    height: calc(100% - 4em);
     background: red;
-    z-index: 5;
     position: absolute;
+    /* 4em is hoogte van header */
+    top: 4em;
     right: 0;
     transition: all .3s ease-in-out;
 }
@@ -506,12 +507,12 @@ login (wordt niet gebruikt)
 }
 
 .login form label input::placeholder,
-.chat main form input[type=text]::placeholder {
+.chat main > form input[type=text]::placeholder {
     color: var(--placeholder);
 }
 
 .login form label input:focus::placeholder,
-.chat main form input[type=text]:focus::placeholder {
+.chat main > form input[type=text]:focus::placeholder {
     color: transparent;
 }
 
