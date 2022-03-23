@@ -1,4 +1,4 @@
-// connection met mongodb die overal gebruikt wordt. returned nu db, in geval van meerdere databases, return client
+// connection met mongodb die overal gebruikt wordt. return client zodat in de function de database kan worden gespecifierd
 // enkele connection die wordt hergebruikt zorgt ervoor dat connection niet kan crashen wanneer te snel database acties worden uitgevoerd
 const dotenv = require("dotenv");
 dotenv.config();
