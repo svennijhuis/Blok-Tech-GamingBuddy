@@ -247,7 +247,7 @@ chat (messages)
 /*****************************
 chat (sidebar)
 *****************************/
-.chat aside {
+.chat > aside {
     background: var(--achtergrond);
     overflow-x: hidden;
     width: 30%;
@@ -255,10 +255,9 @@ chat (sidebar)
     border-right: var(--tekst) solid 2px;
     position: absolute;
     left: 0;
-    z-index: 10;
 }
 
-.chat aside > div {
+.chat > aside > div {
     color: var(--tekst);
     font-size: 1.2rem;
     max-height: 2em;
@@ -267,35 +266,35 @@ chat (sidebar)
     border-top: var(--accentkleur) 2px solid;
 }
 
-.chat aside ul {
+.chat > aside ul {
     width: 100%;
     overflow-y: auto;
     height: calc(50% - 4.29em);
 }
 
-.chat aside ul::-webkit-scrollbar {
+.chat > aside ul::-webkit-scrollbar {
     width: .8em;
 }
   
 /* Track */
-.chat aside ul::-webkit-scrollbar-track {
+.chat > aside ul::-webkit-scrollbar-track {
     background: var(--secundair);
     border-radius: 100em;
     box-shadow: 0 0 5px var(--tekst);
 }
   
 /* Handle */
-.chat aside ul::-webkit-scrollbar-thumb {
+.chat > aside ul::-webkit-scrollbar-thumb {
     background: #555;
     border-radius: 100em;
 }
   
 /* Handle on hover */
-.chat aside ul::-webkit-scrollbar-thumb:hover {
+.chat > aside ul::-webkit-scrollbar-thumb:hover {
     background: var(--tertiair);
 } 
 
-.chat aside ul:first-of-type li {
+.chat > aside ul:first-of-type li {
     display: inline-block;
     border-bottom: solid 1px var(--tekst);
     transition: all .15s;
@@ -305,11 +304,11 @@ chat (sidebar)
     transition: all .2s ease-in-out;
 }
 
-.chat aside ul li:not(:first-of-type) {
+.chat > aside ul li:not(:first-of-type) {
     border-top: solid 1px var(--tekst);
 }
 
-.chat aside ul:first-of-type li a {
+.chat > aside ul:first-of-type li a {
     padding: 2em 0;
     display: block;
     height: 1em;
@@ -317,17 +316,17 @@ chat (sidebar)
     color: var(--tekst);
 }
 
-.chat aside ul:first-of-type li:hover,
-.chat aside ul:first-of-type li:focus-within {
+.chat > aside ul:first-of-type li:hover,
+.chat > aside ul:first-of-type li:focus-within {
     background: var(--accentkleur);
     color: var(--wit);
 }
 
-.chat aside ul:first-of-type li span {
+.chat > aside ul:first-of-type li span {
     display: block;
 }
 
-.chat aside ul:last-of-type li {
+.chat > aside ul:last-of-type li {
     color: var(--tekst);
     display: flex;
     align-items: center;
@@ -381,8 +380,6 @@ chat (sidebar)
 
 
 
-
-
 /*****************************
 chat (header)
 *****************************/
@@ -392,7 +389,15 @@ chat (header)
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid var(--tekst);
+    z-index: 6;
+}
+
+.chat main > div:first-of-type > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .chat main > div:first-of-type h2 {
@@ -406,10 +411,57 @@ chat (header)
     display: none;
 }
 
+.chat main > div:first-of-type button {
+    width: 2.7em;
+    height: 2.7em;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    margin-right: 1em;
+    padding: .4em
+}
+
+/* kleur nog aanpassen voor beide themes */
+.chat main > div:first-of-type button:hover, 
+.chat main > div:first-of-type button:focus {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.chat main > div:first-of-type button span {
+    width: .4em;
+    height: .4em;
+    border-radius: 50%;
+    background: var(--tekst);
+}
+
 
 
 /*****************************
-login
+chat main aside (roominfo)
+*****************************/
+.chat main > aside {
+    width: 0;
+    height: 100%;
+    background: red;
+    z-index: 5;
+    position: absolute;
+    right: 0;
+    transition: all .3s ease-in-out;
+}
+
+.chat main > aside.active {
+    width: 100%;
+}
+
+
+
+/*****************************
+login (wordt niet gebruikt)
 *****************************/
 .login {
     display: flex;
@@ -517,15 +569,16 @@ mobile styles, media query
         bottom: 0;
     }
 
-    .chat aside {
+    .chat > aside {
         width: 0%;
         background: var(--achtergrond);
         transition: all .3s;
         border: none;
     }
 
-    .chat aside.active {
+    .chat > aside.active {
         width: 100%;
+        z-index: 10;
     }
     
     .chat main > ul li {
@@ -533,7 +586,7 @@ mobile styles, media query
     }
 
     .chat main > div:first-of-type h2 {
-        margin-left: .5em;
+        margin-left: .3em;
     }
 
     .chat main > div:first-of-type svg {

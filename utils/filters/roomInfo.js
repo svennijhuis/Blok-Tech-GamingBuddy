@@ -22,8 +22,9 @@ const createRoomInfo = async (roomName) => {
     const client = await mongoConnect.getDB();
     const roomInfo = {
         roomNaam: roomName,
-        taal: ["N.A."],
-        genre: "N.A."
+        taal: [""],
+        genre: "",
+        img: ""
     };
 
     try {

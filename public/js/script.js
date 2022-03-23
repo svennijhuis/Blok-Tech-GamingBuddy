@@ -1,25 +1,34 @@
 const socket = io();
 
-const loginSubmit = document.querySelector(".login form input[type=submit]");
-
 const messages = document.querySelector(".chat main > ul");
 let deleteButtons = [];
 
 const messageForm = document.querySelector(".chat main form");
 const messageInput = document.querySelector(".chat main form input[type=text]");
 
-// const chatsList = document.querySelector("aside ul:first-of-type");
-const usersList = document.querySelector("aside ul:last-of-type");
+const asideElement = document.querySelector(".chat aside");
+const usersList = document.querySelector(".chat aside ul:last-of-type");
+const roomsList = document.querySelectorAll(".chat aside ul:first-of-type li a, .filter section:nth-of-type(2) ul li a");
 
-const roomsList = document.querySelectorAll("aside ul:first-of-type li a");
+const roomInfo = document.querySelector(".chat main > aside");
 
 const chatBackButton = document.querySelector(".chat main > div svg");
-const asideElement = document.querySelector("aside");
+const roomInfoButton = document.querySelector(".chat main > div:first-of-type button");
 
-if ((window.location.href.indexOf("messages") < 1)) {
-  loginSubmit.addEventListener("click", function (e) {
-  });
+
+
+// function voor root van de site, wordt later veranderd
+if (location.pathname === "/") {
+  const changeRoom = (e) => {
+    console.log(e.target.id);
+    window.location.href = `/messages?username=Laurens&room=${e.target.id}`;
+  };
+
+  for (let i = 0; i < roomsList.length; i++) {
+    roomsList[i].addEventListener("click", changeRoom);
+  }
 }
+
 
 
 if ((window.location.href.indexOf("messages") > -1)) {
@@ -44,6 +53,10 @@ if ((window.location.href.indexOf("messages") > -1)) {
   function mobileAside () {
     asideElement.classList.add("active");
   }
+
+  const editRoomInfo = () => {
+    roomInfo.classList.toggle("active");
+  };
 
 
   // verander room mbv sidebar
@@ -139,5 +152,6 @@ if ((window.location.href.indexOf("messages") > -1)) {
     roomsList[i].addEventListener("click", changeRoom);
   }
 
+  roomInfoButton.addEventListener("click", editRoomInfo);
   chatBackButton.addEventListener("click", mobileAside);
 }
