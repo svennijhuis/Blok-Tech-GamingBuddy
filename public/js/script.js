@@ -20,7 +20,6 @@ const roomInfoButton = document.querySelector(".chat main > div:first-of-type bu
 // function voor root van de site, wordt later veranderd
 if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
   const changeRoom = (e) => {
-    console.log(e.target.id);
     window.location.href = `/messages?username=Laurens&room=${e.target.id}`;
   };
 
