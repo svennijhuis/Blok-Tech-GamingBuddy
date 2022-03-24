@@ -52,6 +52,7 @@ app.set("view engine", "hbs");
 // routes
 app.use("/", require("./routes/roomSelect"));
 app.use("/messages", require("./routes/chat"));
+app.use("/register", require ("./routes/register"));
 
 
 
