@@ -17,8 +17,9 @@ const {
   loadChat,
   saveChat,
   deleteChat
-} = require("./db/mongodb.js");
-const mongoConnect = require("./db/mongoConnect");
+} = require("./utils/io/chatActions.js");
+const mongoConnect = require("./controller/mongoConnect");
+let client;
 
 const { formatMessage } = require("./utils/io/messages.js");
 
@@ -57,14 +58,14 @@ app.use("/messages", require("./routes/chat"));
 
 io.on("connect", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
-    checkRoomData(room);
+    checkRoomData(client, room);
     // wordt uitgevoerd wanneer gebruiker room joined, user object wordt in users array gezet voor sidebar info (utils/users.js)
     const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);
 
     // haal chat op uit database
-    loadChat(user.room, socket);
+    loadChat(client, user.room, socket);
 
     socket.broadcast
       .to(user.room)
@@ -83,12 +84,12 @@ io.on("connect", (socket) => {
       io.to(user.room).emit("message", fullMsg);
 
       // sla message object op in database
-      saveChat(fullMsg);
+      saveChat(client, fullMsg);
     });
 
     socket.on("deleteMsg", (room, messageId) => {
       // verwijder message globaal, zowel in room als database
-      deleteChat(room, messageId);
+      deleteChat(client, room, messageId);
       io.to(user.room).emit("deleteMsgGlobal", messageId);
     });
 
@@ -111,7 +112,7 @@ io.on("connect", (socket) => {
 
 // verbind met mongodb database en start server
 const startServer = async () => {
-  await mongoConnect.getDB();
+  client = await mongoConnect.getDB();
   server.listen(port, "0.0.0.0", () => {
     console.log(`listening on: *${port}`);
   });

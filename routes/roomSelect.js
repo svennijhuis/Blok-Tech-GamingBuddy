@@ -4,7 +4,7 @@ const router = express.Router();
 const {
   getAllRooms,
   filterRooms
-} = require("../db/mongodb.js");
+} = require("../utils/filters/loadRooms");
 
 const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({ extended: true }));
