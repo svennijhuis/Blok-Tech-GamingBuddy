@@ -16,7 +16,6 @@ const chatBackButton = document.querySelector(".chat main > div svg");
 const roomInfoButton = document.querySelector(".chat main > div:first-of-type button");
 
 
-
 // function voor root van de site, wordt later veranderd
 if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
   const changeRoom = (e) => {

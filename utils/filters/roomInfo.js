@@ -1,9 +1,5 @@
-const mongoConnect = require("../../db/mongoConnect");
-
 // check of object met roomName bestaat in mongodb filters > rooms
-const checkRoomData = async (roomName) => {
-  const client = await mongoConnect.getDB();
-
+const checkRoomData = async (client, roomName) => {
   const joinedRoom = await client.db("filters")
     .collection("rooms")
     .find({ roomNaam: roomName })
@@ -11,15 +7,14 @@ const checkRoomData = async (roomName) => {
 
     // als er nog geen room object met de naam is, maak er dan een
   if (joinedRoom.length === 0) {
-    createRoomInfo(roomName);
+    createRoomInfo(client, roomName);
   }
 };
 
 
 
 // template voor roominfo voor iedere kamer, moet nog aanpasbaar worden
-const createRoomInfo = async (roomName) => {
-    const client = await mongoConnect.getDB();
+const createRoomInfo = async (client, roomName) => {
     const roomInfo = {
         roomNaam: roomName,
         taal: [""],
