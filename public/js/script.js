@@ -30,12 +30,18 @@ if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
 
 
 if ((window.location.href.indexOf("messages") > -1)) {
-// haalt username en room op uit url
-  const { username, room } = Qs.parse(location.search, {
+  // haalt username en room op uit url
+  const {
+    username,
+    room
+  } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
   });
 
-  socket.emit("joinRoom", { username, room });
+  socket.emit("joinRoom", {
+    username,
+    room
+  });
 
   // regelt input van form(tekstbox voor msg)
   messageForm.addEventListener("submit", function (e) {
@@ -48,7 +54,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
 
   // mobile aside (chatlijst) tonen
-  function mobileAside () {
+  function mobileAside() {
     asideElement.classList.add("active");
   }
 
@@ -101,6 +107,16 @@ if ((window.location.href.indexOf("messages") > -1)) {
     for (let i = 0; i < deleteButtons.length; i++) {
       deleteButtons[i].addEventListener("click", deleteMsg);
     }
+  });
+
+  // room info output
+  socket.on("loadedRoomData", function (roomData) {
+    const roomDataContainer = document.createElement("div");
+    // roomDataContainer.setAttribute("id", msg.uniqid);
+    roomDataContainer.innerHTML = `<p>Roomnaam: ${roomData.roomNaam}</p>
+    <p>Roomtaal: ${roomData.taal}</p>`;
+
+    roomInfo.appendChild(roomDataContainer);
   });
 
 

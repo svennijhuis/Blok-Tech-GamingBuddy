@@ -58,10 +58,7 @@ app.use("/messages", require("./routes/chat"));
 
 
 io.on("connect", (socket) => {
-  socket.on("joinRoom", ({ username, room }) => {
-    checkRoomData(client, room);
-
-    loadRoomData(client, room);
+  socket.on("joinRoom", async ({ username, room }) => {
     // wordt uitgevoerd wanneer gebruiker room joined, user object wordt in users array gezet voor sidebar info (utils/users.js)
     const user = userJoin(socket.id, username, room);
 
@@ -69,6 +66,14 @@ io.on("connect", (socket) => {
 
     // haal chat op uit database
     loadChat(client, user.room, socket);
+
+    // kijk of kamer metadata bestaat, anders wordt die aangemaakt
+    await checkRoomData(client, room);
+
+    const roomData = await loadRoomData(client, room);
+
+    // toont room metadata in sidebar popup
+    io.to(user.room).emit("loadedRoomData", roomData);
 
     socket.broadcast
       .to(user.room)

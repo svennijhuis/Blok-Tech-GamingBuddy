@@ -40,8 +40,7 @@ const loadRoomData = async function (client, currentRoom) {
   .collection("rooms")
   .findOne({ roomNaam: currentRoom });
 
-  console.log(await cursor);
-  // return await cursor;
+  return await cursor;
 };
 
 
