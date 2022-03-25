@@ -1,0 +1,23 @@
+<form action="/register" method="POST">
+  <section>
+    <input type="text" name="name" id="name" placeholder="Name" required />
+    <input type="email" name="email" id="email" placeholder="E-mail" required />
+    <input type="text" name="age" id="age" placeholder="Leeftijd" required />
+    <input type="text" name="residence" id="residence" placeholder="Woonplaats" required/>
+
+    <select name="language">
+      <option value="en">Engels</option>
+      <option value="nl">Nederlands</option>
+      <option value="ch">Chinees</option>
+    </select>
+
+  </section>
+  <section>
+    <input type="text" name="username" id="username" placeholder="Username" autocomplete="off" required/>
+    <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required/>
+    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" autocomplete="off" required/>
+  </section>
+  <section>
+    <button type="submit" value="Sign up" id="form-signup"></button>
+  </section>
+</form>

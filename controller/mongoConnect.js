@@ -24,3 +24,4 @@ const getDB = async () => {
 };
 
 module.exports = { getDB };
+

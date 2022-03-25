@@ -13,11 +13,7 @@ app.use(cors({ origin: "*" }));
 instrument(io, { auth: false });
 
 // database functions
-const {
-  loadChat,
-  saveChat,
-  deleteChat
-} = require("./utils/io/chatActions.js");
+const { loadChat, saveChat, deleteChat } = require("./utils/io/chatActions.js");
 const mongoConnect = require("./controller/mongoConnect");
 let client;
 
@@ -28,12 +24,10 @@ const {
   userJoin,
   getCurrentUser,
   userLeave,
-  getRoomUsers
+  getRoomUsers,
 } = require("./utils/io/users");
 
-const {
-  checkRoomData
-} = require("./utils/filters/roomInfo");
+const { checkRoomData } = require("./utils/filters/roomInfo");
 
 // map voor static files (stylesheet etc)
 const path = require("path");
@@ -43,8 +37,8 @@ const exphbs = require("express-handlebars");
 app.engine(
   "hbs",
   exphbs.engine({
-    defaultLayout: "main",
-    extname: ".hbs"
+    defaultLayout: "index",
+    extname: ".hbs",
   })
 );
 
@@ -53,8 +47,7 @@ app.set("view engine", "hbs");
 // routes
 app.use("/", require("./routes/roomSelect"));
 app.use("/messages", require("./routes/chat"));
-
-
+app.use("/register", require("./routes/register"));
 
 io.on("connect", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
@@ -69,12 +62,15 @@ io.on("connect", (socket) => {
 
     socket.broadcast
       .to(user.room)
-      .emit("systemMessage", formatMessage("Server", `${user.username} has joined the chat`));
+      .emit(
+        "systemMessage",
+        formatMessage("Server", `${user.username} has joined the chat`)
+      );
 
     // update users in sidebar
     io.to(user.room).emit("updateusers", getRoomUsers(user.room));
 
-    socket.on("message", msg => {
+    socket.on("message", (msg) => {
       // chat message van user
       const user = getCurrentUser(socket.id);
 
