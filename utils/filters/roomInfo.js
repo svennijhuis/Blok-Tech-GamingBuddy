@@ -33,16 +33,15 @@ const createRoomInfo = async (client, roomName) => {
     }
 };
 
-const loadRoomData = async function (currentRoom) {
-  const client = await mongoConnect.getDB();
+const loadRoomData = async function (client, currentRoom) {
 
   const cursor =
   client.db("filters")
   .collection("rooms")
   .findOne({roomNaam: currentRoom });
 
-  // console.log(await cursor);
-  return await cursor;
+  console.log(await cursor);
+  // return await cursor;
 }
 
 

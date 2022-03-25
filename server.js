@@ -32,7 +32,9 @@ const {
 } = require("./utils/io/users");
 
 const {
-  checkRoomData
+  checkRoomData,
+  createRoomInfo, 
+  loadRoomData
 } = require("./utils/filters/roomInfo");
 
 // map voor static files (stylesheet etc)
@@ -59,6 +61,8 @@ app.use("/messages", require("./routes/chat"));
 io.on("connect", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
     checkRoomData(client, room);
+
+    loadRoomData(client, room);
     // wordt uitgevoerd wanneer gebruiker room joined, user object wordt in users array gezet voor sidebar info (utils/users.js)
     const user = userJoin(socket.id, username, room);
 

@@ -19,7 +19,7 @@ const roomInfoButton = document.querySelector(".chat main > div:first-of-type bu
 // function voor root van de site, wordt later veranderd
 if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
   const changeRoom = (e) => {
-    window.location.href = `/messages?username=Laurens&room=${e.target.id}`;
+    window.location.href = `/messages?username=Laurens&room=${e.currentTarget.id}`;
   };
 
   for (let i = 0; i < roomsList.length; i++) {
@@ -59,7 +59,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
   // verander room mbv sidebar
   const changeRoom = (e) => {
-    window.location.href = `/messages?username=${username}&room=${e.target.id}`;
+    window.location.href = `/messages?username=${username}&room=${e.currentTarget.id}`;
   };
 
 
