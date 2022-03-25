@@ -33,4 +33,16 @@ const createRoomInfo = async (client, roomName) => {
     }
 };
 
-module.exports = { checkRoomData };
+const loadRoomData = async function (client, currentRoom) {
+
+  const cursor =
+  client.db("filters")
+  .collection("rooms")
+  .findOne({roomNaam: currentRoom });
+
+  console.log(await cursor);
+  // return await cursor;
+}
+
+
+module.exports = { checkRoomData, createRoomInfo, loadRoomData };
