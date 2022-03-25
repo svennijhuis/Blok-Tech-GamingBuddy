@@ -33,7 +33,6 @@ const {
 
 const {
   checkRoomData,
-  createRoomInfo, 
   loadRoomData
 } = require("./utils/filters/roomInfo");
 
