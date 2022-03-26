@@ -11,8 +11,9 @@ chat (messages)
     overflow-x: hidden;
 }
 
-.chat main > ul {
-    height: calc(100% - 7.75em - 1px);   /* som van header en form + padding + header border */
+.chat main>ul {
+    height: calc(100% - 7.75em - 1px);
+    /* som van header en form + padding + header border */
     width: calc(100% - 2em);
     padding: 0 1em;
     overflow-y: auto;
@@ -22,7 +23,7 @@ chat (messages)
     overflow-x: hidden;
 }
 
-.chat main > ul li {
+.chat main>ul li {
     background: var(--achtergrond);
     align-self: start;
     position: relative;
@@ -35,14 +36,14 @@ chat (messages)
     color: var(--tekst);
 }
 
-.chat main > ul > li.yourmsg {
+.chat main>ul>li.yourmsg {
     align-self: end;
     background: var(--yourmsg);
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 3em;
 }
 
-.chat main > ul > li.servermsg {
+.chat main>ul>li.servermsg {
     align-self: center;
     background: var(--achtergrond);
     color: var(--tekst);
@@ -51,32 +52,32 @@ chat (messages)
     text-align: center;
 }
 
-.chat main > ul > li.servermsg div {
+.chat main>ul>li.servermsg div {
     justify-content: center;
 }
 
-.chat main > ul > li:first-of-type {
+.chat main>ul>li:first-of-type {
     margin-top: 1em;
 }
 
-.chat main > ul > li:last-of-type {
+.chat main>ul>li:last-of-type {
     margin-bottom: 1em;
 }
 
-.chat main > ul > li div {
+.chat main>ul>li div {
     display: flex;
     gap: .5em;
 }
 
-.chat main > ul > li div strong {
+.chat main>ul>li div strong {
     font-size: .8rem;
 }
 
-.chat main > ul > li div small {
+.chat main>ul>li div small {
     font-size: .7rem;
 }
 
-.chat main > ul > li svg {
+.chat main>ul>li svg {
     fill: var(--tekst);
     display: none;
     position: absolute;
@@ -85,8 +86,8 @@ chat (messages)
     width: 3em;
 }
 
-.chat main > ul > li.yourmsg:hover svg,
-.chat main > ul > li.yourmsg:focus svg {
+.chat main>ul>li.yourmsg:hover svg,
+.chat main>ul>li.yourmsg:focus svg {
     display: inline;
 }
 
@@ -95,7 +96,7 @@ chat (messages)
 /*****************************
 chat (sidebar)
 *****************************/
-.chat > aside {
+.chat>aside {
     background: var(--achtergrond);
     overflow-x: hidden;
     width: 30%;
@@ -105,7 +106,7 @@ chat (sidebar)
     left: 0;
 }
 
-.chat > aside > div {
+.chat>aside>div {
     color: var(--tekst);
     font-size: 1.2rem;
     max-height: 2em;
@@ -114,35 +115,35 @@ chat (sidebar)
     border-top: var(--accentkleur) 2px solid;
 }
 
-.chat > aside ul {
+.chat>aside ul {
     width: 100%;
     overflow-y: auto;
     height: calc(50% - 4.29em);
 }
 
-.chat > aside ul::-webkit-scrollbar {
+.chat>aside ul::-webkit-scrollbar {
     width: .8em;
 }
-  
+
 /* Track */
-.chat > aside ul::-webkit-scrollbar-track {
+.chat>aside ul::-webkit-scrollbar-track {
     background: var(--secundair);
     border-radius: 100em;
     box-shadow: 0 0 5px var(--tekst);
 }
-  
+
 /* Handle */
-.chat > aside ul::-webkit-scrollbar-thumb {
+.chat>aside ul::-webkit-scrollbar-thumb {
     background: #555;
     border-radius: 100em;
 }
-  
-/* Handle on hover */
-.chat > aside ul::-webkit-scrollbar-thumb:hover {
-    background: var(--tertiair);
-} 
 
-.chat > aside ul:first-of-type li {
+/* Handle on hover */
+.chat>aside ul::-webkit-scrollbar-thumb:hover {
+    background: var(--tertiair);
+}
+
+.chat>aside ul:first-of-type li {
     display: inline-block;
     border-bottom: solid 1px var(--tekst);
     transition: all .15s;
@@ -152,11 +153,11 @@ chat (sidebar)
     transition: all .2s ease-in-out;
 }
 
-.chat > aside ul li:not(:first-of-type) {
+.chat>aside ul li:not(:first-of-type) {
     border-top: solid 1px var(--tekst);
 }
 
-.chat > aside ul:first-of-type li a {
+.chat>aside ul:first-of-type li a {
     padding: 2em 0;
     display: block;
     height: 1em;
@@ -164,17 +165,17 @@ chat (sidebar)
     color: var(--tekst);
 }
 
-.chat > aside ul:first-of-type li:hover,
-.chat > aside ul:first-of-type li:focus-within {
+.chat>aside ul:first-of-type li:hover,
+.chat>aside ul:first-of-type li:focus-within {
     background: var(--accentkleur);
     color: var(--wit);
 }
 
-.chat > aside ul:first-of-type li span {
+.chat>aside ul:first-of-type li span {
     display: block;
 }
 
-.chat > aside ul:last-of-type li {
+.chat>aside ul:last-of-type li {
     color: var(--tekst);
     display: flex;
     align-items: center;
@@ -185,7 +186,7 @@ chat (sidebar)
     padding: 1em;
 }
 
-.chat main > form {
+.chat main>form {
     position: absolute;
     right: 0;
     background: var(--secundair);
@@ -195,7 +196,7 @@ chat (sidebar)
     display: flex;
 }
 
-.chat main > form input[type=text] {
+.chat main>form input[type=text] {
     background: var(--tertiair);
     color: var(--tekst);
     border: none;
@@ -205,22 +206,23 @@ chat (sidebar)
     margin: .3em;
 }
 
-.chat main > form input[type=text]:focus { 
+.chat main>form input[type=text]:focus {
     border: var(--tekst) 2px solid;
     outline: none;
 }
-.chat main > form > button { 
-    background: var(--accentkleur); 
+
+.chat main>form>button {
+    background: var(--accentkleur);
     border: none;
-    padding: 0 2em; 
-    margin: 0.25em; 
-    border-radius: .2em; 
-    outline: none; 
-    color: var(--wit); 
+    padding: 0 2em;
+    margin: 0.25em;
+    border-radius: .2em;
+    outline: none;
+    color: var(--wit);
 }
 
-.chat main > form > button:hover,
-.chat main > form > button:focus {
+.chat main>form>button:hover,
+.chat main>form>button:focus {
     transform: scale(1.03);
     cursor: pointer;
     border: solid 1px var(--tekst);
@@ -231,7 +233,7 @@ chat (sidebar)
 /*****************************
 chat (header)
 *****************************/
-.chat main > div:first-of-type {
+.chat main>div:first-of-type {
     height: 4em;
     background: var(--achtergrond);
     width: 100%;
@@ -241,24 +243,24 @@ chat (header)
     border-bottom: 1px solid var(--tekst);
 }
 
-.chat main > div:first-of-type > div {
+.chat main>div:first-of-type>div {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.chat main > div:first-of-type h2 {
+.chat main>div:first-of-type h2 {
     color: var(--tekst);
     font-weight: normal;
     font-size: 1.5rem;
     margin-left: 1em;
 }
 
-.chat main > div:first-of-type svg {
+.chat main>div:first-of-type svg {
     display: none;
 }
 
-.chat main > div:first-of-type button {
+.chat main>div:first-of-type button {
     width: 2.7em;
     height: 2.7em;
     background: transparent;
@@ -274,12 +276,12 @@ chat (header)
 }
 
 /* kleur nog aanpassen voor beide themes */
-.chat main > div:first-of-type button:hover, 
-.chat main > div:first-of-type button:focus {
+.chat main>div:first-of-type button:hover,
+.chat main>div:first-of-type button:focus {
     background: rgba(0, 0, 0, 0.8);
 }
 
-.chat main > div:first-of-type button span {
+.chat main>div:first-of-type button span {
     width: .4em;
     height: .4em;
     border-radius: 50%;
@@ -291,10 +293,10 @@ chat (header)
 /*****************************
 chat main aside (roominfo)
 *****************************/
-.chat main > aside {
+.chat main>aside {
     width: 0;
     height: calc(100% - 4em);
-    background: red;
+    background: var(--yourmsg);
     position: absolute;
     /* 4em is hoogte van header */
     top: 4em;
@@ -302,7 +304,62 @@ chat main aside (roominfo)
     transition: all .3s ease-in-out;
 }
 
-.chat main > aside.active {
+.chat main>aside div {
+    max-width: 60%;
+    margin: auto;
+}
+
+.chat main>aside div:first-of-type {
+    padding: 1em;
+}
+
+.chat main>aside div form {
+    padding: 1em 0em;
+}
+
+.chat main>aside div fieldset {
+    border: none;
+}
+
+.chat main>aside div input[type=text] {
+    width: 100%;
+}
+
+.chat main>aside div input[type=submit] {
+    background: var(--accentkleur);
+    border: none;
+    padding: 0.25em 1em;
+    margin: 0.5em 0.5em 1em;
+    border-radius: 0.2em;
+    color: var(--wit);
+}
+
+.chat main>aside div h2 {
+    text-align: center;
+    font-size: 3em;
+    /* border-bottom: 0.05em solid var(--tekst); */
+    padding: 0.3em;
+}
+
+.chat main>aside div p:first-of-type {
+    text-align: center;
+    border-top: 0.1em solid var(--accentkleur);
+    border-bottom: 0.1em solid var(--accentkleur);
+    padding: 1em;
+}
+
+.chat main>aside div ul {
+    margin: 1em 2em;
+}
+
+.chat main>aside div em {
+    padding: 1em 2em;
+    border: none;
+}
+
+
+
+.chat main>aside.active {
     width: 100%;
 }
 
@@ -317,32 +374,32 @@ mobile styles, media query
         bottom: 0;
     }
 
-    .chat > aside {
+    .chat>aside {
         width: 0%;
         background: var(--achtergrond);
         transition: all .3s;
         border: none;
     }
 
-    .chat > aside.active {
+    .chat>aside.active {
         width: 100%;
         z-index: 10;
     }
-    
-    .chat main > ul li {
+
+    .chat main>ul li {
         font-size: 1.1rem;
     }
 
-    .chat main > div:first-of-type h2 {
+    .chat main>div:first-of-type h2 {
         margin-left: .3em;
     }
 
-    .chat main > div:first-of-type svg {
+    .chat main>div:first-of-type svg {
         display: inline;
         width: 2.5em;
     }
 
-    .chat main > div:first-of-type svg polygon {
+    .chat main>div:first-of-type svg polygon {
         fill: var(--tekst);
     }
 }

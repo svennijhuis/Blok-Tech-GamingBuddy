@@ -112,9 +112,14 @@ if ((window.location.href.indexOf("messages") > -1)) {
   // room info output
   socket.on("loadedRoomData", function (roomData) {
     const roomDataContainer = document.createElement("div");
+
     // roomDataContainer.setAttribute("id", msg.uniqid);
-    roomDataContainer.innerHTML = `<p>Roomnaam: ${roomData.roomNaam}</p>
-    <p>Roomtaal: ${roomData.taal}</p>`;
+    roomDataContainer.innerHTML = `
+    <h2>${roomData.roomNaam}</h2>
+    <p>${roomData.omschrijving}</p>
+    <ul>
+      <li>Gesproken taal: <em>${roomData.taal}</em></li>
+    </ul>`;
 
     roomInfo.appendChild(roomDataContainer);
   });
