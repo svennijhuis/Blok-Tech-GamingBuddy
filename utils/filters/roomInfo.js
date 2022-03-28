@@ -18,6 +18,7 @@ const createRoomInfo = async (client, roomName) => {
     const roomInfo = {
         roomNaam: roomName,
         taal: [""],
+        omschrijving: "",
         genre: "",
         img: ""
     };
@@ -40,8 +41,7 @@ const loadRoomData = async function (client, currentRoom) {
   .collection("rooms")
   .findOne({ roomNaam: currentRoom });
 
-  console.log(await cursor);
-  // return await cursor;
+  return await cursor;
 };
 
 

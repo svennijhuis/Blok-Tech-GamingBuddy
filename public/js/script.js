@@ -11,6 +11,7 @@ const usersList = document.querySelector(".chat aside ul:last-of-type");
 const roomsList = document.querySelectorAll(".chat aside ul:first-of-type li a, .filter section:nth-of-type(2) ul li a");
 
 const roomInfo = document.querySelector(".chat main > aside");
+const roomInfoContainer = document.querySelector(".chat main > aside div");
 
 const chatBackButton = document.querySelector(".chat main > div svg");
 const roomInfoButton = document.querySelector(".chat main > div:first-of-type button");
@@ -30,12 +31,18 @@ if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
 
 
 if ((window.location.href.indexOf("messages") > -1)) {
-// haalt username en room op uit url
-  const { username, room } = Qs.parse(location.search, {
+  // haalt username en room op uit url
+  const {
+    username,
+    room
+  } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
   });
 
-  socket.emit("joinRoom", { username, room });
+  socket.emit("joinRoom", {
+    username,
+    room
+  });
 
   // regelt input van form(tekstbox voor msg)
   messageForm.addEventListener("submit", function (e) {
@@ -48,7 +55,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
 
   // mobile aside (chatlijst) tonen
-  function mobileAside () {
+  function mobileAside() {
     asideElement.classList.add("active");
   }
 
@@ -101,6 +108,19 @@ if ((window.location.href.indexOf("messages") > -1)) {
     for (let i = 0; i < deleteButtons.length; i++) {
       deleteButtons[i].addEventListener("click", deleteMsg);
     }
+  });
+
+  // room info output
+  socket.on("loadedRoomData", function (roomData) {
+    // Onderstaande data weergeven in div
+    roomInfoContainer.innerHTML = `
+    <img src="${roomData.img}" alt="Garfield">
+    <h2>${roomData.roomNaam}</h2>
+    <p>${roomData.omschrijving}</p>
+    <ul>
+      <li>Gesproken taal: <em>${roomData.taal}</em></li>
+      <li>Genre: <em>${roomData.genre}</em></li>
+    </ul>`;
   });
 
 
