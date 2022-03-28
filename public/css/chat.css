@@ -2,7 +2,8 @@
 chat (messages)
 *****************************/
 .chat main {
-    width: 70%;
+    width: calc(70% - 2px);
+    /* -2px voor de border van sidebar */
     position: absolute;
     top: 0;
     bottom: 0;
