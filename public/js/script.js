@@ -11,6 +11,7 @@ const usersList = document.querySelector(".chat aside ul:last-of-type");
 const roomsList = document.querySelectorAll(".chat aside ul:first-of-type li a, .filter section:nth-of-type(2) ul li a");
 
 const roomInfo = document.querySelector(".chat main > aside");
+const roomInfoContainer = document.querySelector(".chat main > aside div");
 
 const chatBackButton = document.querySelector(".chat main > div svg");
 const roomInfoButton = document.querySelector(".chat main > div:first-of-type button");
@@ -111,10 +112,8 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
   // room info output
   socket.on("loadedRoomData", function (roomData) {
-    const roomDataContainer = document.createElement("div");
-
-    // roomDataContainer.setAttribute("id", msg.uniqid);
-    roomDataContainer.innerHTML = `
+    // Onderstaande data weergeven in div
+    roomInfoContainer.innerHTML = `
     <img src="${roomData.img}" alt="Garfield">
     <h2>${roomData.roomNaam}</h2>
     <p>${roomData.omschrijving}</p>
@@ -122,8 +121,6 @@ if ((window.location.href.indexOf("messages") > -1)) {
       <li>Gesproken taal: <em>${roomData.taal}</em></li>
       <li>Genre: <em>${roomData.genre}</em></li>
     </ul>`;
-
-    roomInfo.appendChild(roomDataContainer);
   });
 
 

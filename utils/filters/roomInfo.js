@@ -18,6 +18,7 @@ const createRoomInfo = async (client, roomName) => {
     const roomInfo = {
         roomNaam: roomName,
         taal: [""],
+        omschrijving: "",
         genre: "",
         img: ""
     };
