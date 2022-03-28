@@ -48,6 +48,7 @@ app.set("view engine", "hbs");
 app.use("/", require("./routes/roomSelect"));
 app.use("/messages", require("./routes/chat"));
 app.use("/register", require("./routes/register"));
+app.use("/login", require("./routes/login"));
 
 io.on("connect", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
