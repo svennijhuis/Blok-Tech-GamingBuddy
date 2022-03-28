@@ -6,19 +6,21 @@ router.get('/', isLoggedIn, (req, res) => {
     res.render("main");
 });
 
-router.get('/login', isLoggedOut, (req, res) => {
+router.get('/', isLoggedOut, (req, res) => {
     const response = {
         error: req.query.error
     }
     res.render("login", response);
 });
 
-router.post('/login', passport.authenticate('local', {
+router.post('/', passport.authenticate('local', {
 	successRedirect: '/',
 	failureRedirect: '/login?error=true'
 }));
 
-router.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-});
+// router.get('/logout', function(req, res) {
+//     req.logout();
+//     res.redirect('/');
+// });
+
+module.exports = router;
