@@ -2,11 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require('passport');
 
-router.get('/', isLoggedIn, (req, res) => {
-    res.render("main");
-});
-
-router.get('/', isLoggedOut, (req, res) => {
+router.get('/', (req, res) => {
     const response = {
         error: req.query.error
     }
