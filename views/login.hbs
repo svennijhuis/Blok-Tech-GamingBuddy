@@ -1,0 +1,18 @@
+<form action="/login" method="POST">
+    <div>
+        {{#if error}}
+        <p>Username or password is incorrect</p>
+        {{/if}}
+        <h1>Login</h1>
+    </div>
+    <div>
+        <input type="text" name="username" id="username" placeholder="Enter your username" required />
+    </div>       
+    <div>
+        <input type="password" name="password" id="password" placeholder="Enter your password" required />
+    </div>
+    <div>
+        <input type="submit" value="Inloggen" />
+    </div>
+    <a href="/register">Register</a>
+</form>
