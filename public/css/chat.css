@@ -334,6 +334,14 @@ chat main aside (roominfo)
     color: var(--wit);
 }
 
+.chat main>aside div img {
+    height: 10em;
+    margin: auto;
+    display: block;
+    border-radius: 2em;
+    border: 0.2em solid var(--accentkleur);
+}
+
 .chat main>aside div h2 {
     text-align: center;
     font-size: 3em;
@@ -353,7 +361,7 @@ chat main aside (roominfo)
 }
 
 .chat main>aside div em {
-    padding: 1em 2em;
+    padding: 1em 1.5em;
     border: none;
 }
 

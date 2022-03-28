@@ -115,10 +115,12 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
     // roomDataContainer.setAttribute("id", msg.uniqid);
     roomDataContainer.innerHTML = `
+    <img src="${roomData.img}" alt="Garfield">
     <h2>${roomData.roomNaam}</h2>
     <p>${roomData.omschrijving}</p>
     <ul>
       <li>Gesproken taal: <em>${roomData.taal}</em></li>
+      <li>Genre: <em>${roomData.genre}</em></li>
     </ul>`;
 
     roomInfo.appendChild(roomDataContainer);
