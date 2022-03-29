@@ -11,12 +11,13 @@ const storage = multer.diskStorage({
         callback(null, "public/uploads/");
     },
     filename: function (request, file, callback) {
-        console.log(file);
         callback(null, file.originalname);
     }
 });
 
 const upload = multer({ storage: storage });
+
+const { changeRoomInfo } = require("../utils/filters/changeRoomInfo");
 
 // render chat
 router.get("/", (req, res) => {
@@ -31,7 +32,16 @@ router.post("/", (req, res) => {
 });
 
 // upload custom groep afbeelding
+// moet nog error handling hebben, bijvoorbeeld als bepaalde velden niet worden ingevuld. Dit is de basis - Laurens
 router.post("/roomimg", upload.single("groepimg"), function (req, res) {
+  if (!req.file) return;
+  const newRoomData = {
+    omschrijving: req.body.omschrijving,
+    taal: req.body.taal,
+    img: `uploads/${req.file.filename}`
+  };
+
+  changeRoomInfo(newRoomData);
   res.status(204).end();
 });
 

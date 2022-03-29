@@ -34,7 +34,7 @@ const {
 const {
   checkRoomData,
   loadRoomData
-} = require("./utils/filters/roomInfo");
+} = require("./utils/filters/getRoomInfo");
 
 // map voor static files (stylesheet etc)
 const path = require("path");
