@@ -2,3 +2,4 @@ node_modules
 X509-cert.pem
 .env
 .DS_Store
+.gitignore
