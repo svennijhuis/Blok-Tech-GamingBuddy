@@ -2,10 +2,9 @@ const mongoConnect = require("../../controller/mongoConnect");
 
 const saveUser = async (user) => {
   const client = await mongoConnect.getDB();
-  console.log(user);
   try {
     client.db("users").collection("user").insertOne(user);
-    console.log(`User opgeslagen met naam: ${user.name}`);
+    console.log(`User saved with username: ${user.username}`);
   } catch (e) {
     console.error(e);
   }
