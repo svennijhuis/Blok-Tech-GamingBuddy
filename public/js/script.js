@@ -55,7 +55,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
 
   // mobile aside (chatlijst) tonen
-  function mobileAside() {
+  function mobileAside () {
     asideElement.classList.add("active");
   }
 

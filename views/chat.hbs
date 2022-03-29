@@ -38,19 +38,21 @@
             <div></div>
             <div>
                 <h3>Groepsinformatie veranderen:</h3>
-                <form>
+                <form method="POST" action="/messages/roomimg" enctype="multipart/form-data">
                     <fieldset>
                         <label>Omschrijving:
                             <input type="text">
                         </label>
-                        <input type="submit"></input>
                     </fieldset>
                     <fieldset>
                         <label>Taal:
                             <input type="text">
                         </label>
-                        <input type="submit"></input>
                     </fieldset>
+                    <label>
+                    <input type="file" name="groepimg" accept="image/*">
+                    </label>
+                    <input type="submit">
                 </form>
             </div>
         </aside>
