@@ -24,6 +24,7 @@
     "express-handlebars": "^6.0.2",
     "express-session": "^1.17.2",
     "mongodb": "^4.3.1",
+    "mongoose": "^6.2.9",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
     "socket.io": "^4.4.1",
