@@ -31,19 +31,19 @@
     <section>
         <h2>Mijn matches !!!!!</h2>
         <ul>
-            <li>
                 {{!-- Loop met hbs om alle rooms te weergeven uit database. --}}
                 {{#each gameRooms}}
+                <li>
                 <a href="#" id="{{this.roomNaam}}">
-                    {{!-- <img src={{this.imgSrc}} alt="foto van de gameroom" /> --}}
+                    <img src="{{this.img}}" alt="group picture">
                     <div>
                         <h3>{{this.roomNaam}}</h3>
                         <h4>{{this.taal}}</h4>
                         {{!-- <p>{{this.locatie}}</p> --}}
                     </div>
                 </a>
+                </li>
                 {{/each}}
-            </li>
         </ul>
     </section>
 

@@ -50,40 +50,48 @@ Filters section 2 (resultaten)
     justify-content: center;
     align-items: center;
     list-style: none;
-    margin: 1em 0em 2em;
+    width: 80%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 2em;
 }
 
 .filter section:nth-of-type(2) ul li {
-    display: flex;
-    overflow-x: auto;
-}
-
-.filter section:nth-of-type(2) ul li a {
-    scroll-snap-align: center;
-    text-decoration: none;
     background-color: pink;
     width: 16em;
     height: 20.5em;
     border-radius: 1em;
     border: solid 0.1em black;
+}
+
+.filter section:nth-of-type(2) ul li a {
+    text-decoration: none;
+    display: flex;
     position: relative;
-    margin: 1em 3em;
+    height: 100%;
+    flex-direction: column;
 }
 
 .filter section:nth-of-type(2) ul li a img {
-    max-width: 15.9em;
+    max-width: 90%;
+    max-height: 65%;
     border-radius: 1em;
+    display: block;
+    margin: .5em auto;
+    align-self: flex-start;
 }
 
 .filter section:nth-of-type(2) ul li a div {
-    color: var(--BasisZwart);
+    display: flex;
+    flex-direction: column;
+    color: var(--tekst);
     position: absolute;
     bottom: 1em;
-    padding-left: 1em;
+    left: 1em;
+    gap: .1em;
 }
 
 .filter section:nth-of-type(2) ul li a div h3 {
-    padding: 0.5em 0em;
     font-size: 1.5em;
 }
 
@@ -91,4 +99,15 @@ Filters section 2 (resultaten)
     padding: 0.5em 1.5em;
     margin: 1em 4.5em 0em;
     font-size: 0.9em;
+}
+
+
+
+/*****************************
+mobile styles, media query   
+*****************************/
+@media only screen and (max-width: 768px) {
+    .filter section:nth-of-type(2) ul {
+        width: 90%;
+    }
 }
