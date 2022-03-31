@@ -55,7 +55,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
 
   // mobile aside (chatlijst) tonen
-  function mobileAside() {
+  function mobileAside () {
     asideElement.classList.add("active");
   }
 
@@ -114,9 +114,9 @@ if ((window.location.href.indexOf("messages") > -1)) {
   socket.on("loadedRoomData", function (roomData) {
     // Onderstaande data weergeven in div
     roomInfoContainer.innerHTML = `
-    <img src="${roomData.img}" alt="Garfield">
+    <img src="${roomData.img}" alt="group picture">
     <h2>${roomData.roomNaam}</h2>
-    <p>${roomData.omschrijving}</p>
+    <p>${roomData.beschrijving}</p>
     <ul>
       <li>Gesproken taal: <em>${roomData.taal}</em></li>
       <li>Genre: <em>${roomData.genre}</em></li>

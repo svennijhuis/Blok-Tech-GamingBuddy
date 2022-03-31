@@ -18,9 +18,9 @@ const createRoomInfo = async (client, roomName) => {
     const roomInfo = {
         roomNaam: roomName,
         taal: [""],
-        omschrijving: "",
+        beschrijving: "",
         genre: "",
-        img: ""
+        img: "uploads/img.png"
     };
 
     // insert room metadata in database
