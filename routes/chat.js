@@ -40,10 +40,14 @@ router.post("/", (req, res) => {
 // moet nog error handling hebben, bijvoorbeeld als bepaalde velden niet worden ingevuld. Dit is de basis - Laurens
 router.post("/roomimg", upload.single("groepimg"), function (req, res) {
   const newRoomData = {
-    omschrijving: req.body.omschrijving,
+    beschrijving: req.body.beschrijving,
     taal: [req.body.taal1, req.body.taal2, req.body.taal3],
-    img: `uploads/${req.file.filename}`
+    // img: `uploads/${req.file.filename}`
   };
+
+  if(req.file !== undefined) {
+    newRoomData.img = `uploads/${req.file.filename}`;
+  }
 
   changeRoomInfo(newRoomData, roomNaam);
   res.status(204).end();

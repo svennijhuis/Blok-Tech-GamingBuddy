@@ -12,9 +12,13 @@ const changeRoomInfo = async (newRoomData, roomNaam) => {
         $set: {
           taal: newRoomData.taal,
           beschrijving: newRoomData.beschrijving,
-          img: newRoomData.img
+          // img: newRoomData.img
         }
       };
+
+      if(newRoomData.img !== undefined) {
+        update.$set.img = newRoomData.img
+      }
 
     await client.db("filters")
     .collection("rooms")
