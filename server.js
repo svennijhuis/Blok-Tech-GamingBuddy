@@ -36,6 +36,8 @@ const {
   loadRoomData
 } = require("./utils/filters/getRoomInfo");
 
+const { sendWelcomeEmail } = require('./utils/email/email.js')
+
 // map voor static files (stylesheet etc)
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
@@ -44,7 +46,7 @@ const exphbs = require("express-handlebars");
 app.engine(
   "hbs",
   exphbs.engine({
-    defaultLayout: "main",
+    defaultLayout: "index",
     extname: ".hbs"
   })
 );
@@ -54,6 +56,7 @@ app.set("view engine", "hbs");
 // routes
 app.use("/", require("./routes/roomSelect"));
 app.use("/messages", require("./routes/chat"));
+app.use("/register", require("./routes/register.js"));
 
 
 
