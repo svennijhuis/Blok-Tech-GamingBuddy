@@ -118,7 +118,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
     <h2>${roomData.roomNaam}</h2>
     <p>${roomData.beschrijving}</p>
     <ul>
-      <li>Gesproken taal: <em>${roomData.taal}</em></li>
+      <li>Taal: <em>${roomData.taal}</em></li>
       <li>Genre: <em>${roomData.genre}</em></li>
     </ul>`;
   });
