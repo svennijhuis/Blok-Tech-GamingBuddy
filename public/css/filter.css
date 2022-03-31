@@ -1,0 +1,94 @@
+/*****************************
+filters section 1 (filters)
+*****************************/
+.filter section:first-of-type {
+    margin: 2em;
+}
+
+.filter section:first-of-type h3 {
+    text-align: center;
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+.filter section:first-of-type form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter section:first-of-type fieldset {
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.filter section:first-of-type button {
+    padding: 1em 1.5em;
+    font-size: 1em;
+    margin: 1em 100%;
+}
+
+.filter section:first-of-type input {
+    margin: 0.2em 0.5em 0em 0em;
+}
+
+.filter section:first-of-type label {
+    padding: 0em 2em 0em 0em;
+}
+
+.filter section:first-of-type label:last-child {
+    padding: 0em;
+}
+
+/*****************************
+Filters section 2 (resultaten)
+*****************************/
+.filter section:nth-of-type(2) ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 1em 0em 2em;
+}
+
+.filter section:nth-of-type(2) ul li {
+    display: flex;
+    overflow-x: auto;
+}
+
+.filter section:nth-of-type(2) ul li a {
+    scroll-snap-align: center;
+    text-decoration: none;
+    background-color: pink;
+    width: 16em;
+    height: 20.5em;
+    border-radius: 1em;
+    border: solid 0.1em black;
+    position: relative;
+    margin: 1em 3em;
+}
+
+.filter section:nth-of-type(2) ul li a img {
+    max-width: 15.9em;
+    border-radius: 1em;
+}
+
+.filter section:nth-of-type(2) ul li a div {
+    color: var(--BasisZwart);
+    position: absolute;
+    bottom: 1em;
+    padding-left: 1em;
+}
+
+.filter section:nth-of-type(2) ul li a div h3 {
+    padding: 0.5em 0em;
+    font-size: 1.5em;
+}
+
+.filter section:nth-of-type(2) ul li a div button {
+    padding: 0.5em 1.5em;
+    margin: 1em 4.5em 0em;
+    font-size: 0.9em;
+}

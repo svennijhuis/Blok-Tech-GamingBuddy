@@ -55,7 +55,7 @@ body > div {
 /*****************************
 filters section 1 (filters)
 *****************************/
-.filter section:first-of-type {
+/* .filter section:first-of-type {
     margin: 2em;
 }
 
@@ -94,12 +94,12 @@ filters section 1 (filters)
 
 .filter section:first-of-type label:last-child {
     padding: 0em;
-}
+} */
 
 /*****************************
 Filters section 2 (resultaten)
 *****************************/
-.filter section:nth-of-type(2) ul {
+/* .filter section:nth-of-type(2) ul {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,7 +145,7 @@ Filters section 2 (resultaten)
     padding: 0.5em 1.5em;
     margin: 1em 4.5em 0em;
     font-size: 0.9em;
-}
+} */
 
 
 
@@ -154,7 +154,7 @@ Filters section 2 (resultaten)
 /*****************************
 chat (messages)
 *****************************/
-.chat main {
+/* .chat main {
     width: 70%;
     position: absolute;
     top: 0;
@@ -162,20 +162,21 @@ chat (messages)
     right: 0;
     background: var(--achtergrond);
     overflow-x: hidden;
-}
+} */
 
-.chat main > ul {
-    height: calc(100% - 7.75em - 1px);   /* som van header en form + padding + header border */
-    width: calc(100% - 2em);
+/* .chat main > ul {
+    height: calc(100% - 7.75em - 1px);   
+    /* som van header en form + padding + header border */
+    /*width: calc(100% - 2em);
     padding: 0 1em;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 1em;
     overflow-x: hidden;
-}
+} */
 
-.chat main > ul li {
+/*.chat main > ul li {
     background: var(--achtergrond);
     align-self: start;
     position: relative;
@@ -241,14 +242,14 @@ chat (messages)
 .chat main > ul > li.yourmsg:hover svg,
 .chat main > ul > li.yourmsg:focus svg {
     display: inline;
-}
+} */
 
 
 
 /*****************************
 chat (sidebar)
 *****************************/
-.chat > aside {
+/* .chat > aside {
     background: var(--achtergrond);
     overflow-x: hidden;
     width: 30%;
@@ -275,23 +276,23 @@ chat (sidebar)
 
 .chat > aside ul::-webkit-scrollbar {
     width: .8em;
-}
+} */
   
 /* Track */
-.chat > aside ul::-webkit-scrollbar-track {
+/* .chat > aside ul::-webkit-scrollbar-track {
     background: var(--secundair);
     border-radius: 100em;
     box-shadow: 0 0 5px var(--tekst);
-}
+} */
   
 /* Handle */
-.chat > aside ul::-webkit-scrollbar-thumb {
+/* .chat > aside ul::-webkit-scrollbar-thumb {
     background: #555;
     border-radius: 100em;
-}
+} */
   
 /* Handle on hover */
-.chat > aside ul::-webkit-scrollbar-thumb:hover {
+/* .chat > aside ul::-webkit-scrollbar-thumb:hover {
     background: var(--tertiair);
 } 
 
@@ -377,14 +378,14 @@ chat (sidebar)
     transform: scale(1.03);
     cursor: pointer;
     border: solid 1px var(--tekst);
-}
+} */
 
 
 
 /*****************************
 chat (header)
 *****************************/
-.chat main > div:first-of-type {
+/* .chat main > div:first-of-type {
     height: 4em;
     background: var(--achtergrond);
     width: 100%;
@@ -424,10 +425,10 @@ chat (header)
     cursor: pointer;
     margin-right: 1em;
     padding: .4em
-}
+} */
 
 /* kleur nog aanpassen voor beide themes */
-.chat main > div:first-of-type button:hover, 
+/* .chat main > div:first-of-type button:hover, 
 .chat main > div:first-of-type button:focus {
     background: rgba(0, 0, 0, 0.8);
 }
@@ -437,34 +438,34 @@ chat (header)
     height: .4em;
     border-radius: 50%;
     background: var(--tekst);
-}
+} */
 
 
 
 /*****************************
 chat main aside (roominfo)
 *****************************/
-.chat main > aside {
+/* .chat main > aside {
     width: 0;
     height: calc(100% - 4em);
     background: red;
     position: absolute;
     /* 4em is hoogte van header */
-    top: 4em;
+    /*top: 4em;
     right: 0;
     transition: all .3s ease-in-out;
 }
 
 .chat main > aside.active {
     width: 100%;
-}
+} */
 
 
 
 /*****************************
 login (wordt niet gebruikt)
 *****************************/
-.login {
+/* .login {
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -555,7 +556,7 @@ login (wordt niet gebruikt)
 .login form input[type=submit]:hover {
     background: var(--accentkleur);
     color: var(--wit);
-}
+} */
 
 
 
@@ -563,7 +564,7 @@ login (wordt niet gebruikt)
 /*****************************
 mobile styles, media query   
 *****************************/
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
     .chat main {
         width: 100%;
         top: 0;
@@ -598,6 +599,7 @@ mobile styles, media query
     .chat main > div:first-of-type svg polygon {
         fill: var(--tekst);
     }
+<<<<<<< HEAD
 }
 
 

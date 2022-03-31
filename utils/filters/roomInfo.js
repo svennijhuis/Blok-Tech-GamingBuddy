@@ -18,6 +18,7 @@ const createRoomInfo = async (client, roomName) => {
     const roomInfo = {
         roomNaam: roomName,
         taal: [""],
+        omschrijving: "",
         genre: "",
         img: ""
     };
@@ -33,4 +34,15 @@ const createRoomInfo = async (client, roomName) => {
     }
 };
 
-module.exports = { checkRoomData };
+// laadt room data in sidebar
+const loadRoomData = async function (client, currentRoom) {
+  const cursor =
+  client.db("filters")
+  .collection("rooms")
+  .findOne({ roomNaam: currentRoom });
+
+  return await cursor;
+};
+
+
+module.exports = { checkRoomData, createRoomInfo, loadRoomData };

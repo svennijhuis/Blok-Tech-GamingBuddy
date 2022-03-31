@@ -27,9 +27,16 @@ const {
   getRoomUsers,
 } = require("./utils/io/users");
 
+<<<<<<< HEAD
 const { checkRoomData } = require("./utils/filters/roomInfo");
 
 const { sendWelcomeEmail } = require('./utils/email/email.js')
+=======
+const {
+  checkRoomData,
+  loadRoomData
+} = require("./utils/filters/roomInfo");
+>>>>>>> main
 
 // map voor static files (stylesheet etc)
 const path = require("path");
@@ -53,8 +60,7 @@ app.use("/register", require("./routes/register.js"));
 app.use("/login", require("./routes/login"));
 
 io.on("connect", (socket) => {
-  socket.on("joinRoom", ({ username, room }) => {
-    checkRoomData(client, room);
+  socket.on("joinRoom", async ({ username, room }) => {
     // wordt uitgevoerd wanneer gebruiker room joined, user object wordt in users array gezet voor sidebar info (utils/users.js)
     const user = userJoin(socket.id, username, room);
 
@@ -62,6 +68,14 @@ io.on("connect", (socket) => {
 
     // haal chat op uit database
     loadChat(client, user.room, socket);
+
+    // kijk of kamer metadata bestaat, anders wordt die aangemaakt
+    await checkRoomData(client, room);
+
+    const roomData = await loadRoomData(client, room);
+
+    // toont room metadata in sidebar popup
+    io.to(user.room).emit("loadedRoomData", roomData);
 
     socket.broadcast
       .to(user.room)
