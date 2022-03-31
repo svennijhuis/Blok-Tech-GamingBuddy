@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({ extended: true }));
+const { sendWelcomeEmail } = require('../utils/email/email.js');
 
 const {
     saveUser
@@ -13,8 +14,11 @@ router.get("/", (req, res) => {
 });
 
 router.post('/', async (req, res, next) => {
-    console.log(req.body)
-    saveUser(req.body)
+
+    const user = req.body;
+    await saveUser(user)
+    console.log(user)
+    sendWelcomeEmail(user.name, user.email);
 });
 
 module.exports = router;

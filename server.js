@@ -29,6 +29,8 @@ const {
 
 const { checkRoomData } = require("./utils/filters/roomInfo");
 
+const { sendWelcomeEmail } = require('./utils/email/email.js')
+
 // map voor static files (stylesheet etc)
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
@@ -47,7 +49,7 @@ app.set("view engine", "hbs");
 // routes
 app.use("/", require("./routes/roomSelect"));
 app.use("/messages", require("./routes/chat"));
-app.use("/register", require("./routes/register"));
+app.use("/register", require("./routes/register.js"));
 app.use("/login", require("./routes/login"));
 
 io.on("connect", (socket) => {
@@ -120,3 +122,5 @@ startServer();
 app.use((req, res, next) => {
   res.status(404).send("404 Error: page not found");
 });
+
+

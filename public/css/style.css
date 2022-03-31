@@ -599,3 +599,36 @@ mobile styles, media query
         fill: var(--tekst);
     }
 }
+
+
+
+/*****************************
+Registreer  
+*****************************/
+
+body{
+    width: 90vw;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+form input{
+    height: 30px;
+    width: 45%;
+    margin: 5px;
+    padding: 5px;
+}
+form select{
+    height: 30px;
+    width: 45%;
+    margin: 5px;
+    padding: 5px;
+}
+
+.register-gegevens{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
