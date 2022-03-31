@@ -9,7 +9,7 @@ chat (messages)
     bottom: 0;
     right: 0;
     background: var(--achtergrond);
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .chat main>ul {
@@ -297,12 +297,13 @@ chat main aside (roominfo)
 .chat main>aside {
     width: 0;
     height: calc(100% - 4em);
+    /* 4em is height van header */
     background: var(--yourmsg);
     position: absolute;
-    /* 4em is hoogte van header */
     top: 4em;
     right: 0;
     transition: all .3s ease-in-out;
+    overflow-y: auto;
 }
 
 .chat main>aside div {
@@ -311,64 +312,54 @@ chat main aside (roominfo)
 }
 
 .chat main>aside div:first-of-type {
-    padding: 2em 0em 4em;
+    margin: 2em auto;
 }
 
-.chat main>aside div:nth-of-type(2) {
-    font-size: 0.8em;
-    padding: 0em 13em;
-}
 
-.chat main>aside div form {
-    padding: 1em 0em;
-}
-
-.chat main>aside div fieldset {
-    border: none;
-}
-
-.chat main>aside div input[type=text] {
-    width: 100%;
-}
-
-.chat main>aside div input[type=submit] {
-    background: var(--accentkleur);
-    border: none;
-    padding: 0.25em 1em;
-    margin: 0.5em 0.5em 1em;
-    border-radius: 0.2em;
-    color: var(--wit);
-}
-
-.chat main>aside div img {
-    height: 10em;
+.chat main>aside div:first-of-type img {
+    max-height: 20em;
+    max-width: 20em;
     margin: auto;
     display: block;
     border-radius: 2em;
     border: 0.2em solid var(--accentkleur);
 }
 
-.chat main>aside div h2 {
+.chat main>aside div:first-of-type h2 {
     text-align: center;
-    font-size: 3em;
-    /* border-bottom: 0.05em solid var(--tekst); */
-    padding: 0.3em;
+    font-size: 2.5em;
+    font-weight: 200;
 }
 
-.chat main>aside div p:first-of-type {
+.chat main>aside div:first-of-type p:first-of-type {
     text-align: center;
-    border-top: 0.1em solid var(--accentkleur);
-    border-bottom: 0.1em solid var(--accentkleur);
-    padding: 1em;
+    padding: .5em 0;
+    margin: .4em auto;
+    border-top: 1px solid var(--wit);
+    border-bottom: 1px solid var(--wit);
 }
 
-.chat main>aside div ul {
-    margin: 1em 2em;
+.chat main>aside div:nth-of-type(2) h3 {
+    font-size: 1.1em;
+    margin-bottom: .2em;
 }
 
-.chat main>aside div em {
-    padding: 1em 1.5em;
+.chat main>aside div:nth-of-type(2) input[type=text] {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.chat main>aside div:nth-of-type(2) fieldset {
+    margin-bottom: 1em;
+    padding: .5em;
+    border: solid 1px var(--tekst);
+}
+
+.chat main>aside div:nth-of-type(2) input[type=submit] {
+    background: var(--zwart);
     border: none;
+    border-radius: 0.2em;
+    color: var(--wit);
 }
 
 

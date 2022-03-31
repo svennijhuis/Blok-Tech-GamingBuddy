@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
+const uniqid = require("uniqid");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -11,7 +12,7 @@ const storage = multer.diskStorage({
         callback(null, "public/uploads/");
     },
     filename: function (request, file, callback) {
-        callback(null, file.originalname);
+        callback(null, `${file.originalname}-${uniqid()}`);
     }
 });
 
@@ -38,7 +39,6 @@ router.post("/", (req, res) => {
 // upload custom groep afbeelding
 // moet nog error handling hebben, bijvoorbeeld als bepaalde velden niet worden ingevuld. Dit is de basis - Laurens
 router.post("/roomimg", upload.single("groepimg"), function (req, res) {
-  if (!req.file) return;
   const newRoomData = {
     omschrijving: req.body.omschrijving,
     taal: [req.body.taal1, req.body.taal2, req.body.taal3],
