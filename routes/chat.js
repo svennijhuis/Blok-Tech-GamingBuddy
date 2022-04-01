@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
         callback(null, "public/uploads/");
     },
     filename: function (request, file, callback) {
-        callback(null, `${file.originalname}-${uniqid()}`);
+        callback(null, `${uniqid()}-${file.originalname}`);
     }
 });
 
@@ -45,7 +45,7 @@ router.post("/roomimg", upload.single("groepimg"), function (req, res) {
   };
 
   // Als geen img is toegevoegd dan de huidige img behouden.
-  if(req.file !== undefined) {
+  if (req.file !== undefined) {
     newRoomData.img = `uploads/${req.file.filename}`;
   }
 
