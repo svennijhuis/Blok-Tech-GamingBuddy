@@ -160,7 +160,7 @@ passport.use('local-signin', new LocalStrategy(
       if (!user) {
         console.log("COULD NOT LOG IN");
         req.session.error = "Couldn't find user";
-        return done(null, false, {message: 'Username or password is incorrect'})
+        return done(null, false, { message: 'Username or password is incorrect' })
       }
     })
     .fail((err) => {
@@ -183,7 +183,7 @@ passport.use('local-signup', new LocalStrategy(
       if (!user) {
         console.log("COULD NOT REGISTER");
         req.session.error = 'Username already exists'; //
-        return done(null, false, {message: 'Username already exists'})
+        return done(null, false, { message: 'Username already exists' })
       }
     })
     .fail( (err) => {
@@ -230,7 +230,10 @@ app.use((req, res, next) => {
   next();
 });
 
-//===============ROUTES===============
+
+
+
+// routes
 
 // render home
 app.get('/', isLoggedIn, (req, res) => {
