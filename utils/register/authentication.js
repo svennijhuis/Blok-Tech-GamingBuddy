@@ -30,13 +30,11 @@ const isLoggedOut = function (req, res, next) {
 };
 
 // register user
-const dbReg = (req, client, username, password, name) => {
+const dbReg = (client, username, password, req) => {
   console.log(req.body);
-  // console.log("dbreg");
+
   const deferred = Q.defer();
 
-  // MongoClient.connect(mongodbUrl, (err, db) => {
-  //   const collection = client.db("users").collection("user");
 
   //check if username already exists
   client
@@ -52,6 +50,7 @@ const dbReg = (req, client, username, password, name) => {
         const user = {
           username: username,
           password: hash,
+          name: req.body.name,
         };
 
         console.log("User is being created:", username);
