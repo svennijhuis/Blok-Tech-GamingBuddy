@@ -8,11 +8,6 @@ const {
     saveUser
 } = require("../utils/register/saveUser");
 
-// render register
-router.get("/", (req, res) => {
- res.render("register");
-});
-
 router.post('/', async (req, res, next) => {
 
     const user = req.body;
