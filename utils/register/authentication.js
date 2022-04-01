@@ -30,7 +30,8 @@ const isLoggedOut = function (req, res, next) {
 };
 
 // register user
-const dbReg = (client, username, password, name) => {
+const dbReg = (req, client, username, password, name) => {
+  console.log(req.body);
   // console.log("dbreg");
   const deferred = Q.defer();
 
@@ -56,11 +57,12 @@ const dbReg = (client, username, password, name) => {
         console.log("User is being created:", username);
 
         client
-        .db("users")
-        .collection("user")
-        .insertOne(user).then(() => {
-          deferred.resolve(user);
-        });
+          .db("users")
+          .collection("user")
+          .insertOne(user)
+          .then(() => {
+            deferred.resolve(user);
+          });
       }
     });
   return deferred.promise;
@@ -73,7 +75,8 @@ const dbAuth = (client, username, password) => {
   client
     .db("users")
     .collection("user")
-    .findOne({ username: username }).then((result) => {
+    .findOne({ username: username })
+    .then((result) => {
       if (null == result) {
         console.log("Couldn't find:", username);
         deferred.resolve(false);

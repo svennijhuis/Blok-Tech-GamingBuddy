@@ -13,11 +13,7 @@ app.use(cors({ origin: "*" }));
 instrument(io, { auth: false });
 
 // database functions
-const {
-  loadChat,
-  saveChat,
-  deleteChat
-} = require("./utils/io/chatActions.js");
+const { loadChat, saveChat, deleteChat } = require("./utils/io/chatActions.js");
 const mongoConnect = require("./controller/mongoConnect");
 let client;
 
@@ -28,15 +24,12 @@ const {
   userJoin,
   getCurrentUser,
   userLeave,
-  getRoomUsers
+  getRoomUsers,
 } = require("./utils/io/users");
 
-const {
-  checkRoomData,
-  loadRoomData
-} = require("./utils/filters/getRoomInfo");
+const { checkRoomData, loadRoomData } = require("./utils/filters/getRoomInfo");
 
-const { sendWelcomeEmail } = require('./utils/email/email.js')
+const { sendWelcomeEmail } = require("./utils/email/email.js");
 
 // map voor static files (stylesheet etc)
 const path = require("path");
@@ -47,7 +40,7 @@ app.engine(
   "hbs",
   exphbs.engine({
     defaultLayout: "index",
-    extname: ".hbs"
+    extname: ".hbs",
   })
 );
 
@@ -59,8 +52,6 @@ app.use("/messages", require("./routes/chat"));
 app.use("/register", require("./routes/test"));
 app.use("/login", require("./routes/login"));
 app.use("/logout", require("./routes/logout"));
-
-
 
 io.on("connect", (socket) => {
   socket.on("joinRoom", async ({ username, room }) => {
@@ -82,12 +73,15 @@ io.on("connect", (socket) => {
 
     socket.broadcast
       .to(user.room)
-      .emit("systemMessage", formatMessage("Server", `${user.username} has joined the chat`));
+      .emit(
+        "systemMessage",
+        formatMessage("Server", `${user.username} has joined the chat`)
+      );
 
     // update users in sidebar
     io.to(user.room).emit("updateusers", getRoomUsers(user.room));
 
-    socket.on("message", msg => {
+    socket.on("message", (msg) => {
       // chat message van user
       const user = getCurrentUser(socket.id);
 
@@ -123,21 +117,18 @@ io.on("connect", (socket) => {
   });
 });
 //////////////////////////////
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const passport = require('passport');
-const LocalStrategy = require('passport-local');
-const methodOverride = require('method-override');
-const flash = require('express-flash');
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const methodOverride = require("method-override");
+const flash = require("express-flash");
 
-const {
-  dbReg,
-  dbAuth
-} = require("./utils/register/authentication");
+const { dbReg, dbAuth } = require("./utils/register/authentication");
 
 // Passport.js
-passport.serializeUser( (user, done) => {
+passport.serializeUser((user, done) => {
   console.log("serializing " + user.username);
   done(null, user);
 });
@@ -147,95 +138,102 @@ passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
- 
 // login
-passport.use('local-signin', new LocalStrategy(
-  {passReqToCallback : true},
-  (req, username, password, done) => {
-    dbAuth(client, username, password)
-    .then( (user) => {
-      if (user) {
-        console.log("LOGGED IN AS: " + user.username);
-        req.session.success = 'Succesful login from ' + user.username + '!';
-        done(null, user);
-      }
-      if (!user) {
-        console.log("COULD NOT LOG IN");
-        req.session.error = "Couldn't find user";
-        return done(null, false, { message: 'Username or password is incorrect' })
-      }
-    })
-    .fail((err) => {
-      console.log(err.body);
-    });
-  }
-));
+passport.use(
+  "local-signin",
+  new LocalStrategy(
+    { passReqToCallback: true },
+    (req, username, password, done) => {
+      dbAuth(client, username, password)
+        .then((user) => {
+          if (user) {
+            console.log("LOGGED IN AS: " + user.username);
+            req.session.success = "Succesful login from " + user.username + "!";
+            done(null, user);
+          }
+          if (!user) {
+            console.log("COULD NOT LOG IN");
+            req.session.error = "Couldn't find user";
+            return done(null, false, {
+              message: "Username or password is incorrect",
+            });
+          }
+        })
+        .fail((err) => {
+          console.log(err.body);
+        });
+    }
+  )
+);
 
 // register
-passport.use('local-signup', new LocalStrategy(
-  {passReqToCallback : true}, 
-  (req, username, password, done) => {
-    dbReg(client, username, password)
-    .then( (user) => {
-      if (user) {
-        console.log("REGISTERED: " + user.username);
-        req.session.success = 'Succesful register from ' + user.username + '!';
-        done(null, user);
-      }
-      if (!user) {
-        console.log("COULD NOT REGISTER");
-        req.session.error = 'Username already exists'; //
-        return done(null, false, { message: 'Username already exists' })
-      }
-    })
-    .fail( (err) => {
-      console.log(err.body);
-    });
-  }
-));
+passport.use(
+  "local-signup",
+  new LocalStrategy(
+    { passReqToCallback: true },
+    (req, username, password, done) => {
+      dbReg(req, client, username, password)
+        .then((user) => {
+          if (user) {
+            console.log("REGISTERED: " + user.username);
+            req.session.success =
+              "Succesful register from " + user.username + "!";
+            done(null, user);
+          }
+          if (!user) {
+            console.log("COULD NOT REGISTER");
+            req.session.error = "Username already exists"; //
+            return done(null, false, { message: "Username already exists" });
+          }
+        })
+        .fail((err) => {
+          console.log(err.body);
+        });
+    }
+  )
+);
 
 // express
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(flash())
-app.use(methodOverride('_method'));
-app.use(session({ 
-  secret: 'process.env.SESSION_SECRET', 
-  saveUninitialized: true, 
-  resave: true 
-}));
+app.use(flash());
+app.use(methodOverride("_method"));
+app.use(
+  session({
+    secret: "process.env.SESSION_SECRET",
+    saveUninitialized: true,
+    resave: true,
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
 // session-persisted message middleware
 // [https://www.ctl.io/developers/blog/post/build-user-authentication-with-node-js-express-passport-and-mongodb]
-app.use( (req, res, next) => {
-  const err = req.session.error,
-      msg = req.session.notice,
-      success = req.session.success;
-
-      delete req.session.error;
-      delete req.session.success;
-      delete req.session.notice;
-    
-      if (err) res.locals.error = err;
-      if (msg) res.locals.notice = msg;
-      if (success) res.locals.success = success;
-
-      next();
-});
-
 app.use((req, res, next) => {
-  app.locals.success = req.flash('success')
+  const err = req.session.error,
+    msg = req.session.notice,
+    success = req.session.success;
+
+  delete req.session.error;
+  delete req.session.success;
+  delete req.session.notice;
+
+  if (err) res.locals.error = err;
+  if (msg) res.locals.notice = msg;
+  if (success) res.locals.success = success;
+
   next();
 });
 
-
-
+app.use((req, res, next) => {
+  app.locals.success = req.flash("success");
+  next();
+});
 
 //////////////////////////////
 // verbind met mongodb database en start server
