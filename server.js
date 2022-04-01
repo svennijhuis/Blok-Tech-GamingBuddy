@@ -208,7 +208,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // session-persisted message middleware
-// [https://www.tabnine.com/code/javascript/functions/express-session/Session/error]
+// [https://www.ctl.io/developers/blog/post/build-user-authentication-with-node-js-express-passport-and-mongodb]
 app.use( (req, res, next) => {
   const err = req.session.error,
       msg = req.session.notice,
