@@ -54,9 +54,9 @@ app.engine(
 app.set("view engine", "hbs");
 
 // routes
-app.use("/", require("./routes/roomSelect"));
+// app.use("/", require("./routes/roomSelect"));
 app.use("/messages", require("./routes/chat"));
-app.use("/register", require("./routes/register.js"));
+// app.use("/register", require("./routes/register.js"));
 
 
 
@@ -129,7 +129,9 @@ const flash = require('express-flash');
 
 const {
   dbReg,
-  dbAuth
+  dbAuth,
+  isLoggedIn,
+  isLoggedOut
 } = require("./utils/register/authentication");
 
 // Passport.js
@@ -231,22 +233,21 @@ app.use((req, res, next) => {
 //===============ROUTES===============
 
 // render home
-app.get('/', (req, res) => {
-  if ( !req.isAuthenticated() ) {
-    res.redirect('/login')
-    return
-  }
-  res.render('filter');
+app.get('/', isLoggedIn, (req, res) => {
+  res.render("filter");
 });
 
 // render login
-app.get('/login', (req, res) => {
-  res.render('login');  
+app.get('/login', isLoggedOut, (req,res) => {
+  const response = {
+    error: req.query.error
+  }
+  res.render("login", response);
 });
 
 
 // render register
-app.get('/register', (req, res) => {
+app.get('/register', isLoggedOut, (req, res) => {
   res.render('register');
 });
 
@@ -276,7 +277,7 @@ app.get('/logout', (req, res) => {
   const name = req.user.username;
   console.log("Logout " + req.user.username)
   req.logout();
-  res.redirect('/login');
+  res.redirect('/');
   req.session.notice = "Succesfully logged out " + name + "!";
 });
 
