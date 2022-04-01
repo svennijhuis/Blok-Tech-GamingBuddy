@@ -54,7 +54,7 @@ app.engine(
 app.set("view engine", "hbs");
 
 // routes
-// app.use("/", require("./routes/roomSelect"));
+app.use("/", require("./routes/roomSelect"));
 app.use("/messages", require("./routes/chat"));
 // app.use("/register", require("./routes/register.js"));
 
@@ -177,7 +177,7 @@ passport.use('local-signup', new LocalStrategy(
     .then( (user) => {
       if (user) {
         console.log("REGISTERED: " + user.username);
-        req.session.success = 'Succesful register and immediate login from ' + user.username + '!';
+        req.session.success = 'Succesful register from ' + user.username + '!';
         done(null, user);
       }
       if (!user) {
@@ -236,9 +236,9 @@ app.use((req, res, next) => {
 // routes
 
 // render home
-app.get('/', isLoggedIn, (req, res) => {
-  res.render("filter");
-});
+// app.get('/', isLoggedIn, (req, res) => {
+//   res.render("filter");
+// });
 
 // render login
 app.get('/login', isLoggedOut, (req,res) => {
@@ -253,8 +253,6 @@ app.get('/login', isLoggedOut, (req,res) => {
 app.get('/register', isLoggedOut, (req, res) => {
   res.render('register');
 });
-
-
 
 
 // post to register
