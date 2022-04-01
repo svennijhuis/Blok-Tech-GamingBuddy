@@ -29,7 +29,8 @@ router.get("/", isLoggedIn, async (req, res) => {
 
   // ophalen rooms database
   res.render("filter", {
-    gameRooms: allRooms
+    gameRooms: allRooms,
+    user: req.user
   });
 });
 
