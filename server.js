@@ -152,7 +152,7 @@ passport.deserializeUser((obj, done) => {
 passport.use('local-signin', new LocalStrategy(
   {passReqToCallback : true},
   (req, username, password, done) => {
-    dbAuth(username, password)
+    dbAuth(client, username, password)
     .then( (user) => {
       if (user) {
         console.log("LOGGED IN AS: " + user.username);
@@ -175,7 +175,7 @@ passport.use('local-signin', new LocalStrategy(
 passport.use('local-signup', new LocalStrategy(
   {passReqToCallback : true}, 
   (req, username, password, done) => {
-    dbReg(username, password)
+    dbReg(client, username, password)
     .then( (user) => {
       if (user) {
         console.log("REGISTERED: " + user.username);
