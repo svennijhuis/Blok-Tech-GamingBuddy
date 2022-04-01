@@ -13,6 +13,20 @@ const client = new MongoClient(mongodbUrl, { useNewUrlParser: true, useUnifiedTo
  
  });
 
+ const isLoggedIn = function (req, res, next) {
+  if (req.isAuthenticated()) { 
+      return next(); 
+  }
+  res.redirect('/login');
+}
+
+const isLoggedOut = function (req, res, next) {
+  if (!req.isAuthenticated()) { 
+      return next(); 
+  }
+  res.redirect('/');
+}
+
 
 // register user
 const dbReg =  (username, password) => {
@@ -80,4 +94,4 @@ const dbAuth =  (username, password) => {
     return deferred.promise;
   }
 
-module.exports = { dbReg, dbAuth };
+module.exports = { dbReg, dbAuth, isLoggedIn, isLoggedOut };
