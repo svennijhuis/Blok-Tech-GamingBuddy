@@ -31,7 +31,6 @@ const isLoggedOut = function (req, res, next) {
 
 // register user
 const dbReg = (client, username, password, req) => {
-  console.log(req.body);
 
   const deferred = Q.defer();
 
@@ -51,6 +50,10 @@ const dbReg = (client, username, password, req) => {
           username: username,
           password: hash,
           name: req.body.name,
+          email: req.body.email,
+          residence: req.body.residence,
+          language: req.body.language,
+
         };
 
         console.log("User is being created:", username);
