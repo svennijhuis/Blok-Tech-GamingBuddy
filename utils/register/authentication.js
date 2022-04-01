@@ -22,7 +22,7 @@ const dbReg =  (username, password) => {
     const collection = client.db('users').collection('user');
   
     //check if username already exists
-    collection.findOne({'username' : username})
+    collection.findOne({ 'username' : username })
       .then( (result) => {
           
         if (null != result) {
@@ -57,7 +57,7 @@ const dbAuth =  (username, password) => {
   MongoClient.connect(mongodbUrl, (err, db) => {
     const collection = client.db('users').collection('user');
   
-    collection.findOne({'username' : username})
+    collection.findOne({ 'username' : username })
       .then( (result) => {
         if (null == result) {
           console.log("Couldn't find:", username);
