@@ -36,15 +36,15 @@ router.post("/", (req, res) => {
   res.redirect(`/messages?username=${req.body.username}&room=${req.body.room}`);
 });
 
-// upload custom groep afbeelding
-// moet nog error handling hebben, bijvoorbeeld als bepaalde velden niet worden ingevuld. Dit is de basis - Laurens
+// Hiermee kan je de huidige room info als gebruiker veranderen
 router.post("/roomimg", upload.single("groepimg"), function (req, res) {
+  // huidige data vervangen met newRoomData
   const newRoomData = {
     beschrijving: req.body.beschrijving,
-    taal: [req.body.taal1, req.body.taal2, req.body.taal3],
-    // img: `uploads/${req.file.filename}`
+    taal: [req.body.taal1, req.body.taal2, req.body.taal3]
   };
 
+  // Als geen img is toegevoegd dan de huidige img behouden.
   if(req.file !== undefined) {
     newRoomData.img = `uploads/${req.file.filename}`;
   }

@@ -125,8 +125,10 @@ if ((window.location.href.indexOf("messages") > -1)) {
       <li>Genre: <em>${roomData.genre}</em></li>
     </ul>`;
 
+    // In wijzigingsformulier de huidige beschrijving weergeven
     roomInfoBeschrijving.value = roomData.beschrijving;
 
+    // In opties voor talen de huidige opties weergeven
     for(let i=0; i<roomInfoTalen.length; i++) {
       if(roomData.taal[i] !== "") {
         roomInfoTalen[i].querySelector(`.${roomData.taal[i]}`).setAttribute("selected","");
