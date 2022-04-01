@@ -1,9 +1,9 @@
 <form action="/login" method="POST">
     <div>
-        {{#if error}}
-        <p>Username or password is incorrect</p>
-        {{/if}}
         <h1>Login</h1>
+        {{#if  messages.error}}
+        {{messages.error}}
+        {{/if}}
     </div>
     <div>
         <input type="text" name="username" id="username" placeholder="Enter your username" required />
