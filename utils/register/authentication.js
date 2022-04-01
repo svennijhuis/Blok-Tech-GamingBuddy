@@ -13,19 +13,19 @@ const client = new MongoClient(mongodbUrl, { useNewUrlParser: true, useUnifiedTo
  
  });
 
- const isLoggedIn = function (req, res, next) {
+const isLoggedIn = function (req, res, next) {
   if (req.isAuthenticated()) { 
       return next(); 
   }
   res.redirect('/login');
-}
+};
 
 const isLoggedOut = function (req, res, next) {
   if (!req.isAuthenticated()) { 
       return next(); 
   }
   res.redirect('/');
-}
+};
 
 
 // register user
@@ -44,7 +44,7 @@ const dbReg =  (username, password) => {
           deferred.resolve(false);
         }
         else  {
-          const hash = bcrypt.hashSync(password, 8);
+          const hash = bcrypt.hashSync(password, 10);
           const user = {
             "username": username,
             "password": hash,
