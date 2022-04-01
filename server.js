@@ -120,7 +120,171 @@ io.on("connect", (socket) => {
     });
   });
 });
+//////////////////////////////
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const flash = require('express-flash');
 
+const {
+  dbReg,
+  dbAuth
+} = require("./utils/register/authentication");
+
+// Passport.js
+passport.serializeUser( (user, done) => {
+  console.log("serializing " + user.username);
+  done(null, user);
+});
+
+passport.deserializeUser((obj, done) => {
+  console.log("deserializing " + obj);
+  done(null, obj);
+});
+
+ 
+// login
+passport.use('local-signin', new LocalStrategy(
+  {passReqToCallback : true},
+  (req, username, password, done) => {
+    dbAuth(username, password)
+    .then( (user) => {
+      if (user) {
+        console.log("LOGGED IN AS: " + user.username);
+        req.session.success = 'Succesful login from ' + user.username + '!';
+        done(null, user);
+      }
+      if (!user) {
+        console.log("COULD NOT LOG IN");
+        req.session.error = "Couldn't find user";
+        return done(null, false, {message: 'Username or password is incorrect'})
+      }
+    })
+    .fail((err) => {
+      console.log(err.body);
+    });
+  }
+));
+
+// register
+passport.use('local-signup', new LocalStrategy(
+  {passReqToCallback : true}, 
+  (req, username, password, done) => {
+    dbReg(username, password)
+    .then( (user) => {
+      if (user) {
+        console.log("REGISTERED: " + user.username);
+        req.session.success = 'Succesful register and immediate login from ' + user.username + '!';
+        done(null, user);
+      }
+      if (!user) {
+        console.log("COULD NOT REGISTER");
+        req.session.error = 'Username already exists'; //
+        return done(null, false, {message: 'Username already exists'})
+      }
+    })
+    .fail( (err) => {
+      console.log(err.body);
+    });
+  }
+));
+
+// express
+app.use(express.urlencoded({ extended: false}));
+app.use(express.static(__dirname + '/public'));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(flash())
+app.use(session({ 
+  secret: 'process.env.SESSION_SECRET', 
+  saveUninitialized: true, 
+  resave: true 
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// session-persisted message middleware
+// [https://www.tabnine.com/code/javascript/functions/express-session/Session/error]
+app.use( (req, res, next) => {
+  const err = req.session.error,
+      msg = req.session.notice,
+      success = req.session.success;
+
+      delete req.session.error;
+      delete req.session.success;
+      delete req.session.notice;
+    
+      if (err) res.locals.error = err;
+      if (msg) res.locals.notice = msg;
+      if (success) res.locals.success = success;
+
+      next();
+});
+
+app.use((req, res, next) => {
+  app.locals.success = req.flash('success')
+  next();
+});
+
+//===============ROUTES===============
+
+// render home
+app.get('/', (req, res) => {
+  if ( !req.isAuthenticated() ) {
+    res.redirect('/login')
+    return
+  }
+  res.render('filter');
+});
+
+// render login
+app.get('/login', (req, res) => {
+  res.render('login');  
+});
+
+
+// render register
+app.get('/register', (req, res) => {
+  res.render('register');
+});
+
+
+
+
+// post to register
+app.post('/register', passport.authenticate('local-signup', {
+  successRedirect: '/',
+  failureRedirect: '/register',
+  failureFlash: true
+  })
+);
+
+// post to login
+app.post('/login', passport.authenticate('local-signin', {
+  successRedirect: '/',
+  failureRedirect: '/login',
+  failureFlash: true
+  })
+);
+
+
+
+// logout
+app.get('/logout', (req, res) => {
+  const name = req.user.username;
+  console.log("Logout " + req.user.username)
+  req.logout();
+  res.redirect('/login');
+  req.session.notice = "Succesfully logged out " + name + "!";
+});
+
+
+
+
+
+//////////////////////////////
 // verbind met mongodb database en start server
 const startServer = async () => {
   client = await mongoConnect.getDB();
