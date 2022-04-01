@@ -1,14 +1,20 @@
 <form action="/register" method="POST">
-  <div class="register-gegevens">
+  <div>
+      <h1>Register</h1>
+      {{#if  messages.error}}
+      {{messages.error}}
+      {{/if}}
+  </div>
+  <div>
     <input type="text" name="name" id="name" placeholder="Name" required />
-    <input type="email" name="email" id="email" placeholder="E-mail" required />
-    <input type="text" name="age" id="age" placeholder="Leeftijd" required />
-    <input type="text" name="residence" id="residence" placeholder="Woonplaats" required/>
+    <input type="email" name="email" id="email" placeholder="Email" required />
+    <input type="number" name="age" id="age" placeholder="Age" min="18" max="100" required />
+    <input type="text" name="residence" id="residence" placeholder="Residence" required/>
 
     <select name="language">
-      <option value="en">Engels</option>
+      <option value="en">English</option>
       <option value="nl">Nederlands</option>
-      <option value="ch">Chinees</option>
+      <option value="ch">中國人</option>
     </select>
   </div>
   <div>
@@ -17,7 +23,7 @@
     <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" autocomplete="off" required/>
   </div>
   <div>
-    <button type="submit" value="Sign up" id="form-signup">Aanmelden</button>
+    <input type="submit" value="Sign up" />
   </div>
   <a href="/login">Login</a>
 </form>
