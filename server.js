@@ -56,7 +56,9 @@ app.set("view engine", "hbs");
 // routes
 app.use("/", require("./routes/roomSelect"));
 app.use("/messages", require("./routes/chat"));
-// app.use("/register", require("./routes/register.js"));
+app.use("/register", require("./routes/test"));
+app.use("/login", require("./routes/login"));
+app.use("/logout", require("./routes/logout"));
 
 
 
@@ -129,9 +131,7 @@ const flash = require('express-flash');
 
 const {
   dbReg,
-  dbAuth,
-  isLoggedIn,
-  isLoggedOut
+  dbAuth
 } = require("./utils/register/authentication");
 
 // Passport.js
@@ -229,59 +229,6 @@ app.use((req, res, next) => {
   app.locals.success = req.flash('success')
   next();
 });
-
-
-
-
-// routes
-
-// render home
-// app.get('/', isLoggedIn, (req, res) => {
-//   res.render("filter");
-// });
-
-// render login
-app.get('/login', isLoggedOut, (req,res) => {
-  const response = {
-    error: req.query.error
-  }
-  res.render("login", response);
-});
-
-
-// render register
-app.get('/register', isLoggedOut, (req, res) => {
-  res.render('register');
-});
-
-
-// post to register
-app.post('/register', passport.authenticate('local-signup', {
-  successRedirect: '/',
-  failureRedirect: '/register',
-  failureFlash: true
-  })
-);
-
-// post to login
-app.post('/login', passport.authenticate('local-signin', {
-  successRedirect: '/',
-  failureRedirect: '/login',
-  failureFlash: true
-  })
-);
-
-
-
-// logout
-app.get('/logout', (req, res) => {
-  const name = req.user.username;
-  console.log("Logout " + req.user.username)
-  req.logout();
-  res.redirect('/');
-  req.session.notice = "Succesfully logged out " + name + "!";
-});
-
 
 
 
