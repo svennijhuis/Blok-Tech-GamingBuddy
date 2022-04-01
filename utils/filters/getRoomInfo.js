@@ -17,7 +17,7 @@ const checkRoomData = async (client, roomName) => {
 const createRoomInfo = async (client, roomName) => {
     const roomInfo = {
         roomNaam: roomName,
-        taal: [""],
+        taal: ["", "", ""],
         beschrijving: "",
         genre: "",
         img: "uploads/img.png"

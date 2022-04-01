@@ -1,20 +1,24 @@
 const mongoConnect = require("../../controller/mongoConnect");
 
-// verander room info (moet nog aan gewerkt worden)
+// Hiermee kun je de room info veranderen
 const changeRoomInfo = async (newRoomData, roomNaam) => {
     const client = await mongoConnect.getDB();
 
-    // naam van room (moet nog dynamisch worden meegegeven)
+    // Naam van room (moet nog dynamisch worden meegegeven)
     const filter = { roomNaam: roomNaam };
 
-    // object keys die moeten worden aangepast + nieuwe waardes
+    // Object keys die moeten worden aangepast veranderen naar nieuwe waardes
     const update = {
         $set: {
           taal: newRoomData.taal,
           beschrijving: newRoomData.beschrijving,
-          img: newRoomData.img
         }
       };
+
+      // Als de nieuwe roomdata defined is dan img veranderen
+      if(newRoomData.img !== undefined) {
+        update.$set.img = newRoomData.img
+      }
 
     await client.db("filters")
     .collection("rooms")
