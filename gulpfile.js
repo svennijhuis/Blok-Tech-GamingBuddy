@@ -1,39 +1,43 @@
+// Aanroepen gulp + aanroepen plugins
 const gulp = require('gulp');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
+const nodemon = require('gulp-nodemon');
 
-
+// Taak om alle CSS te zoeken in public
 gulp.task('css', () => (
     gulp.src('./public/css/*.css')
+    // CSS opschonen
     .pipe(cleanCSS({compatibility: 'ie8'}))
+    // CSS zo klein mogelijk in 1 bestand
     .pipe(concat('style.min.css'))
+    // CSS bestand plaatsen in public/dist
     .pipe(gulp.dest('public/dist'))
     ))
 
-gulp.task('default', gulp.series('css'))
+
+// Taak om te kijken of er wijzigingen zijn en voert deze vervolgens opnieuw uit.
+gulp.task('watch', () => (
+    gulp.watch('./static/styles/*.css', gulp.series('css'))
+))
+
+// Taak om applicatie te starten
+gulp.task('start', (done) => (
+    nodemon({
+        // start de server.js
+        script: 'server.js',
+        // checkt of er veranderingen zijn in .js .hbs of .css bestanden en runt dan opnieuw
+        ext: 'js hbs css',
+        // wanneer wijzigingen in css runt die opnieuw de css task
+        tasks: ['css'],
+        done: done
+    })
+))
 
 
+gulp.task('default', gulp.series('css', 'start'))
 
-// const nodemon = require('gulp-nodemon');
-
-
-// gulp.task('watch', () => (
-//     gulp.watch('./static/styles/*.css', gulp.series('css'))
-// ))
-
-// if(process.env.NODE_ENV !== 'production') {
-//     gulp.task('start', (done) => (
-//         nodemon({
-//             script: 'server.js',
-//             ext: 'css',
-//             tasks: ['css'],
-//             ignore: ['static/dist'],
-//             done: done
-//         })
-//     ))
-// }
-
-// gulp.task('default', gulp.series('css', 'start'))
+// gulp.task('default', gulp.series('css'))
 
 // gulp.task('build', gulp.series('css'));
 
