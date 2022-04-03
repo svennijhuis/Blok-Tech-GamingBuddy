@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "gulp": "gulp",
+    "preinstall": "npx npm-force-resolutions"
   },
   "keywords": [
     "chatting",
@@ -28,6 +30,10 @@
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-nodemon": "^2.2.1",
     "nodemon": "^2.0.15"
   },
   "engines": {

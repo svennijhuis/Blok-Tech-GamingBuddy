@@ -14,7 +14,6 @@ const roomInfo = document.querySelector(".chat main > aside");
 const roomInfoContainer = document.querySelector(".chat main > aside div");
 const roomInfoBeschrijving = document.querySelector(".chat main > aside div:last-of-type form label input[type=text]");
 const roomInfoTalen = document.querySelectorAll(".chat main > aside div:last-of-type form select");
-const roomInfoImg = document.querySelector(".chat main > aside div:last-of-type form label input[type=file]");
 
 const chatBackButton = document.querySelector(".chat main > div svg");
 const roomInfoButton = document.querySelector(".chat main > div:first-of-type button");
@@ -129,9 +128,9 @@ if ((window.location.href.indexOf("messages") > -1)) {
     roomInfoBeschrijving.value = roomData.beschrijving;
 
     // In opties voor talen de huidige opties weergeven
-    for(let i=0; i<roomInfoTalen.length; i++) {
-      if(roomData.taal[i] !== "") {
-        roomInfoTalen[i].querySelector(`.${roomData.taal[i]}`).setAttribute("selected","");
+    for (let i = 0; i < roomInfoTalen.length; i++) {
+      if (roomData.taal[i] !== "") {
+        roomInfoTalen[i].querySelector(`.${roomData.taal[i]}`).setAttribute("selected", "");
       }
     }
   });
