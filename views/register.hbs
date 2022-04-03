@@ -1,11 +1,12 @@
 <section class="register">
   <form action="/register" method="POST">
 
-    <h1>Register</h1>
+    <h1>Gamebuddies</h1>
     {{#if  messages.error}}
       {{messages.error}}
     {{/if}}
 
+    <p>Personal information</p>
     <div>
       <input type="text" name="name" id="name" placeholder="Name" required />
       <input type="email" name="email" id="email" placeholder="Email" required />
@@ -18,13 +19,15 @@
         <option value="ch">中國人</option>
       </select>
     </div>
+
+    <p>Account information</p>
     <div>
       <input type="text" name="username" id="username" placeholder="Username" autocomplete="off" required/>
       <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required/>
       <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" autocomplete="off" required/>
     </div>
 
-    <input type="submit" value="Sign up" />
+    <input type="submit" value="Register" />
 
     <a href="/login">Login</a>
   </form>
