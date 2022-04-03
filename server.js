@@ -244,7 +244,6 @@ app.use("/messages", require("./routes/chat"));
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/login"));
 app.use("/logout", require("./routes/logout"));
-app.use("/information", require("./routes/personalInformation"));
 
 
 
