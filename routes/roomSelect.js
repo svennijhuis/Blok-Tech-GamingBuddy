@@ -40,7 +40,8 @@ router.post("/filter", async (req, res) => {
 
   // ophalen dieren database en deze weergeven op de localhost:8000.
   res.render("filter", {
-    gameRooms: filteredRooms
+    gameRooms: filteredRooms,
+    user: req.user
   });
   // res.redirect(`/filter?taal=${req.body.taal}`);
 });
