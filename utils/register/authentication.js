@@ -43,8 +43,9 @@ const dbReg = (client, username, password, req) => {
           password: hash,
           name: req.body.name,
           email: req.body.email,
+          age: req.body.age,
           residence: req.body.residence,
-          language: req.body.language,
+          language: req.body.language
         };
 
         console.log("User with username:", username,"is being created");
