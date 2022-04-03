@@ -17,7 +17,7 @@ const chatBackButton = document.querySelector(".chat main > div svg");
 const roomInfoButton = document.querySelector(".chat main > div:first-of-type button");
 
 // back button on error page
-const errorBackButton = document.querySelector(".errorLinks li:first-of-type")
+const errorBackButton = document.querySelector(".error ul li:first-of-type")
 
 
 // function voor root van de site, wordt later veranderd
