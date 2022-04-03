@@ -3,26 +3,16 @@ require("dotenv").config();
 const bcrypt = require("bcryptjs"),
   Q = require("q");
 
-// database connection
-// const { MongoClient } = require("mongodb");
-// const mongodbUrl = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.acfzh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-// const client = new MongoClient(mongodbUrl, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-
-// client.connect((err) => {
-//   //perform actions on the collection object
-// });
-
-const isLoggedIn = function (req, res, next) {
+// check if user is logged in
+const isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
   res.redirect("/login");
 };
 
-const isLoggedOut = function (req, res, next) {
+// check if user is logged out
+const isLoggedOut = (req, res, next) => {
   if (!req.isAuthenticated()) {
     return next();
   }
@@ -33,7 +23,6 @@ const isLoggedOut = function (req, res, next) {
 const dbReg = (client, username, password, req) => {
 
   const deferred = Q.defer();
-
 
   //check if username already exists
   client
@@ -53,10 +42,9 @@ const dbReg = (client, username, password, req) => {
           email: req.body.email,
           residence: req.body.residence,
           language: req.body.language,
-
         };
 
-        console.log("User is being created:", username);
+        console.log("User with username: ", username," is being created");
 
         client
           .db("users")
