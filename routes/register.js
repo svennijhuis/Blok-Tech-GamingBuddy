@@ -1,19 +1,32 @@
 const express = require("express");
 const router = express.Router();
-const bodyParser = require("body-parser");
-router.use(bodyParser.urlencoded({ extended: true }));
-const { sendWelcomeEmail } = require('../utils/email/email.js');
 
-const {
-    saveUser
-} = require("../utils/register/saveUser");
+const session = require('express-session');
+const passport = require('passport');
+router.use(session({ 
+  secret: 'process.env.SESSION_SECRET', 
+  saveUninitialized: true, 
+  resave: true 
+}));
+router.use(passport.initialize());
+router.use(passport.session());
 
-router.post('/', async (req, res, next) => {
+const { 
+  isLoggedOut
+} = require("../utils/register/authentication");
 
-    const user = req.body;
-    await saveUser(user)
-    console.log(user)
-    sendWelcomeEmail(user.name, user.email);
+// render register
+router.get('/', isLoggedOut, (req, res) => {
+  res.render('register');
 });
+
+
+// post to register
+router.post('/', passport.authenticate('local-signup', {
+  successRedirect: '/',
+  failureRedirect: '/register',
+  failureFlash: true
+  })
+);
 
 module.exports = router;
