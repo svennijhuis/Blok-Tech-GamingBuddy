@@ -9,9 +9,9 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY)
     sgMail.send({
         to: email,
         from: 'sven.nijhuis@hva.nl', 
-        subject: 'Welkom bij de Gamebuddy',
+        subject: 'Welcome to Gamebuddy',
         text: 'and easy to do anywhere, even with Node.js',
-        html: `hallo, ${name}`,
+        html: `Hello, ${name}`,
     })
   }
 
