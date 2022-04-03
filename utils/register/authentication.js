@@ -51,7 +51,7 @@ const dbReg = (client, username, password, req) => {
           language: req.body.language
         };
 
-        if (pass == confirm_pass) {
+        if (pass === confirm_pass) {
           console.log("User with username:", username,"is being created");
 
           client
