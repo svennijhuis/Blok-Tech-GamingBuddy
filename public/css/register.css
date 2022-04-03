@@ -29,15 +29,27 @@
 }
 
 .register form div:nth-of-type(1) input, .register form div:nth-of-type(1) select{
-    width: 30%;
+    width: 100%;
     margin-right: 10px;
     margin-bottom: 10px;
     height: 20px;
     padding-left: 5px;
+    height: 30px;
+    border: solid rgb(230, 230, 230) 1px;
 }
 
 .register form div:nth-of-type(2){
     margin-bottom: 20px;
+}
+
+.register form div:nth-of-type(2) input{
+    width: 100%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 20px;
+    padding-left: 5px;
+    height: 30px;
+    border: solid rgb(230, 230, 230) 1px;
 }
 
 .register form input[type=submit]{
@@ -49,3 +61,35 @@
     font-size: 20px;
     transition: 0.3s;
 }
+
+.register form input[type=submit]:hover{
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.register form a{
+    color: #000;
+    font-size: 14px;
+    margin-top: 15px;
+    text-decoration: underline;
+    transition: 0.3s;
+   }
+   
+   .register form a:hover{
+       text-decoration: unset;
+       transition: 0.3s;
+   }
+
+   .register form input::placeholder{
+    color: #000;
+    font-size: 12px;
+}
+
+@media (min-width: 992px) { 
+    .register form div:nth-of-type(1) input, .register form div:nth-of-type(1) select{
+        width: 30%;
+    }
+    .register form div:nth-of-type(2) input{
+        width: 30%;
+    }
+ }

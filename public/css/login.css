@@ -58,3 +58,8 @@
     text-decoration: unset;
     transition: 0.3s;
 }
+
+.login form input::placeholder{
+    color: #000;
+    font-size: 12px;
+}
