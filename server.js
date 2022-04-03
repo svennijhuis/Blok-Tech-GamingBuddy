@@ -49,7 +49,7 @@ app.set("view engine", "hbs");
 const flash = require("express-flash");
 app.use(flash());
 
-// routes
+//===============ROUTES===============
 app.use("/", require("./routes/roomSelect"));
 app.use("/messages", require("./routes/chat"));
 app.use("/register", require("./routes/test"));
@@ -237,8 +237,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//////////////////////////////
-// verbind met mongodb database en start server
+//========DATABASE CONNECTION=========
 const startServer = async () => {
   client = await mongoConnect.getDB();
   server.listen(port, "0.0.0.0", () => {
@@ -248,6 +247,8 @@ const startServer = async () => {
 
 startServer();
 
+//===============ERROR================
 app.use((req, res, next) => {
-  res.status(404).send("404 Error: page not found");
+  // res.status(404).send("404 Error: page not found");
+  res.render('error');
 });
