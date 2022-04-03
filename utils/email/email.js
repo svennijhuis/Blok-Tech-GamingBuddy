@@ -1,6 +1,5 @@
 const dotenv = require("dotenv");
 dotenv.config();
-console.log(process.env)
 
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
@@ -10,8 +9,8 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY)
         to: email,
         from: 'sven.nijhuis@hva.nl', 
         subject: 'Welcome to Gamebuddy',
-        text: 'and easy to do anywhere, even with Node.js',
-        html: `Hello, ${name}`,
+        text: '',
+        html: `Hello, ${name}, Thank you for using our service. If there are any questions in the coming days, you can contact us to answer this email.`,
     })
   }
 
