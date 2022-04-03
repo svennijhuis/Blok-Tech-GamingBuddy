@@ -139,25 +139,6 @@ mobile styles, media query
 }
 
 /******** css modal box *********/
-.filter .show-modal {
-  font-size: 1.25em;
-  font-weight: 600;
-  margin: 0.625em;
-  border: none;
-  background-color: rgb(230, 230, 230);
-  color: #000;
-  border-radius: 0.3125em;
-  cursor: pointer;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  height: 2.5em;
-  max-width: 12.5em;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .filter .overlay {
   position: fixed;
@@ -191,7 +172,7 @@ mobile styles, media query
   position: absolute;
   top: 0.25em;
   right: 0.5em;
-  font-size: 4.6875em;
+  font-size: 3.6875em;
   color: #333;
   cursor: pointer;
   border: none;
@@ -217,7 +198,7 @@ mobile styles, media query
   background: rgb(230, 230, 230);
   width: 90%;
   padding: 0.625em;
-  margin: 0.3125em;
+  margin-bottom: 1.3125em;
 }
 
 @media (min-width: 992px) {
