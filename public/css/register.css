@@ -10,13 +10,42 @@
 .register form{
     display: flex;
     flex-direction: column;
+    background: rgb(230, 230, 230);
+    padding: 30px;
+    border-radius: 20px;
 }
 
 .register h1{
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
-/* 
+
 .register form div:nth-of-type(1){
-    
-} */
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.register form div:nth-of-type(1) input, .register form div:nth-of-type(1) select{
+    width: 30%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 20px;
+    padding-left: 5px;
+}
+
+.register form div:nth-of-type(2){
+    margin-bottom: 20px;
+}
+
+.register form input[type=submit]{
+    width: 200px;
+    height: 30px;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
