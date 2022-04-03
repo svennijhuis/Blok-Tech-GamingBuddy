@@ -1,34 +1,35 @@
 .login {
-    margin: 0 auto;
-    width: 90%;
-    min-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 90%;
+    min-height: 90vh;
+    margin: 0 auto;
 }
 
 .login form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(230, 230, 230);
     padding: 1.875em;
+    background-color: rgb(230, 230, 230);
     border-radius: 0.625em;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 
 .login form h1 {
-    font-size: 2.5em;
     margin-bottom: 0.8em;
+    font-size: 2.5em;
 }
 
 .login form input[type=text],  .login form input[type=password]{
     width: 17.75vw;
     height: 4vh;
-    padding-left: 0.3125em;
-    border: solid rgb(230, 230, 230) 0.0625em;
     margin-bottom: 0.9375em;
+    padding-left: 0.1em;
+    border: solid rgb(230, 230, 230) 0.0625em;
+    text-indent: 10px;
 }
 
 .login form input[type=submit] {
@@ -49,11 +50,11 @@
 }
 
 .login form a {
- color: #000;
- font-size: 0.875em;
- margin-top: 0.9375em;
- text-decoration: underline;
- transition: 0.3s;
+    margin-top: 0.9375em;
+    color: #000;
+    font-size: 0.875em;
+    text-decoration: underline;
+    transition: 0.3s;
 }
 
 .login form a:hover {
@@ -64,5 +65,4 @@
 .login form input::placeholder {
     color: rgb(82, 82, 82);
     font-size: 1em;
-    padding-left: 0.4em;
 }
