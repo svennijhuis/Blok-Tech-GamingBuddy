@@ -20,19 +20,19 @@
 
 .login form h1 {
     font-size: 2.5em;
-    margin-bottom: 1.25em;
+    margin-bottom: 0.8em;
 }
 
 .login form input[type=text],  .login form input[type=password]{
-    width: 12.1875em;
+    width: 17.75vw;
+    height: 4vh;
     padding-left: 0.3125em;
-    height: 1.875em;
     border: solid rgb(230, 230, 230) 0.0625em;
     margin-bottom: 0.9375em;
 }
 
 .login form input[type=submit] {
-    width: 12.5em;
+    width: 18vw;
     height: 1.875em;
     color: #fff;
     background-color: #000;
@@ -63,5 +63,6 @@
 
 .login form input::placeholder {
     color: rgb(82, 82, 82);
-    font-size:0.75em;
+    font-size: 1em;
+    padding-left: 0.4em;
 }
