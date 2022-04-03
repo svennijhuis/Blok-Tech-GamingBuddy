@@ -75,7 +75,7 @@ passport.use(
         .then((user) => {
           if (user) {
             console.log("LOGGED IN AS: " + user.username);
-            req.session.success = "Succesful login from " + user.username + "!";
+            req.session.success = "Welcome back " + user.username + "!";
             done(null, user);
           }
           if (!user) {
@@ -104,7 +104,7 @@ passport.use(
           if (user) {
             console.log("REGISTERED: " + user.username);
             req.session.success =
-              "Succesful register from " + user.username + "!";
+              "Welcome " + user.username + "!";
             done(null, user);
           }
           if (!user) {
