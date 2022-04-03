@@ -98,7 +98,7 @@ passport.use(
           if (user) {
             const pass = req.body.password
             const confirm_pass = req.body.confirm_password
-            if (pass == confirm_pass) {
+            if (pass === confirm_pass) {
               console.log("REGISTERED: " + user.username);
               req.session.success = "Welcome to Gamesbuddy " + user.username + "!";
               done(null, user);
