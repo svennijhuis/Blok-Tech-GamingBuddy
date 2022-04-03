@@ -80,7 +80,6 @@ passport.use(
           }
           if (!user) {
             console.log("COULD NOT LOG IN");
-            req.session.error = "Couldn't find user";
             return done(null, false, {
               message: "Username or password is incorrect",
             });
@@ -109,7 +108,6 @@ passport.use(
           }
           if (!user) {
             console.log("COULD NOT REGISTER");
-            req.session.error = "Username already exists"; //
             return done(null, false, { message: "Username already exists" });
           }
         })
@@ -143,18 +141,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // session-persisted message middleware
-// [https://www.ctl.io/developers/blog/post/build-user-authentication-with-node-js-express-passport-and-mongodb]
 app.use((req, res, next) => {
-  const err = req.session.error,
-    msg = req.session.notice,
-    success = req.session.success;
+  const success = req.session.success;
 
-  delete req.session.error;
   delete req.session.success;
-  delete req.session.notice;
 
-  if (err) res.locals.error = err;
-  if (msg) res.locals.notice = msg;
   if (success) res.locals.success = success;
 
   next();
