@@ -5,6 +5,10 @@ const uniqid = require("uniqid");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
+const { 
+  isLoggedIn 
+} = require("../utils/register/authentication");
+
 const multer = require("multer");
 
 const storage = multer.diskStorage({
@@ -23,7 +27,7 @@ const { changeRoomInfo } = require("../utils/filters/changeRoomInfo");
 let roomNaam;
 
 // render chat
-router.get("/", (req, res) => {
+router.get("/", isLoggedIn, (req, res) => {
   res.render("chat", {
     groepsnaam: req.query.room
     // groepsnaam: req.query.room.charAt(0).toUpperCase() + req.query.room.slice(1)
@@ -32,13 +36,13 @@ router.get("/", (req, res) => {
 });
 
 // stuur user naar chat met username en room als query parameters
-router.post("/", (req, res) => {
+router.post("/", isLoggedIn, (req, res) => {
   res.redirect(`/messages?username=${req.body.username}&room=${req.body.room}`);
 });
 
 // upload custom groep afbeelding
 // moet nog error handling hebben, bijvoorbeeld als bepaalde velden niet worden ingevuld. Dit is de basis - Laurens
-router.post("/roomimg", upload.single("groepimg"), function (req, res) {
+router.post("/roomimg", isLoggedIn, upload.single("groepimg"), function (req, res) {
   const newRoomData = {
     omschrijving: req.body.omschrijving,
     taal: [req.body.taal1, req.body.taal2, req.body.taal3],
