@@ -4,26 +4,32 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.close-modal');
 const btnsOpenModal = document.querySelector('.show-modal');
 
+const hiddenModal = () => {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
+const openModal = () => {
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+}
+
 try {
   btnsOpenModal.addEventListener("click", () => {
-    modal.classList.remove('hidden');
-    overlay.classList.remove('hidden');
+    openModal();
   });
    
   btnCloseModal.addEventListener("click", () => {
-    modal.classList.add('hidden');
-    overlay.classList.add('hidden');
+    hiddenModal();
   });
   
   overlay.addEventListener("click", () => {
-    modal.classList.add('hidden');
-    overlay.classList.add('hidden');
+    hiddenModal();
   });
   
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-      modal.classList.add('hidden');
-      overlay.classList.add('hidden');
+      openModal();
     }
   });
 }

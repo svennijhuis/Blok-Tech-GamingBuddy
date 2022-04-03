@@ -156,6 +156,7 @@ const exphbs = require("express-handlebars");
 app.engine(
   "hbs",
   exphbs.engine({
+    layoutsDir: `${__dirname}/views/layouts`,
     defaultLayout: "index",
     extname: ".hbs",
   })

@@ -1,3 +1,4 @@
+  {{> header}}
 <div class="filter">
     <h1>{{ user.username }}</h1>
     <p>{{ success }}</p>
@@ -48,5 +49,34 @@
                 {{/each}}
         </ul>
     </section>
+
     <a href="/logout">Logout</a>
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h3>My personal information</h3>
+        <article>
+            <div>
+                <p>Username</p>
+                <p>{{ user.username }}</p>
+            </div>
+            <div>
+                <p>Name</p>
+                <p>{{ user.name }}</p>
+            </div>
+            <div>
+                <p>Email</p>
+                <p>{{ user.email }}</p>
+            </div>
+            <div>
+                <p>Age</p>
+                <p>{{ user.age }}</p>
+            </div>
+                <p>{{ user.age }}</p>
+                <p>{{ user.residence}}</p>
+                <p>{{ user.language }}</p>
+        </article>
+    </div>
+    <div class="overlay hidden"></div>
+    <button class="show-modal">Information</button>
 </div>
+  {{> footer}}
