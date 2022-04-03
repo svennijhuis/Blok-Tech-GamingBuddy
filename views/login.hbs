@@ -1,18 +1,18 @@
-<form action="/login" method="POST">
-    <div>
-        <h1>Login</h1>
-        {{#if  messages.error}}
-            {{ messages.error }}
-        {{/if}}
-    </div>
-    <div>
-        <input type="text" name="username" id="username" placeholder="Enter your username" required />
-    </div>       
-    <div>
-        <input type="password" name="password" id="password" placeholder="Enter your password" required />
-    </div>
-    <div>
-        <input type="submit" value="Login" />
-    </div>
-    <a href="/register">Register</a>
-</form>
+<section class="login">
+    <form action="/login" method="POST">
+
+            <h1>Login</h1>
+            {{#if  messages.error}}
+                {{ messages.error }}
+            {{/if}}
+
+            <input type="text" name="username" id="username" placeholder="Enter your username" required />
+
+            <input type="password" name="password" id="password" placeholder="Enter your password" required />
+
+
+            <input type="submit" value="Login" />
+
+        <a href="/register">Register</a>
+    </form>
+</section>

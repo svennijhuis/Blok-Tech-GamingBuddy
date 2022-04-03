@@ -1,0 +1,22 @@
+.register{
+    margin: 0 auto;
+    width: 90%;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register form{
+    display: flex;
+    flex-direction: column;
+}
+
+.register h1{
+    margin-bottom: 20px;
+}
+
+/* 
+.register form div:nth-of-type(1){
+    
+} */
