@@ -201,6 +201,10 @@ mobile styles, media query
   margin-bottom: 1.3125em;
 }
 
+.filter .modal h3{
+  margin-bottom: 1.25em;
+}
+
 @media (min-width: 992px) {
   .filter .modal {
     width: 70%;

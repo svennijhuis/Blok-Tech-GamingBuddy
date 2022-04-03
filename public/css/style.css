@@ -54,4 +54,8 @@ body > div {
     min-width: fit-content;
 }
 
-
+footer{
+    padding-top: 1.25em;
+    display: flex;
+    justify-content: center;
+}
