@@ -12,32 +12,32 @@
     flex-direction: column;
     align-items: center;
     background-color: rgb(230, 230, 230);
-    padding: 30px;
-    border-radius: 10px;
+    padding: 1.875em;
+    border-radius: 0.625em;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 
 .login form h1 {
-    font-size: 40px;
-    margin-bottom: 20px;
+    font-size: 2.5em;
+    margin-bottom: 1.25em;
 }
 
 .login form input[type=text],  .login form input[type=password]{
-    width: 195px;
-    padding-left: 5px;
-    height: 30px;
-    border: solid rgb(230, 230, 230) 1px;
-    margin-bottom: 15px;
+    width: 12.1875em;
+    padding-left: 0.3125em;
+    height: 1.875em;
+    border: solid rgb(230, 230, 230) 0.0625em;
+    margin-bottom: 0.9375em;
 }
 
 .login form input[type=submit] {
-    width: 200px;
-    height: 30px;
+    width: 12.5em;
+    height: 1.875em;
     color: #fff;
     background-color: #000;
     border: none;
-    font-size: 20px;
+    font-size: 1.25em;
     transition: 0.3s;
     cursor: pointer;
 }
@@ -50,8 +50,8 @@
 
 .login form a {
  color: #000;
- font-size: 14px;
- margin-top: 15px;
+ font-size: 0.875em;
+ margin-top: 0.9375em;
  text-decoration: underline;
  transition: 0.3s;
 }
@@ -63,5 +63,5 @@
 
 .login form input::placeholder {
     color: rgb(82, 82, 82);
-    font-size: 12px;
+    font-size:0.75em;
 }
