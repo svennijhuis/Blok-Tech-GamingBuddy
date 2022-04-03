@@ -16,6 +16,9 @@ const roomInfoContainer = document.querySelector(".chat main > aside div");
 const chatBackButton = document.querySelector(".chat main > div svg");
 const roomInfoButton = document.querySelector(".chat main > div:first-of-type button");
 
+// back button on error page
+const errorBackButton = document.querySelector(".errorLinks li:first-of-type")
+
 
 // function voor root van de site, wordt later veranderd
 if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
@@ -173,3 +176,8 @@ if ((window.location.href.indexOf("messages") > -1)) {
   roomInfoButton.addEventListener("click", editRoomInfo);
   chatBackButton.addEventListener("click", mobileAside);
 }
+
+
+errorBackButton.addEventListener("click", () => {
+  history.back();
+});
