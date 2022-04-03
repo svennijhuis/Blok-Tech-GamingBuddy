@@ -37,6 +37,9 @@ const dbReg = (client, username, password, req) => {
         console.log("Username already exists:", result.username);
         deferred.resolve(false);
       } else {
+        const pass = req.body.password
+        const confirm_pass = req.body.confirm_password
+
         const hash = bcrypt.hashSync(password, 10);
         const user = {
           username: username,
@@ -48,17 +51,23 @@ const dbReg = (client, username, password, req) => {
           language: req.body.language
         };
 
-        console.log("User with username:", username,"is being created");
+        if (pass == confirm_pass) {
+          console.log("User with username:", username,"is being created");
 
-        client
-          .db("users")
-          .collection("user")
-          .insertOne(user)
-          .then(() => {
-            deferred.resolve(user);
-          });
+          client
+            .db("users")
+            .collection("user")
+            .insertOne(user)
+            .then(() => {
+              deferred.resolve(user);
+            });
 
-        sendWelcomeEmail(username, req.body.email);
+          sendWelcomeEmail(username, req.body.email);
+        } else {
+          console.log("Passwords don't match");
+          deferred.resolve(user);
+        }
+        
       }
     });
   return deferred.promise;

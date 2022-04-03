@@ -96,9 +96,16 @@ passport.use(
       dbReg(client, username, password, req)
         .then((user) => {
           if (user) {
-            console.log("REGISTERED: " + user.username);
-            req.session.success = "Welcome to Gamesbuddy " + user.username + "!";
-            done(null, user);
+            const pass = req.body.password
+            const confirm_pass = req.body.confirm_password
+            if (pass == confirm_pass) {
+              console.log("REGISTERED: " + user.username);
+              req.session.success = "Welcome to Gamesbuddy " + user.username + "!";
+              done(null, user);
+            } else {
+              console.log("COULD NOT REGISTER");
+              return done(null, false, { message: "Passwords don't match" });
+            }
           }
           if (!user) {
             console.log("COULD NOT REGISTER");
