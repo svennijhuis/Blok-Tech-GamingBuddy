@@ -2,11 +2,10 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
-const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const passport = require("passport");
-const LocalStrategy = require("passport-local");
+const LocalStrategy = require("passport-local").Strategy;
 const flash = require("express-flash");
 
 // helper functions for Passport and database
@@ -126,7 +125,6 @@ passport.use(
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
 
-app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(flash());
