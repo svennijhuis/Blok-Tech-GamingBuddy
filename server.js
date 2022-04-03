@@ -46,6 +46,9 @@ app.engine(
 
 app.set("view engine", "hbs");
 
+const flash = require("express-flash");
+app.use(flash());
+
 // routes
 app.use("/", require("./routes/roomSelect"));
 app.use("/messages", require("./routes/chat"));
@@ -123,7 +126,7 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const methodOverride = require("method-override");
-const flash = require("express-flash");
+
 
 const { dbReg, dbAuth } = require("./utils/register/authentication");
 
@@ -200,7 +203,6 @@ app.use(express.static(__dirname + "/public"));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(flash());
 app.use(methodOverride("_method"));
 app.use(
   session({
