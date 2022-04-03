@@ -1,7 +1,10 @@
 require("dotenv").config();
-const { sendWelcomeEmail } = require('../email/email');
+
 const bcrypt = require("bcryptjs"),
   Q = require("q");
+
+const { sendWelcomeEmail } = require('../email/email');
+
 
 // check if user is logged in
 const isLoggedIn = (req, res, next) => {
