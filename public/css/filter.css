@@ -1,6 +1,10 @@
 /*****************************
 filters section 1 (filters)
 *****************************/
+.filter h1 {
+    visibility: hidden;
+    font-size: 0.1em;
+}
 .filter section:first-of-type {
     margin: 2em;
 }
