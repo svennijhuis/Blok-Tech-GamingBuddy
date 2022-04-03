@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const methodOverride = require("method-override");
 const flash = require("express-flash");
 
 // helper functions for Passport and database
@@ -78,9 +77,7 @@ passport.use(
           }
           if (!user) {
             console.log("COULD NOT LOG IN");
-            return done(null, false, {
-              message: "Username or password is incorrect",
-            });
+            return done(null, false, { message: "Username or password is incorrect" });
           }
         })
         .fail((err) => {
@@ -100,8 +97,7 @@ passport.use(
         .then((user) => {
           if (user) {
             console.log("REGISTERED: " + user.username);
-            req.session.success =
-              "Welcome to Gamesbuddy " + user.username + "!";
+            req.session.success = "Welcome to Gamesbuddy " + user.username + "!";
             done(null, user);
           }
           if (!user) {
@@ -126,7 +122,6 @@ app.use(express.static(__dirname + "/public"));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(methodOverride("_method"));
 app.use(flash());
 app.use(
   session({
@@ -260,6 +255,5 @@ startServer();
 
 //===============ERROR================
 app.use((req, res, next) => {
-  // res.status(404).send("404 Error: page not found");
   res.render('error');
 });
