@@ -46,8 +46,6 @@ const {
 
 const { checkRoomData, loadRoomData } = require("./utils/filters/getRoomInfo");
 
-const { sendWelcomeEmail } = require("./utils/email/email.js");
-
 // map voor static files (stylesheet etc)
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
