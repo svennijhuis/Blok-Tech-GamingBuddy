@@ -103,7 +103,7 @@ passport.use(
           if (user) {
             console.log("REGISTERED: " + user.username);
             req.session.success =
-              "Welcome " + user.username + "!";
+              "Welcome to Gamesbuddy " + user.username + "!";
             done(null, user);
           }
           if (!user) {
@@ -236,6 +236,8 @@ app.use((req, res, next) => {
   app.locals.success = req.flash("success");
   next();
 });
+
+
 
 //===============ROUTES===============
 app.use("/", require("./routes/roomSelect"));
