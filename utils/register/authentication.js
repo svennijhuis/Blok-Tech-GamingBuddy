@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+const { sendWelcomeEmail } = require('../email/email');
 const bcrypt = require("bcryptjs"),
   Q = require("q");
 
@@ -44,7 +44,7 @@ const dbReg = (client, username, password, req) => {
           language: req.body.language,
         };
 
-        console.log("User with username: ", username," is being created");
+        console.log("User with username:", username,"is being created");
 
         client
           .db("users")
@@ -53,6 +53,8 @@ const dbReg = (client, username, password, req) => {
           .then(() => {
             deferred.resolve(user);
           });
+
+        sendWelcomeEmail(username, req.body.email);
       }
     });
   return deferred.promise;
