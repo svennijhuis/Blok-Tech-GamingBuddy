@@ -121,12 +121,12 @@ Filters section 2 (resultaten)
 /*****************************
 mobile styles, media query   
 *****************************/
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
   .filter section:nth-of-type(2) ul {
     width: 90%;
     justify-content: center;
   }
-}
+} */
 
 @media (min-width: 992px) {
   .filter section:nth-of-type(2) ul li {
@@ -205,6 +205,23 @@ mobile styles, media query
   margin-bottom: 1.25em;
 }
 
+.sectionfadein {
+  animation-name: fadeIn;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  0% {
+      transform: translateY(20%);
+      opacity: 0;
+}
+  100%{
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
 @media (min-width: 992px) {
   .filter .modal {
     width: 70%;
@@ -214,3 +231,5 @@ mobile styles, media query
     width: 30%;
   }
 }
+
+
