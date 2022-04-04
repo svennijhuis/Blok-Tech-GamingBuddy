@@ -22,7 +22,7 @@ const roomInfoButton = document.querySelector(".chat main > div:first-of-type bu
 const errorBackButton = document.querySelector(".error ul li:first-of-type");
 
 
-// function voor root van de site, wordt later veranderd
+// function voor root van de site, filteren
 if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
   const changeRoom = (e) => {
     window.location.href = `/messages?username=Laurens&room=${e.currentTarget.id}`;
@@ -36,13 +36,14 @@ if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
 
 
 if ((window.location.href.indexOf("messages") > -1)) {
-  // haalt username en room op uit url
+  // haalt room op uit url
   const {
-    username,
     room
   } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
   });
+
+  const username = document.querySelector(".modal article div p:last-of-type").textContent;
 
   socket.emit("joinRoom", {
     username,
