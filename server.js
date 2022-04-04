@@ -70,7 +70,7 @@ passport.use(
         .then((user) => {
           if (user) {
             console.log(`LOGGED IN AS: ${user.username}`);
-            req.session.success = `Welcome back ${user.username}!`;
+            req.session.success = `Welcome back @${user.username}!`;
             done(null, user);
           }
           if (!user) {
@@ -98,7 +98,7 @@ passport.use(
             const confirmPass = req.body.confirm_password;
             if (pass === confirmPass) {
               console.log(`REGISTERED: ${user.username}`);
-              req.session.success = `Welcome to Gamesbuddy ${user.username}!`;
+              req.session.success = `Welcome to Gamesbuddy @${user.username}!`;
               done(null, user);
             } else {
               console.log("COULD NOT REGISTER");
@@ -242,7 +242,7 @@ app.use("/messages", require("./routes/chat"));
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/login"));
 app.use("/logout", require("./routes/logout"));
-app.use("/information", require("./routes/personalInformation"));
+app.use("/account", require("./routes/account"));
 
 
 
