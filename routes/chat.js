@@ -5,8 +5,9 @@ const uniqid = require("uniqid");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
-const { 
-  isLoggedIn 
+
+const {
+  isLoggedIn
 } = require("../utils/register/authentication");
 
 const multer = require("multer");
