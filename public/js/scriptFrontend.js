@@ -1,4 +1,4 @@
-//========= modal box - personal information =========
+// ========= modal box - personal information =========
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".close-modal");
@@ -34,11 +34,11 @@ try {
   });
 } catch (err) {}
 
-//========= API - IntersectionObserver  =========
+// ========= API - IntersectionObserver  =========
 
 try {
   const options = {
-    threshold: 0.4,
+    threshold: 0.4
   };
 
   const roomsSection = document.querySelectorAll(".roomsection");

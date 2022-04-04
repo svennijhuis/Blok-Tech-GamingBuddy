@@ -1,9 +1,9 @@
 require("dotenv").config();
 
-const bcrypt = require("bcryptjs"),
-  Q = require("q");
+const bcrypt = require("bcryptjs");
+  const Q = require("q");
 
-const { sendWelcomeEmail } = require('../email/email');
+const { sendWelcomeEmail } = require("../email/email");
 
 
 // check if user is logged in
@@ -24,21 +24,20 @@ const isLoggedOut = (req, res, next) => {
 
 // register user
 const dbReg = (client, username, password, req) => {
-
   const deferred = Q.defer();
 
-  //check if username already exists
+  // check if username already exists
   client
     .db("users")
     .collection("user")
     .findOne({ username: username })
     .then((result) => {
-      if (null != result) {
+      if (result != null) {
         console.log("Username already exists:", result.username);
         deferred.resolve(false);
       } else {
-        const pass = req.body.password
-        const confirm_pass = req.body.confirm_password
+        const pass = req.body.password;
+        const confirmPass = req.body.confirm_password;
 
         const hash = bcrypt.hashSync(password, 10);
         const user = {
@@ -51,8 +50,8 @@ const dbReg = (client, username, password, req) => {
           language: req.body.language
         };
 
-        if (pass === confirm_pass) {
-          console.log("User with username:", username,"is being created");
+        if (pass === confirmPass) {
+          console.log("User with username:", username, "is being created");
 
           client
             .db("users")
@@ -67,7 +66,6 @@ const dbReg = (client, username, password, req) => {
           console.log("Passwords don't match");
           deferred.resolve(user);
         }
-        
       }
     });
   return deferred.promise;
@@ -82,12 +80,12 @@ const dbAuth = (client, username, password) => {
     .collection("user")
     .findOne({ username: username })
     .then((result) => {
-      if (null == result) {
+      if (result == null) {
         console.log("Couldn't find:", username);
         deferred.resolve(false);
       } else {
         const hash = result.password;
-        console.log("User found: " + result.username);
+        console.log(`User found: ${result.username}`);
 
         if (bcrypt.compareSync(password, hash)) {
           deferred.resolve(result);

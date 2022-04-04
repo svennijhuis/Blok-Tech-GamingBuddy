@@ -1,0 +1,6 @@
+footer{
+    padding: 3em 0;
+    display: flex;
+    justify-content: center;
+    color: var(--tekst);
+}
