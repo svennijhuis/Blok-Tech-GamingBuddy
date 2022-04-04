@@ -1,0 +1,23 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+header div {
+    color: var(--tekst);
+}
+
+header > a {
+    color: var(--tekst);
+}
+
+.show-modal span{
+    text-decoration: underline;
+    color: var(--tekst);
+    cursor: pointer;
+}
+
+.show-modal{
+    color: var(--tekst);
+}

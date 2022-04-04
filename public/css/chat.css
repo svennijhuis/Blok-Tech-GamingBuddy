@@ -250,7 +250,7 @@ chat (header)
     align-items: center;
 }
 
-.chat main>div:first-of-type h2 {
+.chat main>div:first-of-type h1 {
     color: var(--tekst);
     font-weight: normal;
     font-size: 1.5rem;
@@ -395,7 +395,7 @@ mobile styles, media query
         font-size: 1.1rem;
     }
 
-    .chat main>div:first-of-type h2 {
+    .chat main>div:first-of-type h1 {
         margin-left: .3em;
     }
 
