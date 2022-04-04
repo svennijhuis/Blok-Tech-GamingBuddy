@@ -54,7 +54,7 @@ Mijn gehele documentatie hiervan kun je vinden in de [wiki](https://github.com/s
 Hier lees je over hoe wij als team tot ons concept zijn gekomen. Daarnaast vind je er ook afspraken die we hebben gemaakt om zo onze code een beetje gelijk te houden en te begrijpen hoe we samenwerken op GitHub.
 
 
-## :heavy_exclamation_mark:Lincense
+## :heavy_exclamation_mark:License
 Deze repository is licensed onder de [MIT License](https://github.com/svennijhuis/Blok-Tech-GamingBuddy/blob/main/LICENSE)
 
 ## :email:Contact
