@@ -1,7 +1,5 @@
 # Blok-Tech-GamingBuddy
-<p align="center">
-  <img width="70%" src="https://github.com/ArisRosbach/blokTech/blob/main/images/bannerPawFinder.png" />
-</p>
+Hier komt een img
 
 ## 🎮 Over dit project
 Dit project bevat een applicatiem waarbij je in concact kunt komen met anderen game liefhebbers om hier vervolgens
