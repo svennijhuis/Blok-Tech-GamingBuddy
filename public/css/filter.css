@@ -24,6 +24,8 @@ filters section 1 (filters)
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .filter section:first-of-type fieldset {
@@ -34,21 +36,26 @@ filters section 1 (filters)
 }
 
 .filter .selector{
-  position: relative;
-  margin: 0em 2em;
-    width: 40em;
-    height: 3em;
-    display: flex;
-    justify-content: space-around;
-    border-radius: 4em;
-    box-shadow: 0 0 1em rgb(0 0 0 / 20%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 1em;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: rgb(230, 230, 230);
+  align-items: center;
 }
 
 .filter .selector div{
   height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 43%;
+  margin: 10px;
 }
 
 .filter .selector div input{
@@ -59,31 +66,51 @@ filters section 1 (filters)
 
 .filter .selector div label{
   position: relative;
-    text-align: center;
-    width: 9em;
-    border-radius: 4em;
-    transition-duration: .5s;
-    transition-property: transform,color,box-shadow;
-    transform: none;
-    cursor: pointer;
+  text-align: center;
+  transition-duration: .5s;
+  cursor: pointer;
+  padding: 10px;
+  background: #fafafa;
+  border-radius: 5px;
+  min-width: 150px;
 }
+
+.filter .selector div label:hover{
+  background-color: #000;
+  color: #fff;
+  transition-duration: .5s;
+}
+
 
 .filter .selector div input:checked + .selector-item_label{
-  color: var(--tekst);
-    border: solid 0.1em var(--accentkleur);
-    padding: 0.3em 0;
-    box-shadow: 0 0 0.1em rgb(0 0 0 / 50%), 0 0.1em 0.1em rgb(0 0 0 / 50%);
-    transform: translateY(-2px);
+  background: #000;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  padding: 10px;
 }
 
-.filter section:first-of-type input {
+.filter section:first-of-type input[type="text"] {
   padding: 0.5em 2em;
   font-weight: bold;
   border-radius: 2em;
   border: 0.2em solid var(--accentkleur);
   background-color: var(--achtergrond);
   color: var(--tekst);
+}
+
+.filter section:first-of-type input[type="submit"] {
   cursor: pointer;
+  width: 150px;
+  height: 35px;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.filter section:first-of-type input[type="submit"]:hover {
+  opacity: 0.7;
 }
 
 
@@ -97,7 +124,7 @@ Filters section 2 (resultaten)
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 0.7em;
+  gap: 2em;
 }
 
 .filter section:nth-of-type(2) h2 {
@@ -106,7 +133,7 @@ Filters section 2 (resultaten)
 
 .filter section:nth-of-type(2) ul {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
   list-style: none;
   margin: 0 auto;
@@ -118,38 +145,26 @@ Filters section 2 (resultaten)
 .filter section:nth-of-type(2) ul li {
   background-color: var(--secundair);
   width: 100%;
-  height: 20.5em;
   border-radius: 1em;
-  border: solid 0.1em var(--accentkleur);
-}
-
-.filter section:nth-of-type(2) ul li a {
+  border: solid 0.05em var(--accentkleur);
   text-decoration: none;
-  display: flex;
-  position: relative;
   height: 100%;
+  padding: 1.25em;
+}
+
+.filter .roomsection a{
+  display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+  text-decoration: underline;
+  text-decoration-color: #000;
 }
 
-.filter section:nth-of-type(2) ul li a img {
-  max-width: 90%;
-  max-height: 65%;
-  border-radius: 1em;
-  display: block;
-  margin: 0.5em auto;
-  align-self: flex-start;
-}
-
-.filter section:nth-of-type(2) ul li a div {
-  color: var(--tekst);
-  position: absolute;
-  bottom: 1em;
-  left: 1em;
-  gap: 0.1em;
-}
-
-.filter section:nth-of-type(2) ul li a div h3 {
-  font-size: 1.5em;
+.filter section:nth-of-type(2) ul li a div h3, .filter section:nth-of-type(2) ul li a div h4 {
+  font-size: 1.2em;
+  color: #000;
 }
 
 .filter section:nth-of-type(2) ul li a div button {
@@ -164,15 +179,25 @@ Filters section 2 (resultaten)
   animation-fill-mode: both;
 }
 
+.filter .background-img-filter{
+  width: 100%;
+  max-width: 350px;
+  border-radius: 20px;
+  aspect-ratio: 1 / 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 1em;
+}
+
+
+.roomsection div{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 /*****************************
 mobile styles, media query   
 *****************************/
-/* @media only screen and (max-width: 768px) {
-  .filter section:nth-of-type(2) ul {
-    width: 90%;
-    justify-content: center;
-  }
-} */
 
 @media (min-width: 992px) {
   .filter section:nth-of-type(2) ul li {

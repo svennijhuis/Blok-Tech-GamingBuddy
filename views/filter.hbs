@@ -29,7 +29,7 @@
                         </div>
                     </div>
             </fieldset>
-            <input type="submit"></input>
+            <input type="submit" value="Filteren"></input>
         </form>
 
         <h3>Search for a room</h3>
@@ -45,11 +45,10 @@
                 {{#each gameRooms}}
                 <li class="roomsection">
                 <a href="#" id="{{ this.roomNaam }}">
-                    <img src="{{ this.img }}" alt="group picture" loading="lazy">
+                    <div class="background-img-filter"style="background-image: url('{{ this.img }}');"></div>
                     <div>
                         <h3>{{ this.roomNaam }}</h3>
                         <h4>{{ this.taal }}</h4>
-                        {{!-- <p>{{ this.locatie }}</p> --}}
                     </div>
                 </a>
                 </li>
