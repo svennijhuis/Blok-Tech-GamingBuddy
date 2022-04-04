@@ -1,42 +1,39 @@
 {{> header}}
 <div class="filter">
     <h1>Filter page</h1>
-    {{!-- Section 1 --}}
+
+    {{!-- Section 1 (taal selectie) --}}
     <section>
         <h3>What language are you looking for?</h3>
-
-        {{!-- Wanneer er op verzonden wordt gedrukt verstuurt browser naar de server,
-        browser wordt naar /formulier geleid --}}
         <form action="/filter" method="POST">
             <fieldset>
-                {{!-- Radiobuttons met talen --}}
-                    <div class="selector">
-                        <div>
-                            <input type="radio" id="nl" name="taal" value="nl" />
-                            <label for="nl" class="selector-item_label"> Dutch chats (nl) </label>
-                        </div>
-                        <div>
-                            <input type="radio" id="en" name="taal" value="en" />
-                            <label for="en" class="selector-item_label"> English chats (en) </label>
-                        </div>
-                        <div>
-                            <input type="radio" id="de" name="taal" value="de" />
-                            <label for="de" class="selector-item_label"> German chats (de) </label>
-                        </div>
-                        <div>
-                            <input type="radio" id="ch" name="taal" value="ch" />
-                            <label for="ch" class="selector-item_label"> Chinese chats (ch) </label>
-                        </div>
+                <div class="selector">
+                    <div>
+                        <input type="radio" id="nl" name="taal" value="nl" />
+                        <label for="nl" class="selector-item_label"> Dutch chats (nl) </label>
                     </div>
+                    <div>
+                        <input type="radio" id="en" name="taal" value="en" />
+                        <label for="en" class="selector-item_label"> English chats (en) </label>
+                    </div>
+                    <div>
+                        <input type="radio" id="de" name="taal" value="de" />
+                        <label for="de" class="selector-item_label"> German chats (de) </label>
+                    </div>
+                    <div>
+                        <input type="radio" id="ch" name="taal" value="ch" />
+                        <label for="ch" class="selector-item_label"> Chinese chats (ch) </label>
+                    </div>
+                </div>
             </fieldset>
             <input type="submit" value="Search"></input>
         </form>
     </section>
 
-    {{!-- Section 2 --}}
+    {{!-- Section 2 (gamerooms) --}}
     <section>
         <ul>
-            {{!-- Loop met hbs om alle rooms te weergeven uit database. --}}
+            {{!-- Loop met hbs om alle rooms uit database weer te geven --}}
             {{#each gameRooms}}
                 <li class="roomsection">
                     <a href="#" id="{{ this.roomNaam }}">
