@@ -43,7 +43,6 @@ const dbReg = (client, username, password, req) => {
         const user = {
           username: username,
           password: hash,
-          confirm_password: hash,
           name: req.body.name,
           email: req.body.email,
           age: req.body.age,
