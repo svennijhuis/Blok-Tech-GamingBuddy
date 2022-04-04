@@ -30,7 +30,8 @@ let roomNaam;
 // render chat
 router.get("/", isLoggedIn, (req, res) => {
   res.render("chat", {
-    groepsnaam: req.query.room
+    groepsnaam: req.query.room,
+    user: req.user
     // groepsnaam: req.query.room.charAt(0).toUpperCase() + req.query.room.slice(1)
   });
   roomNaam = req.query.room;
