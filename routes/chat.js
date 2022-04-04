@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
         callback(null, "public/uploads/");
     },
     filename: function (request, file, callback) {
-        callback(null, `${file.originalname}-${uniqid()}`);
+        callback(null, `${uniqid()}-${file.originalname}`);
     }
 });
 
@@ -29,6 +29,7 @@ let roomNaam;
 
 // render chat
 router.get("/", isLoggedIn, (req, res) => {
+  console.log(req.user);
   res.render("chat", {
     groepsnaam: req.query.room,
     user: req.user
