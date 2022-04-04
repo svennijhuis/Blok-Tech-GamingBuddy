@@ -12,7 +12,7 @@
                 {{!-- Radiobuttons met talen --}}
                     <div class="selector">
                         <div>
-                            <input type="radio" id="nl" name="taal" value="nl" required checked>
+                            <input type="radio" id="nl" name="taal" value="nl" required>
                             <label for="nl" class="selector-item_label"> Dutch chats (nl) </label>
                         </div>
                         <div>
@@ -39,7 +39,6 @@
 
     {{!-- Section 2 --}}
     <section>
-        <h2>My matches!!</h2>
         <ul>
                 {{!-- Loop met hbs om alle rooms te weergeven uit database. --}}
                 {{#each gameRooms}}
@@ -60,3 +59,19 @@
 
 </div>
 {{> footer}}
+
+<script>
+function setStyles() {
+
+  var currentFont = localStorage.getItem('radio');
+
+
+
+  document.getElementById('font').value = currentFont;
+
+
+
+  pElem.checked = true = currentFont;
+
+}
+</script>

@@ -20,7 +20,6 @@ filters section 1 (filters)
 }
 
 .filter section:first-of-type form {
-  color: var(--tekst);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -43,8 +42,8 @@ filters section 1 (filters)
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 0.625em;
+  margin-bottom: 0.9375em;
   background-color: rgb(230, 230, 230);
   align-items: center;
 }
@@ -55,7 +54,7 @@ filters section 1 (filters)
   justify-content: center;
   align-items: center;
   width: 43%;
-  margin: 10px;
+  margin: 0.625em;
 }
 
 .filter .selector div input{
@@ -69,10 +68,10 @@ filters section 1 (filters)
   text-align: center;
   transition-duration: .5s;
   cursor: pointer;
-  padding: 10px;
+  padding: 0.625em;
   background: #fafafa;
-  border-radius: 5px;
-  min-width: 150px;
+  border-radius: 0.3125em;
+  min-width: 9.375em;
 }
 
 .filter .selector div label:hover{
@@ -84,10 +83,10 @@ filters section 1 (filters)
 
 .filter .selector div input:checked + .selector-item_label{
   background: #000;
-  border-radius: 5px;
+  border-radius: 0.3125em;
   color: #fff;
   border: none;
-  padding: 10px;
+  padding: 0.625em;
 }
 
 .filter section:first-of-type input[type="text"] {
@@ -101,13 +100,13 @@ filters section 1 (filters)
 
 .filter section:first-of-type input[type="submit"] {
   cursor: pointer;
-  width: 150px;
-  height: 35px;
+  width: 9.375em;
+  height: 2.1875em;
   background: #000;
   color: #fff;
   border: none;
-  font-size: 20px;
-  border-radius: 5px;
+  font-size: 1.25em;
+  border-radius: 0.3125em;
 }
 .filter section:first-of-type input[type="submit"]:hover {
   opacity: 0.7;
@@ -132,14 +131,9 @@ Filters section 2 (resultaten)
 }
 
 .filter section:nth-of-type(2) ul {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  gap: 2em;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 10fr ;
+  gap: 1.8125em;
 }
 
 .filter section:nth-of-type(2) ul li {
@@ -149,17 +143,16 @@ Filters section 2 (resultaten)
   border: solid 0.05em var(--accentkleur);
   text-decoration: none;
   height: 100%;
-  padding: 1.25em;
 }
 
 .filter .roomsection a{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
   align-items: center;
   text-decoration: underline;
   text-decoration-color: #000;
+  margin:0.625em;
 }
 
 .filter section:nth-of-type(2) ul li a div h3, .filter section:nth-of-type(2) ul li a div h4 {
@@ -181,8 +174,8 @@ Filters section 2 (resultaten)
 
 .filter .background-img-filter{
   width: 100%;
-  max-width: 350px;
-  border-radius: 20px;
+  max-width: 21.875em;
+  border-radius: 1.25em;
   aspect-ratio: 1 / 1;
   background-repeat: no-repeat;
   background-size: cover;
@@ -198,22 +191,29 @@ Filters section 2 (resultaten)
 /*****************************
 mobile styles, media query   
 *****************************/
-
-@media (min-width: 992px) {
-  .filter section:nth-of-type(2) ul li {
-    background-color: var(--secundair);
-    width: 16em;
-    height: 20.5em;
-    border-radius: 1em;
-    border: solid 0.1em var(--accentkleur);
-  }
-}
-
 @media (max-width:480px) {
   .selector{
     width: 90%;
   }
 }
+
+@media (min-width: 600px) {
+  .filter section:nth-of-type(2) ul {
+    display: grid;
+    grid-template-columns: 10fr 10fr;
+    gap: 1.8125em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .filter section:nth-of-type(2) ul {
+    display: grid;
+    grid-template-columns: 10fr 10fr 10fr;
+    gap: 1.8125em;
+  }
+}
+
+
 
 @keyframes fadeIn {
   0% {
