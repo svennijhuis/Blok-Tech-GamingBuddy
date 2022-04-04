@@ -38,15 +38,15 @@
         <ul>
             {{!-- Loop met hbs om alle rooms te weergeven uit database. --}}
             {{#each gameRooms}}
-            <li class="roomsection">
-            <a href="#" id="{{ this.roomNaam }}">
-                <div class="background-img-filter" style="background-image: url('{{ this.img }}');"></div>
-                <div>
-                    <h3>{{ this.roomNaam }}</h3>
-                    <h4>{{ this.taal }}</h4>
-                </div>
-            </a>
-            </li>
+                <li class="roomsection">
+                    <a href="#" id="{{ this.roomNaam }}">
+                        <div class="background-img-filter" style="background-image: url('{{ this.img }}');"></div>
+                        <div>
+                            <h3>{{ this.roomNaam }}</h3>
+                            <h4>{{ this.taal }}</h4>
+                        </div>
+                    </a>
+                </li>
             {{/each}}
         </ul>
     </section>
