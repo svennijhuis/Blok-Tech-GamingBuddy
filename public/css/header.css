@@ -4,20 +4,11 @@ header {
     margin: 20px;
 }
 
-header div {
+header div, header a {
     color: var(--tekst);
 }
 
-header > a {
-    color: var(--tekst);
-}
-
-.show-modal span {
+header a {
     text-decoration: underline;
-    color: var(--tekst);
     cursor: pointer;
-}
-
-.show-modal {
-    color: var(--tekst);
 }
