@@ -21,7 +21,7 @@ gulp.task("watch", () => (
     gulp.watch("./static/styles/*.css", gulp.series("css"))
 ));
 
-// Taak om applicatie te starten
+// Taak om applicatie te starten met nodemon
 gulp.task("start", (done) => (
     nodemon({
         // start de server.js
