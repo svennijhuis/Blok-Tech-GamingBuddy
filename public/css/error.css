@@ -16,10 +16,12 @@
 }
 
 .error h1 {
+    color: var(--tekst);
     font-size: 40px;
 }
 
 .error h2 {
+    color: var(--tekst);
     margin-bottom: 25px;
     font-size: 40px;
 }
@@ -32,7 +34,7 @@
 }
 
 .error ul li a {
-    color: #000;
+    color: var(--zwart);
     margin-bottom: 10px;
     font-size: 1em;
     text-decoration: none;

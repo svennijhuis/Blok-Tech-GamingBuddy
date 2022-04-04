@@ -10,7 +10,7 @@ const changeUser = async (newUserData, name) => {
     // object keys die moeten worden aangepast + nieuwe waardes
     const update = {
         $set: {
-          name:newUserData.name,
+          name: newUserData.name
         }
       };
       console.log(update);

@@ -13,14 +13,14 @@ const { dbReg, dbAuth } = require("./utils/register/authentication");
 
 
 
-//===============DATABASE===============
+// ===============DATABASE===============
 const { loadChat, saveChat, deleteChat } = require("./utils/io/chatActions.js");
 const mongoConnect = require("./controller/mongoConnect");
 let client;
 
 
 
-//===============SOCKET.IO==============
+//= ==============SOCKET.IO==============
 const server = require("http").createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
@@ -39,7 +39,7 @@ const {
   userJoin,
   getCurrentUser,
   userLeave,
-  getRoomUsers,
+  getRoomUsers
 } = require("./utils/io/users");
 
 const { checkRoomData, loadRoomData } = require("./utils/filters/getRoomInfo");
@@ -50,14 +50,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 
-//===============PASSPORT===============
+//= ==============PASSPORT===============
 passport.serializeUser((user, done) => {
-  console.log("serializing " + user.username);
+  console.log(`serializing ${user.username}`);
   done(null, user);
 });
 
 passport.deserializeUser((obj, done) => {
-  console.log("deserializing " + obj);
   done(null, obj);
 });
 
@@ -70,8 +69,8 @@ passport.use(
       dbAuth(client, username, password)
         .then((user) => {
           if (user) {
-            console.log("LOGGED IN AS: " + user.username);
-            req.session.success = "Welcome back " + user.username + "!";
+            console.log(`LOGGED IN AS: ${user.username}`);
+            req.session.success = `Welcome back ${user.username}!`;
             done(null, user);
           }
           if (!user) {
@@ -95,11 +94,11 @@ passport.use(
       dbReg(client, username, password, req)
         .then((user) => {
           if (user) {
-            const pass = req.body.password
-            const confirm_pass = req.body.confirm_password
-            if (pass === confirm_pass) {
-              console.log("REGISTERED: " + user.username);
-              req.session.success = "Welcome to Gamesbuddy " + user.username + "!";
+            const pass = req.body.password;
+            const confirmPass = req.body.confirm_password;
+            if (pass === confirmPass) {
+              console.log(`REGISTERED: ${user.username}`);
+              req.session.success = `Welcome to Gamesbuddy ${user.username}!`;
               done(null, user);
             } else {
               console.log("COULD NOT REGISTER");
@@ -120,10 +119,9 @@ passport.use(
 
 
 
-//===============EXPRESS================
+// ===============EXPRESS================
 // Configure Express
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + "/public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -132,7 +130,7 @@ app.use(
   session({
     secret: "process.env.SESSION_SECRET",
     saveUninitialized: true,
-    resave: true,
+    resave: true
   })
 );
 app.use(passport.initialize());
@@ -154,9 +152,9 @@ const exphbs = require("express-handlebars");
 app.engine(
   "hbs",
   exphbs.engine({
-    layoutsDir: `${__dirname}/views/layouts`,
+    layoutsDir: `${path.join(__dirname)}/views/layouts`,
     defaultLayout: "index",
-    extname: ".hbs",
+    extname: ".hbs"
   })
 );
 
@@ -164,7 +162,7 @@ app.set("view engine", "hbs");
 
 
 
-//=========SOCKET.IO CONNECTION=========
+// =========SOCKET.IO CONNECTION=========
 io.on("connect", (socket) => {
   socket.on("joinRoom", async ({ username, room }) => {
     // wordt uitgevoerd wanneer gebruiker room joined, user object wordt in users array gezet voor sidebar info (utils/users.js)
@@ -238,7 +236,7 @@ app.use((req, res, next) => {
 
 
 
-//===============ROUTES===============
+//= ==============ROUTES===============
 app.use("/", require("./routes/roomSelect"));
 app.use("/messages", require("./routes/chat"));
 app.use("/register", require("./routes/register"));
@@ -248,7 +246,7 @@ app.use("/information", require("./routes/personalInformation"));
 
 
 
-//========DATABASE CONNECTION=========
+//= =======DATABASE CONNECTION=========
 const startServer = async () => {
   client = await mongoConnect.getDB();
   server.listen(port, "0.0.0.0", () => {
@@ -260,7 +258,7 @@ startServer();
 
 
 
-//===============ERROR================
+//= ==============ERROR================
 app.use((req, res, next) => {
-  res.render('error');
+  res.render("error");
 });

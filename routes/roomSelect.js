@@ -4,12 +4,12 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({ extended: true }));
 
-const session = require('express-session');
-const passport = require('passport');
-router.use(session({ 
-  secret: 'process.env.SESSION_SECRET', 
-  saveUninitialized: true, 
-  resave: true 
+const session = require("express-session");
+const passport = require("passport");
+router.use(session({
+  secret: "process.env.SESSION_SECRET",
+  saveUninitialized: true,
+  resave: true
 }));
 router.use(passport.initialize());
 router.use(passport.session());
@@ -19,8 +19,8 @@ const {
   filterRooms
 } = require("../utils/filters/loadRooms");
 
-const { 
-  isLoggedIn 
+const {
+  isLoggedIn
 } = require("../utils/register/authentication");
 
 
@@ -36,9 +36,8 @@ router.get("/", isLoggedIn, async (req, res) => {
 
 router.post("/filter", isLoggedIn, async (req, res) => {
   const filteredRooms = await filterRooms(req.body);
-  console.log(filteredRooms);
 
-  // ophalen dieren database en deze weergeven op de localhost:8000.
+  // ophalen rooms uit database en deze weergeven
   res.render("filter", {
     gameRooms: filteredRooms,
     user: req.user
