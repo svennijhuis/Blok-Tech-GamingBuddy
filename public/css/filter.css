@@ -1,13 +1,11 @@
-/*****************************
+/**************************
 filters section 1 (filters)
-*****************************/
-/***********
-filters section 1 (filters)
-***********/
+**************************/
 .filter h1 {
   visibility: hidden;
   font-size: 0.1em;
 }
+
 .filter section:first-of-type {
   margin: 2em;
 }
@@ -73,7 +71,6 @@ filters section 1 (filters)
   border-radius: 0.3125em;
   min-width: 9.375em;
 }
-
 .filter .selector div label:hover {
   background-color: #000;
   color: #fff;
