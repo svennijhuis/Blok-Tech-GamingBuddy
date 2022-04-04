@@ -1,24 +1,25 @@
+{{> header}}
 <div class="filter">
-
+    <h1>Filter page</h1>
     {{!-- Section 1 --}}
     <section>
-        <h3>Kies wat voor een dier je zoekt:</h3>
+        <h3>What language are you looking for?</h3>
 
         {{!-- Wanneer er op verzonden wordt gedrukt verstuurt browser naar de server,
         browser wordt naar /formulier geleid --}}
         <form action="/filter" method="POST">
             <fieldset>
                 {{!-- Radiobuttons met diersoorten --}}
-                <label for="nl">Ik zoek Nederlands
+                <label for="nl">Dutch chats (nl)
                     <input type="radio" id="nl" name="taal" value="nl" required checked>
                 </label>
-                <label for="en">Ik zoek Engels
+                <label for="en">English chats (en)
                     <input type="radio" id="en" name="taal" value="en">
                 </label>
-                <label for="de">Ik zoek Duits
+                <label for="de">German chats (de)
                     <input type="radio" id="de" name="taal" value="de">
                 </label>
-                <label for="ch">Ik zoek Chinees
+                <label for="ch">Chinese chats (ch)
                     <input type="radio" id="ch" name="taal" value="ch">
                 </label>
             </fieldset>
@@ -29,17 +30,17 @@
 
     {{!-- Section 2 --}}
     <section>
-        <h2>Mijn matches !!!!!</h2>
+        <h2>My matches!!</h2>
         <ul>
                 {{!-- Loop met hbs om alle rooms te weergeven uit database. --}}
                 {{#each gameRooms}}
-                <li>
-                <a href="#" id="{{this.roomNaam}}">
-                    <img src="{{this.img}}" alt="group picture">
+                <li class="roomsection">
+                <a href="#" id="{{ this.roomNaam }}">
+                    <img src="{{ this.img }}" alt="group picture">
                     <div>
-                        <h3>{{this.roomNaam}}</h3>
-                        <h4>{{this.taal}}</h4>
-                        {{!-- <p>{{this.locatie}}</p> --}}
+                        <h3>{{ this.roomNaam }}</h3>
+                        <h4>{{ this.taal }}</h4>
+                        {{!-- <p>{{ this.locatie }}</p> --}}
                     </div>
                 </a>
                 </li>
@@ -47,4 +48,7 @@
         </ul>
     </section>
 
+{{> modalBox}}
+
 </div>
+{{> footer}}

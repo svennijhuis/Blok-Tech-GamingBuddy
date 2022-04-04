@@ -18,6 +18,9 @@ const roomInfoTalen = document.querySelectorAll(".chat main > aside div:last-of-
 const chatBackButton = document.querySelector(".chat main > div svg");
 const roomInfoButton = document.querySelector(".chat main > div:first-of-type button");
 
+// back button on error page
+const errorBackButton = document.querySelector(".error ul li:first-of-type")
+
 
 // function voor root van de site, wordt later veranderd
 if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
@@ -168,16 +171,6 @@ if ((window.location.href.indexOf("messages") > -1)) {
     messageToBeRemoved.remove();
   });
 
-
-  // document.addEventListener("keydown", e => {
-  //   if (e.target.matches("messageInput")) return;
-
-  //   if(e.key === "c") socket.connect();
-
-  //   if(e.key === "d") socket.disconnect();
-  //   }
-  // )
-
   for (let i = 0; i < roomsList.length; i++) {
     roomsList[i].addEventListener("click", changeRoom);
   }
@@ -185,3 +178,8 @@ if ((window.location.href.indexOf("messages") > -1)) {
   roomInfoButton.addEventListener("click", editRoomInfo);
   chatBackButton.addEventListener("click", mobileAside);
 }
+
+
+errorBackButton.addEventListener("click", () => {
+  history.back();
+});

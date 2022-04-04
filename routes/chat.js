@@ -5,6 +5,7 @@ const uniqid = require("uniqid");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
+
 const {
   isLoggedIn
 } = require("../utils/register/authentication");
