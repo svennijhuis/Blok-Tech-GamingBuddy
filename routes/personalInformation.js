@@ -35,7 +35,7 @@ router.post("/information", isLoggedIn, (req, res) => {
   };
 
   changeUser(userData, newUserData);
-  res.status(204).end();
+
 });
 
 module.exports = router;

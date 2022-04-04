@@ -13,7 +13,7 @@ const changeUser = async (newUserData, name) => {
           name:newUserData.name,
         }
       };
-
+      console.log(update);
     await client.db("users")
     .collection("user")
     .updateOne(userData, update);
