@@ -29,7 +29,7 @@ npm install
 ```
 npm run gulp
 ```
-Ga naar een browser en navigeer naar: localhost:8000 
+Ga naar een browser en navigeer naar: `localhost:3000` <br>
 Als alles goed is verlopen zie je een inlogscherm, wanneer je nog geen account hebt kun je deze aanmaken om vervolgens in te loggen. 
 
 ### Node installeren
