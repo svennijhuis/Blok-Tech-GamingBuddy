@@ -3,25 +3,25 @@ Hier komt een img
 
 ## 🎮 Over dit project
 Dit project bevat een applicatie waarbij je in concact kunt komen met anderen game liefhebbers om hier vervolgens
-mee te kunnen chatten. <br>
+mee te kunnen chatten. 
 Deze applicatie bevat een registreer & inlog functie, je kunt filteren op chatrooms, daadwerkelijk chatten in chatrooms en
 zelfs de informatie van een room inzien en wijzigen.
 
 ### Concept
-Als je van gamen houd wil je graag contact onderhouden met andere gamers die hetzelfde spelen als jij. Daarom kun je bij onze applicatie een account aanmaken. Hierin geef je je naam, gebruikersnaam, email, wachtwoord en dergelijke informatie. <br>
-Eenmaal aangemaakt kun je inloggen met je bestaande account. Vervolgens kun je zoeken naar een chat waarbij jij je wilt aansluiten. Hierbij kun je filteren zodat je snel een chat vind die bij jouw interesses past. <br>
+Als je van gamen houd wil je graag contact onderhouden met andere gamers die hetzelfde spelen als jij. Daarom kun je bij onze applicatie een account aanmaken. Hierin geef je je naam, gebruikersnaam, email, wachtwoord en dergelijke informatie.
+Eenmaal aangemaakt kun je inloggen met je bestaande account. Vervolgens kun je zoeken naar een chat waarbij jij je wilt aansluiten. Hierbij kun je filteren zodat je snel een chat vind die bij jouw interesses past. 
 Wanneer je je hebt aangesloten bij een chat kun je daadwerkelijk gaan chatten met anderen. Ook kun je de informatie van de room inzien en eventueel wijzigen. Denk aan de omschrijving, gesproken talen en zelfs de groepsafbeelding.
 
 
 ## :zap:Installatie 
 ### Aan de slag
-Wil je aan de slag met mijn project? Voer dan de volgende stappen uit: <br>
+Wil je aan de slag met mijn project? Voer dan de volgende stappen uit: 
 1.	Open een terminal en navigeer naar een map waar jij deze repository in wilt opslaan.
 2.	Clone deze repository:
 ```
 git clone https://github.com/svennijhuis/Blok-Tech-GamingBuddy
 ```
-3.  Wanneer dit is gelukt heb je de repository op je eigen computer staan. Navigeer binnen deze repository in de terminal. Je wilt nu alle packages installeren die je nodig hebt voor deze feature. Om deze te installeren voer je het volgende commando uit: <br>
+3.  Wanneer dit is gelukt heb je de repository op je eigen computer staan. Navigeer binnen deze repository in de terminal. Je wilt nu alle packages installeren die je nodig hebt voor deze feature. Om deze te installeren voer je het volgende commando uit: 
 ```
 npm install
 ```
@@ -29,8 +29,8 @@ npm install
 ```
 npm run gulp
 ```
-Ga naar een browser en navigeer naar: localhost:8000 <br>
-Als alles goed is verlopen zie je een inlogscherm, wanneer je nog geen account hebt kun je deze aanmaken om vervolgens in te loggen. <br>
+Ga naar een browser en navigeer naar: localhost:8000 
+Als alles goed is verlopen zie je een inlogscherm, wanneer je nog geen account hebt kun je deze aanmaken om vervolgens in te loggen. 
 
 ### Node installeren
 Heb je bij stap 3 problemen gehad dan kan dat zijn omdat je geen node hebt geïnstalleerd. 
@@ -57,19 +57,18 @@ Hier lees je over hoe wij als team tot ons concept zijn gekomen. Ook vind je er 
 
 ## :heavy_exclamation_mark:License
 Deze repository is licensed onder de [MIT License](https://github.com/svennijhuis/Blok-Tech-GamingBuddy/blob/main/LICENSE)
-<p align="center">
-  <img width="60%" src="https://user-images.githubusercontent.com/94171125/161564365-9135854d-ea37-4b24-850a-b8d480e3d496.png" />
-</p>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
 ## :email:Contact
-Naam -  Laurens Duin <br>
-E-mail - laurens.duin@hva.nl <br>
-Naam -  Aris Rosbach <br>
-E-mail - aris.rosbach@hva.nl <br>
-Naam -  Sven Nijhuis <br>
-E-mail - sven.nijhuis@hva.nl <br>
-Naam -  Nina Vens <br>
-E-mail - nina.vens@hva.nl <br>
+Naam -  Laurens Duin 
+E-mail - laurens.duin@hva.nl 
+Naam -  Aris Rosbach
+E-mail - aris.rosbach@hva.nl 
+Naam -  Sven Nijhuis 
+E-mail - sven.nijhuis@hva.nl 
+Naam -  Nina Vens 
+E-mail - nina.vens@hva.nl
 
 Project - https://github.com/svennijhuis/Blok-Tech-GamingBuddy
 
