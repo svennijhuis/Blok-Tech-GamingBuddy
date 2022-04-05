@@ -27,6 +27,15 @@
     font-weight: bold;
     color: rgba(82, 82, 82, 0.63);
 }
+.account p:last-of-type {
+    margin-bottom: 0.4em;
+    font-size: 0.9em;
+    text-align: center;
+}
+.account p:last-of-type span{
+    color: rgb(180, 0, 0);
+    font-weight: bold;
+}
 
 .account form div:nth-of-type(1) {
     display: flex;
