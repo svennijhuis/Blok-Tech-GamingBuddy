@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
   const Q = require("q");
 
 const { sendWelcomeEmail } = require("../email/email");
+const { emailVal } = require("./emailValidation");
 
 
 // check if user is logged in
@@ -49,7 +50,7 @@ const dbReg = (client, username, password, req) => {
           language: req.body.language
         };
 
-        if (pass === confirmPass) { // check if passwords match
+        if (pass === confirmPass && emailVal(req.body.email) === true) { // check if passwords match + email is valid
           console.log("User with username:", username, "is being created");
 
           client
@@ -62,6 +63,9 @@ const dbReg = (client, username, password, req) => {
 
           sendWelcomeEmail(username, req.body.email);
 
+        } else if (pass === confirmPass) {
+          console.log("Email not valid");
+          deferred.resolve(user);
         } else { // passwords DON'T match
           console.log("Passwords don't match");
           deferred.resolve(user);

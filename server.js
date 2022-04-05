@@ -10,6 +10,7 @@ const flash = require("express-flash");
 
 // helper functions for Passport and database
 const { dbReg, dbAuth } = require("./utils/register/authentication");
+const { emailVal } = require("./utils/register/emailValidation");
 
 
 
@@ -97,9 +98,14 @@ passport.use(
             const pass = req.body.password;
             const confirmPass = req.body.confirm_password;
             if (pass === confirmPass) {
-              console.log(`REGISTERED: ${user.username}`);
-              req.session.success = `Welcome to Gamesbuddy ${user.name}!`;
-              done(null, user);
+              if (emailVal(req.body.email) === true) {
+                console.log(`REGISTERED: ${user.username}`);
+                req.session.success = `Welcome to Gamesbuddy ${user.name}!`;
+                done(null, user);
+              } else {
+                console.log("Email not valid");
+                return done(null, false, { message: "Please enter a valid emailaddress" });
+              }
             } else {
               console.log("COULD NOT REGISTER");
               return done(null, false, { message: "Passwords don't match" });
