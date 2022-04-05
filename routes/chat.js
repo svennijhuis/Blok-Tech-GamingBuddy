@@ -44,13 +44,15 @@ router.post("/", isLoggedIn, (req, res) => {
 });
 
 // upload custom groep afbeelding
-// moet nog error handling hebben, bijvoorbeeld als bepaalde velden niet worden ingevuld. Dit is de basis - Laurens
 router.post("/roomimg", isLoggedIn, upload.single("groepimg"), function (req, res) {
   const newRoomData = {
-    omschrijving: req.body.omschrijving,
-    taal: [req.body.taal1, req.body.taal2, req.body.taal3],
-    img: `uploads/${req.file.filename}`
+    beschrijving: req.body.beschrijving,
+    taal: [req.body.taal1, req.body.taal2, req.body.taal3]
   };
+
+  if (req.file !== undefined) {
+    newRoomData.img = `uploads/${req.file.filename}`;
+  }
 
   changeRoomInfo(newRoomData, roomNaam);
   res.status(204).end();
