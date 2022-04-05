@@ -51,7 +51,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 
-//===============PASSPORT===============
+// ===============PASSPORT===============
 passport.serializeUser((user, done) => {
   console.log(`serializing ${user.username}`);
   done(null, user);

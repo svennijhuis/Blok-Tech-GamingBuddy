@@ -62,7 +62,6 @@ const dbReg = (client, username, password, req) => {
             });
 
           sendWelcomeEmail(username, req.body.email);
-
         } else if (pass === confirmPass) {
           console.log("Email not valid");
           deferred.resolve(user);
