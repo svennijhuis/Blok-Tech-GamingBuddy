@@ -61,8 +61,8 @@ Deze repository is licensed onder de [MIT License](https://github.com/svennijhui
 
 
 ## :email:Contact
-Naam -  Laurens Duin <br>
-E-mail - laurens.duin@hva.nl <br>
+Laurens Duin [laurens.duin@hva.nl]
+Laurens Duin (laurens.duin@hva.nl)
 Naam -  Aris Rosbach <br>
 E-mail - aris.rosbach@hva.nl <br>
 Naam -  Sven Nijhuis <br>
