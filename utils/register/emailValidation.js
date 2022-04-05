@@ -1,7 +1,12 @@
-let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])"); // a series of characters to check if an emailaddress is valid
+const emailVal = (email) => {
 
-let testEmails = ["notanemail.com", "workingexample@stackabuse.com", "example@yale.edu.com"];
+    const valid = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; // set of characters that checks if an emailaddress is valid
 
-testEmails.forEach((address) => {
-    console.log(regex.test(address))
-});
+    if (!valid.test(email.value)) {
+        return false;
+    } else {
+        return true
+    }
+}
+    
+module.exports = { emailVal };
