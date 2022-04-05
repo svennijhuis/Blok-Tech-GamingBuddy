@@ -56,19 +56,19 @@ Hier lees je over hoe wij als team tot ons concept zijn gekomen. Ook vind je er 
 
 
 ## :heavy_exclamation_mark:License
-Deze repository is licensed onder de [MIT License](https://github.com/svennijhuis/Blok-Tech-GamingBuddy/blob/main/LICENSE)
+Deze repository is licensed onder de [MIT License](https://github.com/svennijhuis/Blok-Tech-GamingBuddy/blob/main/LICENSE)<br>
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 ## :email:Contact
-Naam -  Laurens Duin 
-E-mail - laurens.duin@hva.nl 
-Naam -  Aris Rosbach
-E-mail - aris.rosbach@hva.nl 
-Naam -  Sven Nijhuis 
-E-mail - sven.nijhuis@hva.nl 
-Naam -  Nina Vens 
-E-mail - nina.vens@hva.nl
+Naam -  Laurens Duin <br>
+E-mail - laurens.duin@hva.nl <br>
+Naam -  Aris Rosbach <br>
+E-mail - aris.rosbach@hva.nl <br>
+Naam -  Sven Nijhuis <br>
+E-mail - sven.nijhuis@hva.nl <br>
+Naam -  Nina Vens <br>
+E-mail - nina.vens@hva.nl <br>
 
 Project - https://github.com/svennijhuis/Blok-Tech-GamingBuddy
 
