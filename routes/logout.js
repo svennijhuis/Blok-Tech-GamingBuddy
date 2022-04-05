@@ -14,6 +14,7 @@ router.use(bodyParser.json());
 router.use(passport.initialize());
 router.use(passport.session());
 
+
 // logout
 router.get("/", (req, res) => {
     const name = req.user.username;
@@ -22,7 +23,5 @@ router.get("/", (req, res) => {
     res.redirect("/");
     req.session.notice = `Succesfully logged out ${name}!`;
 });
-
-
 
 module.exports = router;

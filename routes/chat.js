@@ -5,7 +5,6 @@ const uniqid = require("uniqid");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
-
 const {
   isLoggedIn
 } = require("../utils/register/authentication");
@@ -27,6 +26,7 @@ const { changeRoomInfo } = require("../utils/filters/changeRoomInfo");
 // room variabele wordt opgeslagen zodat de roomNaam kan worden gebruikt in router.post("/roomimg")
 let roomNaam;
 
+
 // render chat
 router.get("/", isLoggedIn, (req, res) => {
   console.log(req.user);
@@ -38,10 +38,12 @@ router.get("/", isLoggedIn, (req, res) => {
   roomNaam = req.query.room;
 });
 
+
 // stuur user naar chat met username en room als query parameters
 router.post("/", isLoggedIn, (req, res) => {
   res.redirect(`/messages?username=${req.body.username}&room=${req.body.room}`);
 });
+
 
 // upload custom groep afbeelding
 router.post("/roomimg", isLoggedIn, upload.single("groepimg"), function (req, res) {

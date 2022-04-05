@@ -21,6 +21,7 @@ const {
     isLoggedIn
 } = require("../utils/register/authentication");
 
+
 // render account
 router.get("/", isLoggedIn, (req, res) => {
     res.render("account", {

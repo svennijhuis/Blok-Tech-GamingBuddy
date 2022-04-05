@@ -34,6 +34,7 @@ router.get("/", isLoggedIn, async (req, res) => {
   });
 });
 
+
 router.post("/filter", isLoggedIn, async (req, res) => {
   const filteredRooms = await filterRooms(req.body);
 
