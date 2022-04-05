@@ -69,7 +69,7 @@ passport.use(
       dbAuth(client, username, password)
         .then((user) => {
           if (user) {
-            console.log(`LOGGED IN AS: ${user.username}`);
+            console.log(`LOGGED IN AS: ${user.name}`);
             req.session.success = `Welcome back @${user.username}!`;
             done(null, user);
           }
