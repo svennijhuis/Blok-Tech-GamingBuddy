@@ -1,7 +1,7 @@
 <section class="account">
     <form action="/account" method="POST">
 
-        <h1>Account of {{ user.name }}</h1>
+        <h1>Account of @{{ user.username }}</h1>
         {{#if message}}
             <p class="errorMessage">{{ message }}</p>
         {{/if}}
