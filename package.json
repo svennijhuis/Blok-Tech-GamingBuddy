@@ -13,8 +13,8 @@
     "chat",
     "feature"
   ],
-  "author": "Laurens Duin",
-  "license": "ISC",
+  "author": "Laurens Duin, Sven Nijhuis, Aris Rosbach & Nina Vens",
+  "license": "MIT",
   "dependencies": {
     "@sendgrid/mail": "^7.6.2",
     "@socket.io/admin-ui": "^0.2.0",
