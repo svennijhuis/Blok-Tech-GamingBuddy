@@ -10,7 +10,7 @@ const sendWelcomeEmail = (name, email) => {
     from: "sven.nijhuis@hva.nl",
     subject: "Welcome to Gamebuddy",
     text: "heya",
-    html: `Hello, ${name}, Thank you for using our service. If there are any questions in the coming days, you can contact us to answer this email.`
+    html: `Hello, ${name}, thank you for chosing GameBuddies!! If you have any questions, don't hesistate to ask them via replying to this mail :)`
   });
 };
 

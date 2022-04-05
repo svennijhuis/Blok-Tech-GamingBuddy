@@ -26,16 +26,15 @@ const isLoggedOut = (req, res, next) => {
 const dbReg = (client, username, password, req) => {
   const deferred = Q.defer();
 
-  // check if username already exists
   client
     .db("users")
     .collection("user")
     .findOne({ username: username })
     .then((result) => {
-      if (result != null) {
+      if (result != null) { // check if username already exists
         console.log("Username already exists:", result.username);
         deferred.resolve(false);
-      } else {
+      } else { // username DOESN'T exist
         const pass = req.body.password;
         const confirmPass = req.body.confirm_password;
 
@@ -50,7 +49,7 @@ const dbReg = (client, username, password, req) => {
           language: req.body.language
         };
 
-        if (pass === confirmPass) {
+        if (pass === confirmPass) { // check if passwords match
           console.log("User with username:", username, "is being created");
 
           client
@@ -62,7 +61,8 @@ const dbReg = (client, username, password, req) => {
             });
 
           sendWelcomeEmail(username, req.body.email);
-        } else {
+
+        } else { // passwords DON'T match
           console.log("Passwords don't match");
           deferred.resolve(user);
         }
@@ -80,16 +80,16 @@ const dbAuth = (client, username, password) => {
     .collection("user")
     .findOne({ username: username })
     .then((result) => {
-      if (result == null) {
+      if (result == null) { // username DOESN'T exist
         console.log("Couldn't find:", username);
         deferred.resolve(false);
-      } else {
+      } else { // username exists
         const hash = result.password;
         console.log(`User found: ${result.username}`);
 
-        if (bcrypt.compareSync(password, hash)) {
+        if (bcrypt.compareSync(password, hash)) { // password matches with password in database
           deferred.resolve(result);
-        } else {
+        } else { // password DOESN'T match
           console.log("Wrong password");
           deferred.resolve(false);
         }
