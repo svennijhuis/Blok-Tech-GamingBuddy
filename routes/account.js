@@ -37,62 +37,41 @@ router.post("/", isLoggedIn, async (req, res) => {
     const pass = req.body.password;
     const hash = bcrypt.hashSync(req.body.password, 10); // hash given password
 
+    const oldUserInfo = {
+        name: req.user.name,
+        email: req.user.email,
+        age: req.user.age,
+        residence: req.user.residence,
+        username: req.user.username,
+        password: req.user.password
+    };
+
+    const newUserInfo = {
+        $set: {
+            name: req.body.name,
+            email: req.body.email,
+            age: req.body.age,
+            residence: req.body.residence,
+            username: req.body.username
+          }
+        };
+
     if (pass !== "") {
         const verification = bcrypt.compareSync(req.body.confirm_password, hash); // check if password === confirm_password
 
         if (verification) {
-            const oldUserInfo = {
-                name: req.user.name,
-                email: req.user.email,
-                age: req.user.age,
-                residence: req.user.residence,
-                username: req.user.username,
-                password: req.user.password
-            };
-
-            const newUserInfo = {
-                $set: {
-                    name: req.body.name,
-                    email: req.body.email,
-                    age: req.body.age,
-                    residence: req.body.residence,
-                    username: req.body.username,
-                    password: hash
-                  }
-            };
-
-            await changeAccountInfo(oldUserInfo, newUserInfo);
-            res.redirect("/logout");
+            newUserInfo.$set.password = hash;
         } else {
             // rerender page with message
             res.render("account", {
                 user: req.user,
                 message: "Passwords don't match, please try again"
             });
+            return;
         }
-    } else {
-        const oldUserInfo = {
-            name: req.user.name,
-            email: req.user.email,
-            age: req.user.age,
-            residence: req.user.residence,
-            username: req.user.username,
-            password: req.user.password
-        };
-
-        const newUserInfo = {
-            $set: {
-                name: req.body.name,
-                email: req.body.email,
-                age: req.body.age,
-                residence: req.body.residence,
-                username: req.body.username,
-                password: hash
-              }
-        };
-        await changeAccountInfo(oldUserInfo, newUserInfo);
-        res.redirect("/logout");
     }
+    await changeAccountInfo(oldUserInfo, newUserInfo);
+    res.redirect("/logout");
 });
 
 module.exports = router;
