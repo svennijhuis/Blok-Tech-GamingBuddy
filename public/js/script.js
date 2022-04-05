@@ -43,7 +43,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
     ignoreQueryPrefix: true
   });
 
-  const username = document.querySelector(".modal article div p:last-of-type").textContent;
+  const username = document.querySelector("header div > p a").textContent;
 
   socket.emit("joinRoom", {
     username,
