@@ -44,7 +44,7 @@
     margin-bottom: 1.25em;
 }
 
-.account form div input {
+.account form div input, .account form div:nth-of-type(1) select {
     width: 100%;
     height: 3em;
     padding-left: 0.1em;
@@ -52,7 +52,7 @@
     border-radius: 0.3125em;
     text-indent: 10px;
 }
-.account form div:nth-of-type(1) input:not(:last-of-type) {
+.account form div:nth-of-type(1) input:not(:last-of-type), .account form div:nth-of-type(1) select {
     margin: 0 0.625em 0.625em 0;
 }
 .account form div:nth-of-type(2) input:not(:last-of-type) {
@@ -61,6 +61,10 @@
 
 .account form div:nth-of-type(2) {
     margin-bottom: 1.25em;
+}
+
+.account form div:nth-of-type(1) select {
+    margin-left: 0.6em;
 }
 
 .account form input[type=submit] {
@@ -98,7 +102,7 @@
 }
 
 @media (min-width: 992px) { 
-    .account form div:nth-of-type(1) input, .account form div:nth-of-type(2) input {
+    .account form div:nth-of-type(1) input, .account form div:nth-of-type(2) input, .account form div:nth-of-type(1) select {
         width: 31.7%;
     }
 }

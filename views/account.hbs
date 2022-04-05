@@ -12,6 +12,12 @@
             <input type="email" name="email" id="email" placeholder="Email" value="{{ user.email }}" />
             <input type="number" name="age" id="age" placeholder="Age" value="{{ user.age }}" min="18" />
             <input type="text" name="residence" id="residence" placeholder="Residence" value="{{ user.residence }}" />
+            <select name="language">
+                <option value="{{ user.language }}">{{ user.language }} (selected language)</option>
+                <option value="en">English</option>
+                <option value="nl">Nederlands</option>
+                <option value="ch">中國人</option>
+            </select>
         </div>
 
         <p>Account information</p>
