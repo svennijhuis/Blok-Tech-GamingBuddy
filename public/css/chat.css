@@ -112,8 +112,8 @@ chat (sidebar)
     font-size: 1.2rem;
     max-height: 2em;
     padding: 1em;
-    border-bottom: var(--accentkleur) 2px solid;
-    border-top: var(--accentkleur) 2px solid;
+    border-bottom: var(--yourmsg) 2px solid;
+    border-top: var(--yourmsg) 2px solid
 }
 
 .chat>aside ul {
@@ -135,7 +135,7 @@ chat (sidebar)
 
 /* Handle */
 .chat>aside ul::-webkit-scrollbar-thumb {
-    background: #555;
+    background: var(--tertiair);
     border-radius: 100em;
 }
 
@@ -213,13 +213,13 @@ chat (sidebar)
 }
 
 .chat main>form>button {
-    background: var(--accentkleur);
+    background: var(--tekst);
     border: none;
     padding: 0 2em;
     margin: 0.25em;
-    border-radius: .2em;
-    outline: none;
-    color: var(--wit);
+    border-radius: 0.2em;
+    outline: 0;
+    color: var(--tekstalt);
 }
 
 .chat main>form>button:hover,
@@ -279,7 +279,7 @@ chat (header)
 /* kleur nog aanpassen voor beide themes */
 .chat main>div:first-of-type button:hover,
 .chat main>div:first-of-type button:focus {
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--yourmsg);
 }
 
 .chat main>div:first-of-type button span {
@@ -297,8 +297,7 @@ chat main aside (roominfo)
 .chat main>aside {
     width: 0;
     height: calc(100% - 4em);
-    /* 4em is height van header */
-    background: var(--yourmsg);
+    background: var(--placeholder);
     position: absolute;
     top: 4em;
     right: 0;
@@ -308,21 +307,24 @@ chat main aside (roominfo)
 
 .chat main>aside div {
     max-width: 60%;
-    margin: auto;
+    margin: 2em auto 0em;
+    background-color: var(--secundair);
+    padding: 0.5em 5em;
+    border-radius: 1em;
 }
 
 .chat main>aside div:first-of-type {
-    margin: 2em auto;
+    margin: 1em auto;
 }
 
 
 .chat main>aside div:first-of-type img {
-    max-height: 20em;
-    max-width: 20em;
+    max-height: 18em;
+    max-width: 18em;
     margin: auto;
     display: block;
     border-radius: 2em;
-    border: 0.2em solid var(--accentkleur);
+    border: 0.2em solid var(--yourmsg);
 }
 
 .chat main>aside div:first-of-type h2 {
@@ -345,24 +347,32 @@ chat main aside (roominfo)
 }
 
 .chat main>aside div:nth-of-type(2) input[type=text] {
-    width: 100%;
     margin-bottom: 1em;
+    margin-top: 0.5em;
+    width: 100%;
+    height: 2em;
+    border: solid var(--wit) 0.0625em;
+    border-radius: 0.3em;
+    text-indent: 10px;
 }
 
 .chat main>aside div:nth-of-type(2) fieldset {
     margin-bottom: 1em;
-    padding: .5em;
-    border: solid 1px var(--tekst);
+    padding: 0.5em 0em;
+    border: none;
 }
 
 .chat main>aside div:nth-of-type(2) input[type=submit] {
-    background: var(--zwart);
     border: none;
     border-radius: 0.2em;
+    width: 7em;
+    height: 1.875em;
+    font-size: 1em;
     color: var(--wit);
+    background-color: var(--zwart);
+    transition: .3s;
+    cursor: pointer;
 }
-
-
 
 .chat main>aside.active {
     width: 100%;
