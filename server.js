@@ -98,7 +98,7 @@ passport.use(
             const confirmPass = req.body.confirm_password;
             if (pass === confirmPass) {
               console.log(`REGISTERED: ${user.username}`);
-              req.session.success = `Welcome to Gamesbuddy @${user.username}!`;
+              req.session.success = `Welcome to Gamesbuddy ${user.name}!`;
               done(null, user);
             } else {
               console.log("COULD NOT REGISTER");
