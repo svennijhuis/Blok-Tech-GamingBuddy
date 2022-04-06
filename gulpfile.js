@@ -9,7 +9,7 @@ gulp.task("css", () => (
     gulp.src("./public/css/*.css")
     // CSS opschonen
     .pipe(cleanCSS({ compatibility: "ie8" }))
-    // CSS zo klein mogelijk in 1 bestand
+    // CSS in 1 bestand
     .pipe(concat("style.min.css"))
     // CSS bestand plaatsen in public/dist
     .pipe(gulp.dest("public/dist"))
@@ -35,8 +35,8 @@ gulp.task("start", (done) => (
 ));
 
 
-gulp.task("default", gulp.series("css", "start"));
+// gulp.task("default", gulp.series("css", "start"));
 
-// gulp.task('default', gulp.series('css'))
+gulp.task('default', gulp.series('css'));
 
 // gulp.task('build', gulp.series('css'));

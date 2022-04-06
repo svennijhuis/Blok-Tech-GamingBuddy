@@ -51,7 +51,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 
-//= ==============PASSPORT===============
+// ===============PASSPORT===============
 passport.serializeUser((user, done) => {
   console.log(`serializing ${user.username}`);
   done(null, user);
@@ -71,7 +71,7 @@ passport.use(
         .then((user) => {
           if (user) {
             console.log(`LOGGED IN AS: ${user.name}`);
-            req.session.success = `Welcome back @${user.username}!`;
+            req.session.success = `Welcome back ${user.name}!`;
             done(null, user);
           }
           if (!user) {

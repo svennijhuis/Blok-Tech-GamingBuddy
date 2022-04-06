@@ -115,6 +115,13 @@ chat (sidebar)
     border-bottom: var(--yourmsg) 2px solid;
     border-top: var(--yourmsg) 2px solid
 }
+.chat>aside>a {
+    padding: 0 0.6em;
+    font-size: 1rem;
+    color: var(--achtergrond);
+    background-color: var(--accentkleur);
+    text-decoration: none;
+}
 
 .chat>aside ul {
     width: 100%;
@@ -369,8 +376,11 @@ chat main aside (roominfo)
     height: 1.875em;
     font-size: 1em;
     color: var(--wit);
+<<<<<<< HEAD
     background-color: var(--zwart);
     transition: .3s;
+=======
+>>>>>>> a1d76b96573f49a6fbc4b6b86ce9598329971734
     cursor: pointer;
 }
 

@@ -25,7 +25,8 @@ const errorBackButton = document.querySelector(".error ul li:first-of-type");
 // function voor root van de site, filteren
 if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
   const changeRoom = (e) => {
-    window.location.href = `/messages?username=Laurens&room=${e.currentTarget.id}`;
+    const username = document.querySelector("header div > p a").textContent;
+    window.location.href = `/messages?username=${username}&room=${e.currentTarget.id}`;
   };
 
   for (let i = 0; i < roomsList.length; i++) {
@@ -124,7 +125,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
     <h2>${roomData.roomNaam}</h2>
     <p>${roomData.beschrijving}</p>
     <ul>
-      <li>Taal: <em>${roomData.taal}</em></li>
+      <li>Language: <em>${roomData.taal}</em></li>
       <li>Genre: <em>${roomData.genre}</em></li>
     </ul>`;
 
@@ -163,7 +164,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
   // check of gebruiker connected blijft
   socket.on("disconnect", () => {
-    messageInput.setAttribute("placeholder", "Je bent niet verbonden");
+    messageInput.setAttribute("placeholder", "You're not connected..");
   });
 
   // verwijder bericht globaal

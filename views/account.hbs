@@ -1,7 +1,7 @@
 <section class="account">
     <form action="/account" method="POST">
 
-        <h1>Account of {{ user.name }}</h1>
+        <h1>Account of @{{ user.username }}</h1>
         {{#if message}}
             <p class="errorMessage">{{ message }}</p>
         {{/if}}
@@ -12,16 +12,23 @@
             <input type="email" name="email" id="email" placeholder="Email" value="{{ user.email }}" />
             <input type="number" name="age" id="age" placeholder="Age" value="{{ user.age }}" min="18" />
             <input type="text" name="residence" id="residence" placeholder="Residence" value="{{ user.residence }}" />
+            <select name="language">
+                <option value="{{ user.language }}">{{ user.language }} (selected language)</option>
+                <option value="en">English</option>
+                <option value="nl">Nederlands</option>
+                <option value="de">Deutsch</option>
+                <option value="ch">中國人</option>
+            </select>
         </div>
 
         <p>Account information</p>
         <div>
             <input type="text" name="username" id="username" placeholder="Username" value="{{ user.username }}" autocomplete="off" />
-            <input type="password" name="password" id="password" placeholder="New Password" autocomplete="off" value="{{ user.password }}" />
-            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" autocomplete="off" value="{{ user.password }}" />
+            <input type="password" name="password" id="password" placeholder="New Password" autocomplete="off" />
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" autocomplete="off" />
         </div>
 
-        <p>When clicking save your information will be saved, and you will need to login again!</p>
+        <p> <span>Note:</span> when clicking [save] your information will be saved, and you will need to login again!</p>
         <input type="submit" value="Save" /> 
         <a href="/">Cancel</a>
 
