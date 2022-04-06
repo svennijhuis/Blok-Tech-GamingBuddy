@@ -43,25 +43,32 @@ Wil je aan de slag met mijn project? Voer dan de volgende stappen uit: <br>
 ### GIT en GitHub configureren
 Connect GIT en GitHub in je terminal. DIt kan gedaan worden door de volgende code in je terminal te typen:
 ```
-git config --global user.name "gebruikersnaam hier"
-git config --global user.email "email hier"
+$ git config --global user.name "gebruikersnaam hier"
+$ git config --global user.email "email hier"
 ```
 
 ### Clone deze repository
 Download dit project en open het met je code editor. Open je terminal en navigeer naar een map waar jij deze repository wilt opslaan en type de volgende code:
 ```
-git clone https://github.com/svennijhuis/Blok-Tech-GamingBuddy.git
+$ git clone https://github.com/svennijhuis/Blok-Tech-GamingBuddy.git
+```
+
+### Connect de database
+Deze repository maakt gebruik van een MongoDB database. Om je eigen database te verbinden maak je een .env bestand aan met de volgende regels erin:
+```
+DB_USERNAME = "Jouw database gebruikersnaam"
+DB_PASSWORD = "Jouw database wachtwoord"
 ```
 
 ### Installeer alle dependencies
 ```
-cd Blok-Tech-GamingBuddy // navigeer naar je project map (dit pad verschilt per persoon afhankelijk van waar je map staat)
-npm install
+$ cd Blok-Tech-GamingBuddy
+$ npm install
 ```
 
 ### De applicatie gebruiken
 ```
-npm run gulp
+$ npm run gulp
 ```
 Ga naar een browser en navigeer naar: `localhost:3000` <br>
 Als alles goed is verlopen zie je een inlogscherm, wanneer je nog geen account hebt kun je deze aanmaken om vervolgens in te loggen. 
