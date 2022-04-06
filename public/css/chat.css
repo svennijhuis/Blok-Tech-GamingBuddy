@@ -112,21 +112,23 @@ chat (sidebar)
     font-size: 1.2rem;
     max-height: 2em;
     padding: 1em;
+    width: 100%;
     border-bottom: var(--accentkleur) 2px solid;
     border-top: var(--accentkleur) 2px solid;
 }
 .chat>aside>a {
-    padding: 0 0.6em;
+    padding: 1.4em 0.6em;
     font-size: 1rem;
-    color: var(--achtergrond);
+    color: var(--wit);
     background-color: var(--accentkleur);
     text-decoration: none;
+    display: block;
 }
 
 .chat>aside ul {
     width: 100%;
     overflow-y: auto;
-    height: calc(50% - 4.29em);
+    height: calc(50% - 6.29em);
 }
 
 .chat>aside ul::-webkit-scrollbar {
@@ -374,6 +376,15 @@ chat main aside (roominfo)
 
 .chat main>aside.active {
     width: 100%;
+}
+
+
+
+/*****************************
+header weg op chat pagina
+*****************************/
+.chat .header {
+    display: none;
 }
 
 
