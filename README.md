@@ -26,7 +26,7 @@ zelfs de informatie van een room inzien en wijzigen.
 ---
 
 ## :zap:Installatie 
-Wil je aan de slag met mijn project? Voer dan de volgende stappen uit: 
+Wil je aan de slag met mijn project? Voer dan de volgende stappen uit: <br>
 [Een code editor is natuurlijk wel handig ;)]
 
 ### Node.js installeren
