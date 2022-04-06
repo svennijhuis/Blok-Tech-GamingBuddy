@@ -25,7 +25,8 @@ const errorBackButton = document.querySelector(".error ul li:first-of-type");
 // function voor root van de site, filteren
 if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
   const changeRoom = (e) => {
-    window.location.href = `/messages?username=Laurens&room=${e.currentTarget.id}`;
+    const username = document.querySelector("header div > p a").textContent;
+    window.location.href = `/messages?username=${username}&room=${e.currentTarget.id}`;
   };
 
   for (let i = 0; i < roomsList.length; i++) {
