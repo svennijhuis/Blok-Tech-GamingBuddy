@@ -94,6 +94,11 @@ filters section 1 (filters)
   margin: 0 auto;
   margin-bottom: 2em;
   display: block;
+  outline: 0;
+}
+
+.filter section:first-of-type input[type="text"]:focus {
+  border-color: var(--tekst);
 }
 
 .filter section:first-of-type input[type="submit"] {
@@ -176,6 +181,7 @@ Filters section 2 (resultaten)
   aspect-ratio: 1 / 1;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 

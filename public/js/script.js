@@ -15,10 +15,8 @@ const roomsList = document.querySelectorAll(".chat aside ul:first-of-type li a, 
 const roomInfo = document.querySelector(".chat main > aside");
 const roomInfoContainer = document.querySelector(".chat main > aside div");
 const roomInfoBeschrijving = document.querySelector(".chat main > aside div:last-of-type form label input[type=text]");
+const roomInfoGenre = document.querySelector(".chat main > aside div:last-of-type form label:nth-of-type(2) input[type=text]");
 const roomInfoTalen = document.querySelectorAll(".chat main > aside div:last-of-type form select");
-
-const fileUploadLabel = document.querySelector("main > aside form > label:last-of-type");
-const fileUpload = document.querySelector("main > aside form input[type=file]");
 
 const chatBackButton = document.querySelector(".chat main > div svg");
 const roomInfoButton = document.querySelector(".chat main > div:first-of-type button");
@@ -39,6 +37,29 @@ if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
       window.location.href = `/messages?username=${username}&room=${zoekRoomForm.value}`;
     }
   };
+
+
+  // ========= API - IntersectionObserver  =========
+try {
+  const options = {
+    threshold: 0.4
+  };
+
+  const roomsSection = document.querySelectorAll(".roomsection");
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+      entry.target.classList.add("sectionfadein");
+    }, options);
+  });
+
+  roomsSection.forEach((section) => {
+    observer.observe(section);
+  });
+} catch (err) {}
 
   zoekRoomForm.addEventListener("focus", () => {
     zoekRoomForm.addEventListener("keyup", zoekRoom);
@@ -146,6 +167,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
     // In wijzigingsformulier de huidige beschrijving weergeven
     roomInfoBeschrijving.value = roomData.beschrijving;
+    roomInfoGenre.value = roomData.genre;
 
     // In opties voor talen de huidige opties weergeven
     for (let i = 0; i < roomInfoTalen.length; i++) {
@@ -187,17 +209,6 @@ if ((window.location.href.indexOf("messages") > -1)) {
     const messageToBeRemoved = document.getElementById(messageId);
     messageToBeRemoved.remove();
   });
-
-  // style voor file upload (custom room data)
-  const fileUploadStyle = () => {
-    if (fileUpload.value !== "") {
-      fileUploadLabel.textContent = "Image uploaded";
-   } else {
-    fileUploadLabel.textContent = "Upload an image";
-   }
-  };
-
-  fileUpload.addEventListener("change", fileUploadStyle);
 
   for (let i = 0; i < roomsList.length; i++) {
     roomsList[i].addEventListener("click", changeRoom);
