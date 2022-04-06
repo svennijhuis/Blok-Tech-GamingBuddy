@@ -144,7 +144,7 @@ chat (sidebar)
 
 /* Handle */
 .chat>aside ul::-webkit-scrollbar-thumb {
-    background: #555;
+    background: var(--tertiair);
     border-radius: 100em;
 }
 
@@ -222,7 +222,7 @@ chat (sidebar)
 }
 
 .chat main>form>button {
-    background: var(--accentkleur);
+    background: var(--tekst);
     border: none;
     padding: 0 2em;
     margin: 0.25em;
@@ -336,7 +336,7 @@ chat main aside (roominfo)
     margin: auto;
     display: block;
     border-radius: 2em;
-    border: 0.2em solid var(--accentkleur);
+    border: 0.2em solid var(--yourmsg);
 }
 
 .chat main>aside div:first-of-type h2 {
@@ -399,9 +399,18 @@ chat main aside (roominfo)
 
 .chat main>aside div:nth-of-type(2) input[type=submit] {
     background: var(--accentkleur);
+}
+
+.chat main>aside div:nth-of-type(2) input[type=submit] {
+    border: none;
     border-radius: 0.2em;
+    width: 7em;
+    height: 1.875em;
+    font-size: 1em;
     color: var(--wit);
     padding: 1em 3em;
+    background-color: var(--zwart);
+    transition: .3s;
     cursor: pointer;
     border: solid 2px transparent;
     font-size: .9rem;
@@ -411,8 +420,6 @@ chat main aside (roominfo)
 .chat main>aside div:nth-of-type(2) input[type=submit]:focus {
     border-color: var(--tekst);
 }
-
-
 
 .chat main>aside.active {
     width: 100%;
