@@ -115,6 +115,13 @@ chat (sidebar)
     border-bottom: var(--accentkleur) 2px solid;
     border-top: var(--accentkleur) 2px solid;
 }
+.chat>aside>a {
+    padding: 0 0.6em;
+    font-size: 1rem;
+    color: var(--achtergrond);
+    background-color: var(--accentkleur);
+    text-decoration: none;
+}
 
 .chat>aside ul {
     width: 100%;
