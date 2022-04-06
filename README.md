@@ -7,6 +7,8 @@ zelfs de informatie van een room inzien en wijzigen.
 | 🚀Features | ✍🏼Topics | :zap:Installatie | :memo:Documentatie | :heavy_exclamation_mark:License | :email:Contact |
 |---|---|---|---|---|---|
 
+![GameBuddies Logo](https://user-images.githubusercontent.com/89778503/161999542-b985b4bd-7b6d-4c7f-be4e-deee5ad6fccb.png)
+
 ---
 
 ## 🚀Features
