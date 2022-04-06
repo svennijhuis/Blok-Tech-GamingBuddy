@@ -1,21 +1,22 @@
 <section class="register">
   <form action="/register" method="POST">
 
-    <h1>Gamebuddies</h1>
+    <h1>GameBuddies</h1>
     {{#if  messages.error}}
-      {{messages.error}}
+      <p class="errorMessage">{{ messages.error }}</p>
     {{/if}}
 
     <p>Personal information</p>
     <div>
       <input type="text" name="name" id="name" placeholder="Name" required />
       <input type="email" name="email" id="email" placeholder="Email" required />
-      <input type="number" name="age" id="age" placeholder="Age (min. 18)" min="18" max="100" required />
+      <input type="number" name="age" id="age" placeholder="Age (min. 18)" min="18" autocomplete="off" required />
       <input type="text" name="residence" id="residence" placeholder="Residence" required/>
 
       <select name="language">
         <option value="en">English</option>
         <option value="nl">Nederlands</option>
+        <option value="de">Deutsch</option>
         <option value="ch">中國人</option>
       </select>
     </div>
@@ -31,4 +32,5 @@
 
     <a href="/login">Login</a>
   </form>
+  
 </section>

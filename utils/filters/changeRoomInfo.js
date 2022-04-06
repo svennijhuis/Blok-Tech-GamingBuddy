@@ -11,7 +11,8 @@ const changeRoomInfo = async (newRoomData, roomNaam) => {
     const update = {
         $set: {
           taal: newRoomData.taal,
-          beschrijving: newRoomData.beschrijving
+          beschrijving: newRoomData.beschrijving,
+          genre: newRoomData.genre
         }
       };
 

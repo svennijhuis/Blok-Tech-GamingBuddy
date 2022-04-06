@@ -27,17 +27,18 @@ const {
 router.get("/", isLoggedIn, async (req, res) => {
   const allRooms = await getAllRooms();
 
-  // ophalen rooms database
+  // ophalen rooms en user uit database
   res.render("filter", {
     gameRooms: allRooms,
     user: req.user
   });
 });
 
+
 router.post("/filter", isLoggedIn, async (req, res) => {
   const filteredRooms = await filterRooms(req.body);
 
-  // ophalen rooms uit database en deze weergeven
+  // ophalen rooms en user uit database en deze weergeven
   res.render("filter", {
     gameRooms: filteredRooms,
     user: req.user

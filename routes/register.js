@@ -15,6 +15,7 @@ const {
   isLoggedOut
 } = require("../utils/register/authentication");
 
+
 // render register
 router.get("/", isLoggedOut, (req, res) => {
   res.render("register");

@@ -2,15 +2,15 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
-    font-family: -apple-system, Arial, Segoe UI, Roboto, Helvetica, BlinkMacSystemFont, sans-serif;
+    font-family: 'PT Sans', sans-serif;
 }
 
 :root {
     --achtergrond: #fff;
-    --secundair: gainsboro;
+    --secundair: rgb(230, 230, 230);
     --tertiair: #fff;
 
-    --messageform: #D3D3D3;
+    --messageform: rgb(230, 230, 230);
     --loginform: #8fceff;
 
     --yourmsg: lightblue;
@@ -19,6 +19,7 @@
     --tekst: #000;
     --tekstalt: #fff;
     --placeholder: #a9a9a9;
+    --rgba: rgba(230, 230, 230, 0.9);
     
     --accentkleur: #2568FB;
 
@@ -29,11 +30,11 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --achtergrond: #262626;
-        --secundair: #333333;
+        --secundair: rgb(230, 230, 230);
         --tertiair: #404040;
         
         --loginform: #8fceff;
-        --messageform: #D3D3D3;
+        --messageform: #333333;
 
         --yourmsg: #2568FB;
         --servermsg: #cf6679;
@@ -41,15 +42,10 @@
         --tekst: #fff;
         --tekstalt: #000;
         --placeholder: #c3c3c3;
+        --rgba: rgba(0, 0, 0, 0.8);
     }
 }
 
 body {
     background: var(--achtergrond);
-}
-
-
-/* container voor paginas */
-body > div {
-    min-width: fit-content;
 }

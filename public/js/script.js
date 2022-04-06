@@ -3,6 +3,8 @@ const socket = io();
 const messages = document.querySelector(".chat main > ul");
 let deleteButtons = [];
 
+const zoekRoomForm = document.querySelector(".filter section > input");
+
 const messageForm = document.querySelector(".chat main form");
 const messageInput = document.querySelector(".chat main form input[type=text]");
 
@@ -13,6 +15,7 @@ const roomsList = document.querySelectorAll(".chat aside ul:first-of-type li a, 
 const roomInfo = document.querySelector(".chat main > aside");
 const roomInfoContainer = document.querySelector(".chat main > aside div");
 const roomInfoBeschrijving = document.querySelector(".chat main > aside div:last-of-type form label input[type=text]");
+const roomInfoGenre = document.querySelector(".chat main > aside div:last-of-type form label:nth-of-type(2) input[type=text]");
 const roomInfoTalen = document.querySelectorAll(".chat main > aside div:last-of-type form select");
 
 const chatBackButton = document.querySelector(".chat main > div svg");
@@ -24,9 +27,43 @@ const errorBackButton = document.querySelector(".error ul li:first-of-type");
 
 // function voor root van de site, filteren
 if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
+  const username = document.querySelector("header div > p a").textContent;
   const changeRoom = (e) => {
-    window.location.href = `/messages?username=Laurens&room=${e.currentTarget.id}`;
+    window.location.href = `/messages?username=${username}&room=${e.currentTarget.id}`;
   };
+
+  const zoekRoom = (e) => {
+    if (e.keyCode === 13) {
+      window.location.href = `/messages?username=${username}&room=${zoekRoomForm.value}`;
+    }
+  };
+
+
+  // ========= API - IntersectionObserver  =========
+try {
+  const options = {
+    threshold: 0.4
+  };
+
+  const roomsSection = document.querySelectorAll(".roomsection");
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+      entry.target.classList.add("sectionfadein");
+    }, options);
+  });
+
+  roomsSection.forEach((section) => {
+    observer.observe(section);
+  });
+} catch (err) {}
+
+  zoekRoomForm.addEventListener("focus", () => {
+    zoekRoomForm.addEventListener("keyup", zoekRoom);
+  });
 
   for (let i = 0; i < roomsList.length; i++) {
     roomsList[i].addEventListener("click", changeRoom);
@@ -43,7 +80,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
     ignoreQueryPrefix: true
   });
 
-  const username = document.querySelector(".modal article div p:last-of-type").textContent;
+  const username = document.querySelector("header div > p a").textContent;
 
   socket.emit("joinRoom", {
     username,
@@ -124,12 +161,13 @@ if ((window.location.href.indexOf("messages") > -1)) {
     <h2>${roomData.roomNaam}</h2>
     <p>${roomData.beschrijving}</p>
     <ul>
-      <li>Taal: <em>${roomData.taal}</em></li>
+      <li>Language: <em>${roomData.taal}</em></li>
       <li>Genre: <em>${roomData.genre}</em></li>
     </ul>`;
 
     // In wijzigingsformulier de huidige beschrijving weergeven
     roomInfoBeschrijving.value = roomData.beschrijving;
+    roomInfoGenre.value = roomData.genre;
 
     // In opties voor talen de huidige opties weergeven
     for (let i = 0; i < roomInfoTalen.length; i++) {
@@ -163,7 +201,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
   // check of gebruiker connected blijft
   socket.on("disconnect", () => {
-    messageInput.setAttribute("placeholder", "Je bent niet verbonden");
+    messageInput.setAttribute("placeholder", "You're not connected..");
   });
 
   // verwijder bericht globaal

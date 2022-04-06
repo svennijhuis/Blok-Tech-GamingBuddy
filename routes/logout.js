@@ -14,15 +14,14 @@ router.use(bodyParser.json());
 router.use(passport.initialize());
 router.use(passport.session());
 
+
 // logout
-router.get("/", (req, res) => {
-    const name = req.user.username;
+router.get("/", async (req, res) => {
+    const name = await req.user.username;
     console.log(`Logout ${req.user.username}`);
     req.logout();
     res.redirect("/");
     req.session.notice = `Succesfully logged out ${name}!`;
 });
-
-
 
 module.exports = router;

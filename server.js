@@ -10,6 +10,7 @@ const flash = require("express-flash");
 
 // helper functions for Passport and database
 const { dbReg, dbAuth } = require("./utils/register/authentication");
+const { emailVal } = require("./utils/register/emailValidation");
 
 
 
@@ -50,7 +51,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 
-//= ==============PASSPORT===============
+// ===============PASSPORT===============
 passport.serializeUser((user, done) => {
   console.log(`serializing ${user.username}`);
   done(null, user);
@@ -69,8 +70,8 @@ passport.use(
       dbAuth(client, username, password)
         .then((user) => {
           if (user) {
-            console.log(`LOGGED IN AS: ${user.username}`);
-            req.session.success = `Welcome back ${user.username}!`;
+            console.log(`LOGGED IN AS: ${user.name}`);
+            req.session.success = `Welcome back ${user.name}!`;
             done(null, user);
           }
           if (!user) {
@@ -97,9 +98,14 @@ passport.use(
             const pass = req.body.password;
             const confirmPass = req.body.confirm_password;
             if (pass === confirmPass) {
-              console.log(`REGISTERED: ${user.username}`);
-              req.session.success = `Welcome to Gamesbuddy ${user.username}!`;
-              done(null, user);
+              if (emailVal(req.body.email) === true) {
+                console.log(`REGISTERED: ${user.username}`);
+                req.session.success = `Welcome to Gamesbuddy ${user.name}!`;
+                done(null, user);
+              } else {
+                console.log("Email not valid");
+                return done(null, false, { message: "Please enter a valid emailaddress" });
+              }
             } else {
               console.log("COULD NOT REGISTER");
               return done(null, false, { message: "Passwords don't match" });
@@ -242,7 +248,7 @@ app.use("/messages", require("./routes/chat"));
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/login"));
 app.use("/logout", require("./routes/logout"));
-app.use("/information", require("./routes/personalInformation"));
+app.use("/account", require("./routes/account"));
 
 
 
