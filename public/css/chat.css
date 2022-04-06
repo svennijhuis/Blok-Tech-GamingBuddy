@@ -199,7 +199,7 @@ chat (sidebar)
 .chat main>form {
     position: absolute;
     right: 0;
-    background: var(--secundair);
+    background: var(--messageform);
     height: 2.75em;
     width: calc(100% - 1em);
     padding: .5em;
@@ -209,7 +209,7 @@ chat (sidebar)
 .chat main>form input[type=text] {
     background: var(--tertiair);
     color: var(--tekst);
-    border: none;
+    border: solid 2px transparent;
     padding: 0 1em;
     flex-grow: 1;
     border-radius: 999em;
@@ -217,7 +217,7 @@ chat (sidebar)
 }
 
 .chat main>form input[type=text]:focus {
-    border: var(--tekst) 2px solid;
+    border-color: var(--tekst);
     outline: none;
 }
 
@@ -229,13 +229,13 @@ chat (sidebar)
     border-radius: .2em;
     outline: none;
     color: var(--wit);
+    border: solid 2px transparent;
 }
 
 .chat main>form>button:hover,
 .chat main>form>button:focus {
-    transform: scale(1.03);
+    border-color: var(--tekst);
     cursor: pointer;
-    border: solid 1px var(--tekst);
 }
 
 
@@ -288,7 +288,7 @@ chat (header)
 /* kleur nog aanpassen voor beide themes */
 .chat main>div:first-of-type button:hover,
 .chat main>div:first-of-type button:focus {
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--rgba);
 }
 
 .chat main>div:first-of-type button span {
@@ -307,7 +307,8 @@ chat main aside (roominfo)
     width: 0;
     height: calc(100% - 4em);
     /* 4em is height van header */
-    background: var(--yourmsg);
+    background: var(--tertiair);
+    color: var(--tekst);
     position: absolute;
     top: 4em;
     right: 0;
@@ -317,17 +318,21 @@ chat main aside (roominfo)
 
 .chat main>aside div {
     max-width: 60%;
-    margin: auto;
+    margin: 2em auto 0em;
+    background-color: var(--messageform);
+    padding: 2em 5em;
+    border-radius: 1em;
+    min-height: fit-content;
 }
 
 .chat main>aside div:first-of-type {
-    margin: 2em auto;
+    margin: 1em auto;
 }
 
 
 .chat main>aside div:first-of-type img {
-    max-height: 20em;
-    max-width: 20em;
+    max-height: 18em;
+    max-width: 18em;
     margin: auto;
     display: block;
     border-radius: 2em;
@@ -354,28 +359,64 @@ chat main aside (roominfo)
 }
 
 .chat main>aside div:nth-of-type(2) input[type=text] {
-    width: 100%;
     margin-bottom: 1em;
+    margin-top: 0.5em;
+    width: 100%;
+    height: 2em;
+    border: solid var(--wit) 0.0625em;
+    border-radius: 0.3em;
+    text-indent: 10px;
 }
 
 .chat main>aside div:nth-of-type(2) fieldset {
     margin-bottom: 1em;
-    padding: .5em;
-    border: solid 1px var(--tekst);
+    padding: 0.5em 0em;
+    border: none;
+}
+
+.chat main>aside div:nth-of-type(2) label:last-of-type {
+    color: var(--zwart);
+    margin-right: 3em;
+    background: var(--wit);
+    border: solid 2px var(--accentkleur);
+    border-radius: .2em;
+    padding: 1em 1em;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.chat main>aside div:nth-of-type(2) label:last-of-type:hover,
+.chat main>aside div:nth-of-type(2) label:last-of-type:hover {
+    background: var(--accentkleur);
+    border-color: var(--tekst);
+    color: var(--wit);
+}
+
+.chat main>aside div:nth-of-type(2) input[type=file] {
+    display: none;
 }
 
 .chat main>aside div:nth-of-type(2) input[type=submit] {
-    background: var(--zwart);
-    border: none;
+    background: var(--accentkleur);
     border-radius: 0.2em;
     color: var(--wit);
+    padding: 1em 3em;
     cursor: pointer;
+    border: solid 2px transparent;
+    font-size: .9rem;
+}
+
+.chat main>aside div:nth-of-type(2) input[type=submit]:hover,
+.chat main>aside div:nth-of-type(2) input[type=submit]:focus {
+    border-color: var(--tekst);
 }
 
 
 
 .chat main>aside.active {
     width: 100%;
+    overflow-x: hidden;
 }
 
 
@@ -403,6 +444,10 @@ mobile styles, media query
         background: var(--achtergrond);
         transition: all .3s;
         border: none;
+    }
+
+    .chat main>aside div:nth-of-type(2) input[type=submit] {
+        margin-top: 2.5em;
     }
 
     .chat>aside.active {

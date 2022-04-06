@@ -85,12 +85,15 @@ filters section 1 (filters)
 }
 
 .filter section:first-of-type input[type="text"] {
-  padding: 0.5em 2em;
+  padding: 0.5em .8em;
   font-weight: bold;
   color: var(--tekst);
   background-color: var(--achtergrond);
   border: 0.2em solid var(--accentkleur);
   border-radius: 2em;
+  margin: 0 auto;
+  margin-bottom: 2em;
+  display: block;
 }
 
 .filter section:first-of-type input[type="submit"] {

@@ -3,6 +3,8 @@ const socket = io();
 const messages = document.querySelector(".chat main > ul");
 let deleteButtons = [];
 
+const zoekRoomForm = document.querySelector(".filter section > input");
+
 const messageForm = document.querySelector(".chat main form");
 const messageInput = document.querySelector(".chat main form input[type=text]");
 
@@ -15,6 +17,9 @@ const roomInfoContainer = document.querySelector(".chat main > aside div");
 const roomInfoBeschrijving = document.querySelector(".chat main > aside div:last-of-type form label input[type=text]");
 const roomInfoTalen = document.querySelectorAll(".chat main > aside div:last-of-type form select");
 
+const fileUploadLabel = document.querySelector("main > aside form > label:last-of-type");
+const fileUpload = document.querySelector("main > aside form input[type=file]");
+
 const chatBackButton = document.querySelector(".chat main > div svg");
 const roomInfoButton = document.querySelector(".chat main > div:first-of-type button");
 
@@ -24,10 +29,20 @@ const errorBackButton = document.querySelector(".error ul li:first-of-type");
 
 // function voor root van de site, filteren
 if (location.pathname === "/" || window.location.href.indexOf("filter") > -1) {
+  const username = document.querySelector("header div > p a").textContent;
   const changeRoom = (e) => {
-    const username = document.querySelector("header div > p a").textContent;
     window.location.href = `/messages?username=${username}&room=${e.currentTarget.id}`;
   };
+
+  const zoekRoom = (e) => {
+    if (e.keyCode === 13) {
+      window.location.href = `/messages?username=${username}&room=${zoekRoomForm.value}`;
+    }
+  };
+
+  zoekRoomForm.addEventListener("focus", () => {
+    zoekRoomForm.addEventListener("keyup", zoekRoom);
+  });
 
   for (let i = 0; i < roomsList.length; i++) {
     roomsList[i].addEventListener("click", changeRoom);
@@ -172,6 +187,17 @@ if ((window.location.href.indexOf("messages") > -1)) {
     const messageToBeRemoved = document.getElementById(messageId);
     messageToBeRemoved.remove();
   });
+
+  // style voor file upload (custom room data)
+  const fileUploadStyle = () => {
+    if (fileUpload.value !== "") {
+      fileUploadLabel.textContent = "Image uploaded";
+   } else {
+    fileUploadLabel.textContent = "Upload an image";
+   }
+  };
+
+  fileUpload.addEventListener("change", fileUploadStyle);
 
   for (let i = 0; i < roomsList.length; i++) {
     roomsList[i].addEventListener("click", changeRoom);
