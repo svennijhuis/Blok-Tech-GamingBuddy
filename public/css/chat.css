@@ -367,6 +367,7 @@ chat main aside (roominfo)
     border: none;
     border-radius: 0.2em;
     color: var(--wit);
+    cursor: pointer;
 }
 
 

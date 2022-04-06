@@ -125,7 +125,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
     <h2>${roomData.roomNaam}</h2>
     <p>${roomData.beschrijving}</p>
     <ul>
-      <li>Taal: <em>${roomData.taal}</em></li>
+      <li>Language: <em>${roomData.taal}</em></li>
       <li>Genre: <em>${roomData.genre}</em></li>
     </ul>`;
 
@@ -164,7 +164,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
   // check of gebruiker connected blijft
   socket.on("disconnect", () => {
-    messageInput.setAttribute("placeholder", "Je bent niet verbonden");
+    messageInput.setAttribute("placeholder", "You're not connected..");
   });
 
   // verwijder bericht globaal
