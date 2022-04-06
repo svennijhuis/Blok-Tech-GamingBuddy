@@ -5,7 +5,7 @@ mee te kunnen chatten.
 Deze applicatie bevat een registreer & inlog functie, de mogelijkheid om je account informatie te wijzigen, je kunt filteren op chatrooms, daadwerkelijk chatten in chatrooms en
 zelfs de informatie van een room inzien en wijzigen.
 
-| 🚀Features | ✍🏼Topics | :zap:Installatie | :memo:Documentatie | :heavy_exclamation_mark:License | :email:Contact |
+| [🚀Features](https://github.com/svennijhuis/Blok-Tech-GamingBuddy#features) | [✍🏼Topics](https://github.com/svennijhuis/Blok-Tech-GamingBuddy#topics) | [:zap:Installatie](https://github.com/svennijhuis/Blok-Tech-GamingBuddy#zapinstallatie) | [:memo:Documentatie](https://github.com/svennijhuis/Blok-Tech-GamingBuddy#memodocumentatie) | [:heavy_exclamation_mark:License](https://github.com/svennijhuis/Blok-Tech-GamingBuddy#heavy_exclamation_marklicense) | [:email:Contact](https://github.com/svennijhuis/Blok-Tech-GamingBuddy#emailcontact) |
 |---|---|---|---|---|---|
 
 ![GameBuddies Logo](https://user-images.githubusercontent.com/89778503/161999542-b985b4bd-7b6d-4c7f-be4e-deee5ad6fccb.png)
