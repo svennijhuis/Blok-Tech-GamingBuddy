@@ -145,4 +145,4 @@ const sendWelcomeEmail = (name, email) => {
 };
 
 
-module.exports = { sendWelcomeEmail  };
+module.exports = { sendWelcomeEmail };
