@@ -4,10 +4,7 @@ mee te kunnen chatten.
 Deze applicatie bevat een registreer & inlog functie, de mogelijkheid om je account informatie te wijzigen, je kunt filteren op chatrooms, daadwerkelijk chatten in chatrooms en
 zelfs de informatie van een room inzien en wijzigen.
 
-### Concept
-Als je van gamen houd wil je graag contact onderhouden met andere gamers die hetzelfde spelen als jij. Daarom kun je bij onze applicatie een account aanmaken. Hierin geef je je naam, gebruikersnaam, email, wachtwoord en dergelijke informatie.
-Eenmaal aangemaakt kun je inloggen met je bestaande account. Vervolgens kun je zoeken naar een chat waarbij jij je wilt aansluiten. Hierbij kun je filteren zodat je snel een chat vind die bij jouw interesses past. 
-Wanneer je je hebt aangesloten bij een chat kun je daadwerkelijk gaan chatten met anderen. Ook kun je de informatie van de room inzien en eventueel wijzigen. Denk aan de omschrijving, gesproken talen en zelfs de groepsafbeelding.
+| :zap:Installatie | :memo:Documentatie | :heavy_exclamation_mark:License | :email:Contact |
 
 ---
 
@@ -66,10 +63,10 @@ Deze repository is licensed onder de [MIT License](https://github.com/svennijhui
 ---
 
 ## :email:Contact
-Laurens Duin [ laurens.duin@hva.nl ] <br>
-Aris Rosbach [ aris.rosbach@hva.nl ] <br>
-Sven Nijhuis [ sven.nijhuis@hva.nl ] <br>
-Nina Vens [ nina.vens@hva.nl ] <br>
+[Laurens Duin](https://github.com/Laurens256) [ laurens.duin@hva.nl ] <br>
+[Aris Rosbach](https://github.com/ArisRosbach) [ aris.rosbach@hva.nl ] <br>
+[Sven Nijhuis](https://github.com/svennijhuis) [ sven.nijhuis@hva.nl ] <br>
+[Nina Vens](https://github.com/ninadepina) [ nina.vens@hva.nl ] <br>
 
 Project - https://github.com/svennijhuis/Blok-Tech-GamingBuddy
 
