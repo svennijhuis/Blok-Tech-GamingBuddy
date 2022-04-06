@@ -1,5 +1,7 @@
+{{> header}}
 <div class="chat">
     <aside>
+        <a href="/">< back to homepage</a>
         <div>Rooms</div>
         <ul>
             <li><a href="#" id="minecraft">Minecraft</a></li>
@@ -8,7 +10,7 @@
             <li><a href="#" id="valorant">Valorant</a></li>
         </ul>
 
-        <div>Users in room: {{groepsnaam}}</div>
+        <div>Users in room: {{ groepsnaam }}</div>
         <ul>
 
         </ul>
@@ -20,7 +22,7 @@
                 <a href="#" id="chatbackbutton"><svg viewBox="0 0 512 512">
                         <polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 " />
                     </svg></a>
-                <h2>{{groepsnaam}}</h2>
+                <h1>{{ groepsnaam }}</h1>
             </div>
             <button>
                 <span></span>
@@ -37,13 +39,13 @@
         <aside>
             <div></div>
             <div>
-                <h3>Groepsinformatie veranderen:</h3>
+                <h3>Change group information:</h3>
                 <form method="POST" action="/messages/roomimg" enctype="multipart/form-data" autocomplete="off">
-                    <label>Beschrijving:
+                    <label>Description:
                         <input type="text" name="beschrijving" maxlength="200">
                     </label>
                     <fieldset>
-                        <legend>Talen:</legend>
+                        <legend>Languages:</legend>
                             <select name="taal1">
                                 <option selected></option>
                                 <option class='nl'>nl</option>

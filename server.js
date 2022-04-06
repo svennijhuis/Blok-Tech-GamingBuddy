@@ -2,6 +2,26 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const flash = require("express-flash");
+
+// helper functions for Passport and database
+const { dbReg, dbAuth } = require("./utils/register/authentication");
+const { emailVal } = require("./utils/register/emailValidation");
+
+
+
+// ===============DATABASE===============
+const { loadChat, saveChat, deleteChat } = require("./utils/io/chatActions.js");
+const mongoConnect = require("./controller/mongoConnect");
+let client;
+
+
+
+//= ==============SOCKET.IO==============
 const server = require("http").createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
@@ -12,15 +32,7 @@ const cors = require("cors");
 app.use(cors({ origin: "*" }));
 instrument(io, { auth: false });
 
-// database functions
-const {
-  loadChat,
-  saveChat,
-  deleteChat
-} = require("./utils/io/chatActions.js");
-const mongoConnect = require("./controller/mongoConnect");
-let client;
-
+// helper function for formatting messages
 const { formatMessage } = require("./utils/io/messages.js");
 
 // houdt users in room bij
@@ -31,32 +43,132 @@ const {
   getRoomUsers
 } = require("./utils/io/users");
 
-const {
-  checkRoomData,
-  loadRoomData
-} = require("./utils/filters/getRoomInfo");
+const { checkRoomData, loadRoomData } = require("./utils/filters/getRoomInfo");
 
 // map voor static files (stylesheet etc)
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
+
+
+// ===============PASSPORT===============
+passport.serializeUser((user, done) => {
+  console.log(`serializing ${user.username}`);
+  done(null, user);
+});
+
+passport.deserializeUser((obj, done) => {
+  done(null, obj);
+});
+
+// login
+passport.use(
+  "local-signin",
+  new LocalStrategy(
+    { passReqToCallback: true },
+    (req, username, password, done) => {
+      dbAuth(client, username, password)
+        .then((user) => {
+          if (user) {
+            console.log(`LOGGED IN AS: ${user.name}`);
+            req.session.success = `Welcome back ${user.name}!`;
+            done(null, user);
+          }
+          if (!user) {
+            console.log("COULD NOT LOG IN");
+            return done(null, false, { message: "Username or password is incorrect" });
+          }
+        })
+        .fail((err) => {
+          console.log(err);
+        });
+    }
+  )
+);
+
+// register
+passport.use(
+  "local-signup",
+  new LocalStrategy(
+    { passReqToCallback: true },
+    (req, username, password, done) => {
+      dbReg(client, username, password, req)
+        .then((user) => {
+          if (user) {
+            const pass = req.body.password;
+            const confirmPass = req.body.confirm_password;
+            if (pass === confirmPass) {
+              if (emailVal(req.body.email) === true) {
+                console.log(`REGISTERED: ${user.username}`);
+                req.session.success = `Welcome to Gamesbuddy ${user.name}!`;
+                done(null, user);
+              } else {
+                console.log("Email not valid");
+                return done(null, false, { message: "Please enter a valid emailaddress" });
+              }
+            } else {
+              console.log("COULD NOT REGISTER");
+              return done(null, false, { message: "Passwords don't match" });
+            }
+          }
+          if (!user) {
+            console.log("COULD NOT REGISTER");
+            return done(null, false, { message: "Username already exists" });
+          }
+        })
+        .fail((err) => {
+          console.log(err);
+        });
+    }
+  )
+);
+
+
+
+// ===============EXPRESS================
+// Configure Express
+app.use(express.urlencoded({ extended: false }));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(flash());
+app.use(
+  session({
+    secret: "process.env.SESSION_SECRET",
+    saveUninitialized: true,
+    resave: true
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+// session-persisted message middleware
+app.use((req, res, next) => {
+  const success = req.session.success;
+
+  delete req.session.success;
+
+  if (success) res.locals.success = success;
+
+  next();
+});
+
+// configure express to use handlebars templates
 const exphbs = require("express-handlebars");
 app.engine(
   "hbs",
   exphbs.engine({
-    defaultLayout: "main",
+    layoutsDir: `${path.join(__dirname)}/views/layouts`,
+    defaultLayout: "index",
     extname: ".hbs"
   })
 );
 
 app.set("view engine", "hbs");
 
-// routes
-app.use("/", require("./routes/roomSelect"));
-app.use("/messages", require("./routes/chat"));
 
 
-
+// =========SOCKET.IO CONNECTION=========
 io.on("connect", (socket) => {
   socket.on("joinRoom", async ({ username, room }) => {
     // wordt uitgevoerd wanneer gebruiker room joined, user object wordt in users array gezet voor sidebar info (utils/users.js)
@@ -77,12 +189,15 @@ io.on("connect", (socket) => {
 
     socket.broadcast
       .to(user.room)
-      .emit("systemMessage", formatMessage("Server", `${user.username} has joined the chat`));
+      .emit(
+        "systemMessage",
+        formatMessage("Server", `${user.username} has joined the chat`)
+      );
 
     // update users in sidebar
     io.to(user.room).emit("updateusers", getRoomUsers(user.room));
 
-    socket.on("message", msg => {
+    socket.on("message", (msg) => {
       // chat message van user
       const user = getCurrentUser(socket.id);
 
@@ -118,7 +233,26 @@ io.on("connect", (socket) => {
   });
 });
 
-// verbind met mongodb database en start server
+
+
+app.use((req, res, next) => {
+  app.locals.success = req.flash("success");
+  next();
+});
+
+
+
+//= ==============ROUTES===============
+app.use("/", require("./routes/roomSelect"));
+app.use("/messages", require("./routes/chat"));
+app.use("/register", require("./routes/register"));
+app.use("/login", require("./routes/login"));
+app.use("/logout", require("./routes/logout"));
+app.use("/account", require("./routes/account"));
+
+
+
+//= =======DATABASE CONNECTION=========
 const startServer = async () => {
   client = await mongoConnect.getDB();
   server.listen(port, "0.0.0.0", () => {
@@ -128,6 +262,9 @@ const startServer = async () => {
 
 startServer();
 
+
+
+//= ==============ERROR================
 app.use((req, res, next) => {
-  res.status(404).send("404 Error: page not found");
+  res.render("error");
 });

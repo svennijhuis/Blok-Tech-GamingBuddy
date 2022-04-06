@@ -1,127 +1,220 @@
-/*****************************
+/**************************
 filters section 1 (filters)
-*****************************/
+**************************/
+.filter h1 {
+  visibility: hidden;
+  font-size: 0.1em;
+}
+
 .filter section:first-of-type {
-    margin: 2em;
+  margin: 2em;
 }
 
 .filter section:first-of-type h3 {
-    color: var(--tekst);
-    text-align: center;
-    margin: 0.5em;
-    padding: 0.5em;
+  margin: 0.5em;
+  padding: 0.5em;
+  color: var(--tekst);
+  text-align: center;
 }
 
 .filter section:first-of-type form {
-    color: var(--tekst);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .filter section:first-of-type fieldset {
-    border: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: none;
 }
 
-.filter section:first-of-type button {
-    padding: 1em 1.5em;
-    font-size: 1em;
-    margin: 1em 100%;
+.filter .selector {
+  display: flex;
+  border-radius: 0.625em;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0.9375em;
+  padding: 0.625em;
+  background-color: rgb(230, 230, 230);
 }
 
-.filter section:first-of-type input {
-    margin: 0.2em 0.5em 0em 0em;
+.filter .selector div {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.625em;
 }
 
-.filter section:first-of-type label {
-    padding: 0em 2em 0em 0em;
+.filter .selector div input {
+  appearance: none;
+  display: none;
+  cursor: pointer;
 }
 
-.filter section:first-of-type label:last-child {
-    padding: 0em;
+.filter .selector div label {
+  position: relative;
+  min-width: 9.375em;
+  padding: 0.625em;
+  text-align: center;
+  background: #fafafa;
+  border-radius: 0.3125em;
+  transition-duration: .5s;
+  cursor: pointer;  
 }
+.filter .selector div label:hover {
+  color: #fff;
+  background-color: #000;
+  transition-duration: .5s;
+}
+
+.filter .selector div input:checked + .selector-item_label {
+  padding: 0.625em;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  border-radius: 0.3125em;
+}
+
+.filter section:first-of-type input[type="text"] {
+  padding: 0.5em 2em;
+  font-weight: bold;
+  color: var(--tekst);
+  background-color: var(--achtergrond);
+  border: 0.2em solid var(--accentkleur);
+  border-radius: 2em;
+}
+
+.filter section:first-of-type input[type="submit"] {
+  padding: 0.5em 1em;
+  font-size: 1em;
+  color: var(--tekst);
+  background-color: var(--yourmsg);
+  border: none;
+  border-radius: 0.3125em;
+  cursor: pointer;
+}
+.filter section:first-of-type input[type="submit"]:hover {
+  opacity: 0.7;
+}
+
+
 
 /*****************************
 Filters section 2 (resultaten)
 *****************************/
 .filter section:nth-of-type(2) {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: .7em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2em;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .filter section:nth-of-type(2) h2 {
-    color: var(--tekst);
+  color: var(--tekst);
 }
 
 .filter section:nth-of-type(2) ul {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    list-style: none;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    gap: 2em;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 10fr;
+  gap: 1.8125em;
 }
 
 .filter section:nth-of-type(2) ul li {
-    background-color: var(--secundair);
-    width: 16em;
-    height: 20.5em;
-    border-radius: 1em;
-    border: solid 0.1em var(--accentkleur);
+  width: 100%;
+  height: auto;
+  background-color: var(--secundair);
+  border-radius: 0.625em;
+  text-decoration: none;
 }
 
-.filter section:nth-of-type(2) ul li a {
-    text-decoration: none;
-    display: flex;
-    position: relative;
-    height: 100%;
-    flex-direction: column;
+.filter .roomsection a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.625em;
+  text-decoration: underline;
+  text-decoration-color: #000;
 }
 
-.filter section:nth-of-type(2) ul li a img {
-    max-width: 90%;
-    max-height: 65%;
-    border-radius: 1em;
-    display: block;
-    margin: .5em auto;
-    align-self: flex-start;
-}
-
-.filter section:nth-of-type(2) ul li a div {
-    color: var(--tekst);
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
-    gap: .1em;
-}
-
-.filter section:nth-of-type(2) ul li a div h3 {
-    font-size: 1.5em;
+.filter section:nth-of-type(2) ul li a div h3, .filter section:nth-of-type(2) ul li a div h4 {
+  font-size: 1.2em;
+  color: #000;
 }
 
 .filter section:nth-of-type(2) ul li a div button {
-    padding: 0.5em 1.5em;
-    margin: 1em 4.5em 0em;
-    font-size: 0.9em;
+  margin: 1em 4.5em 0;
+  padding: 0.5em 1.5em;
+  font-size: 0.9em;
+}
+
+.sectionfadein {
+  animation-name: fadeIn;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+}
+
+.filter .background-img-filter {
+  width: 100%;
+  max-width: 21.875em;
+  margin-bottom: 1em;
+  border-radius: 0.625em;
+  aspect-ratio: 1 / 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.roomsection div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+/*****************************
+mobile styles, media query   
+*****************************/
+@media (max-width:480px) {
+  .selector {
+    width: 90%;
+  }
+}
+
+@media (min-width: 600px) {
+  .filter section:nth-of-type(2) ul {
+    display: grid;
+    grid-template-columns: repeat(2, 10fr);
+    gap: 1.8125em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .filter section:nth-of-type(2) ul {
+    display: grid;
+    grid-template-columns: repeat(3, 10fr);
+    gap: 1.8125em;
+  }
 }
 
 
 
-/*****************************
-mobile styles, media query   
-*****************************/
-@media only screen and (max-width: 768px) {
-    .filter section:nth-of-type(2) ul {
-        width: 90%;
-        justify-content: center;
-    }
+@keyframes fadeIn {
+  0% {
+      transform: translateY(20%);
+      opacity: 0;
+}
+  100%{
+      transform: translateY(0);
+      opacity: 1;
+  }
 }

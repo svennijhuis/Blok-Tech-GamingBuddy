@@ -1,0 +1,14 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+header div, header a {
+    color: var(--tekst);
+}
+
+header a {
+    text-decoration: underline;
+    cursor: pointer;
+}
