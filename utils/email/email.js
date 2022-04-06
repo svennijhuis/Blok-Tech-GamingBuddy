@@ -8,13 +8,13 @@ const sendWelcomeEmail = (name, email) => {
   sgMail.send({
     to: email,
     from: "sven.nijhuis@hva.nl",
-    subject: "Welcome to Gamebuddy",
-    text: "Gamebuddy's",
+    subject: "Welcome to GameBuddies",
+    text: "GameBuddies",
     html: `
 
     <html>
     <head><meta name="viewport" content="width=device-width"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>Welcome by gamebuddy's</title>
+      <title>Welcome by GameBuddies</title>
       <style media="all" type="text/css">@media only screen and (max-width: 480px) {
       table[class=body] h1 {
         font-size: 24px !important;
@@ -70,7 +70,7 @@ const sendWelcomeEmail = (name, email) => {
         <tr>
           <td style="box-sizing: border-box; padding: 0; font-size: 16px; vertical-align: top;" valign="top">&nbsp;</td>
           <td class="container" style="box-sizing: border-box; padding: 0; font-size: 16px; vertical-align: top; display: block; width: 600px; max-width: 600px; margin: 0 auto !important;" valign="top" width="600">
-          <div class="content" style="box-sizing: border-box; display: block; max-width: 600px; margin: 0 auto; padding: 10px;"><span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">Welkom bij gamebuddy's</span>
+          <div class="content" style="box-sizing: border-box; display: block; max-width: 600px; margin: 0 auto; padding: 10px;"><span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">Welkom bij GameBuddies</span>
           <div class="header" style="box-sizing: border-box; width: 100%; margin-bottom: 30px; margin-top: 15px;">
           <table style="box-sizing: border-box; width: 100%; border-spacing: 0; mso-table-rspace: 0pt; mso-table-lspace: 0pt; border-collapse: separate !important;" width="100%">
           </table>
@@ -125,7 +125,7 @@ const sendWelcomeEmail = (name, email) => {
     
                 <p class="tagline" style="color: #294661; font-size: 12px; font-weight: 400; margin-bottom: 5px; margin: 10px 0 20px;">We look forward to your visit!</p>
     
-                <p style="margin: 0; color: #294661; font-weight: 300; font-size: 12px; margin-bottom: 5px;">© Gamebuddy's</p>
+                <p style="margin: 0; color: #294661; font-weight: 300; font-size: 12px; margin-bottom: 5px;">© GameBuddies</p>
     
                 <p style="margin: 0; color: #294661; font-weight: 300; font-size: 12px; margin-bottom: 5px;"><a href="#" style="box-sizing: border-box; color: #348eda; font-weight: 400; text-decoration: none; font-size: 12px; padding: 0 5px;" target="_blank">Blog</a> <a href="#" style="box-sizing: border-box; color: #348eda; font-weight: 400; text-decoration: none; font-size: 12px; padding: 0 5px;" target="_blank">GitHub</a> <a href="#" style="box-sizing: border-box; color: #348eda; font-weight: 400; text-decoration: none; font-size: 12px; padding: 0 5px;" target="_blank">Twitter</a> <a href="#" style="box-sizing: border-box; color: #348eda; font-weight: 400; text-decoration: none; font-size: 12px; padding: 0 5px;" target="_blank">Facebook</a> <a href="#" style="box-sizing: border-box; color: #348eda; font-weight: 400; text-decoration: none; font-size: 12px; padding: 0 5px;" target="_blank">LinkedIn</a></p>
                 </td>
