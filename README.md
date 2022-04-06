@@ -53,6 +53,13 @@ Download dit project en open het met je code editor. Open je terminal en navigee
 $ git clone https://github.com/svennijhuis/Blok-Tech-GamingBuddy.git
 ```
 
+### Connect de database
+Deze repository maakt gebruik van een MongoDB database. Om je eigen database te verbinden maak je een .env bestand aan met de volgende regels erin:
+```
+DB_USERNAME = "Jouw database gebruikersnaam"
+DB_PASSWORD = "Jouw database wachtwoord"
+```
+
 ### Installeer alle dependencies
 ```
 $ cd Blok-Tech-GamingBuddy
