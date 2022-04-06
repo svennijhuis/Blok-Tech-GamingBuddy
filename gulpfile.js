@@ -16,7 +16,7 @@ gulp.task("css", () => (
     ));
 
 
-// Taak om te kijken of er wijzigingen zijn en voert deze vervolgens opnieuw uit.
+// Taak om te kijken of er wijzigingen zijn en voert opnieuw uit als dit het geval is.
 gulp.task("watch", () => (
     gulp.watch("./static/styles/*.css", gulp.series("css"))
 ));
