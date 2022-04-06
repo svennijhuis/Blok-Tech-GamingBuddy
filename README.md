@@ -5,7 +5,7 @@ Deze applicatie bevat een registreer & inlog functie, de mogelijkheid om je acco
 zelfs de informatie van een room inzien en wijzigen.
 
 | :zap:Installatie | :memo:Documentatie | :heavy_exclamation_mark:License | :email:Contact |
-|:-:|
+|---|---|---|---| 
 
 ---
 
