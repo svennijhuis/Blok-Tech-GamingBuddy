@@ -1,5 +1,5 @@
 // laad chat uit database voor room van gebruiker
-const loadChat = async function (client, room, socket) {
+const loadChat = async (client, room, socket) => {
     const cursor =
         client.db("chatlog")
             .collection(room)
@@ -21,7 +21,7 @@ const loadChat = async function (client, room, socket) {
 
 
 // sla berichten + metadata op in database
-const saveChat = async function (client, msgMetaData) {
+const saveChat = async (client, msgMetaData) => {
     try {
         client.db("chatlog")
             .collection(msgMetaData.room)
@@ -35,7 +35,7 @@ const saveChat = async function (client, msgMetaData) {
 
 
 // verwijder berichten uit database
-const deleteChat = async function (client, room, messageId) {
+const deleteChat = async (client, room, messageId) => {
     try {
         client.db("chatlog")
             .collection(room)

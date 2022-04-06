@@ -2,7 +2,7 @@ const { getAllDate } = require("./timeCheck.js");
 const uniqid = require("uniqid");
 
 // hangt alle metadata aan message object
-function formatMessage (user, msg) {
+const formatMessage = (user, msg) => {
   const allDate = getAllDate();
   return {
     naam: user.username || "Server",

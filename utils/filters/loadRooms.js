@@ -1,6 +1,6 @@
 const mongoConnect = require("../../controller/mongoConnect");
 
-const getAllRooms = async function () {
+const getAllRooms = async () => {
     const client = await mongoConnect.getDB();
 
     const cursor =
@@ -14,7 +14,7 @@ const getAllRooms = async function () {
 
 
 // filter kamers uit db
-const filterRooms = async function (filters) {
+const filterRooms = async (filters) => {
     const client = await mongoConnect.getDB();
 
     const cursor =

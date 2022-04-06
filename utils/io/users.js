@@ -3,7 +3,7 @@
 const users = [];
 
 // Zet users in array voor sidebar
-function userJoin (id, username, room) {
+const userJoin = (id, username, room) => {
   const user = { id, username, room };
 
   users.push(user);
@@ -12,7 +12,7 @@ function userJoin (id, username, room) {
 }
 
 // Haalt user uit array voor sidebar
-function userLeave (id) {
+const userLeave = (id) => {
   const index = users.findIndex(user => user.id === id);
 
   if (index !== -1) {
@@ -21,12 +21,12 @@ function userLeave (id) {
 }
 
 // Vind eigen user
-function getCurrentUser (id) {
+const getCurrentUser = (id) => {
   return users.find(user => user.id === id);
 }
 
 // Haalt users uit array op
-function getRoomUsers (room) {
+const getRoomUsers = (room) => {
   return (users.filter(user => user.room === room));
 }
 

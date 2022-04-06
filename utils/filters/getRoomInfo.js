@@ -35,7 +35,7 @@ const createRoomInfo = async (client, roomName) => {
 };
 
 // laadt room data in sidebar
-const loadRoomData = async function (client, currentRoom) {
+const loadRoomData = async (client, currentRoom) => {
   const cursor =
   client.db("filters")
   .collection("rooms")

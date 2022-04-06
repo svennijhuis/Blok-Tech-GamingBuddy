@@ -88,7 +88,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
   });
 
   // regelt input van form(tekstbox voor msg)
-  messageForm.addEventListener("submit", function (e) {
+  messageForm.addEventListener("submit", (e) => {
     e.preventDefault();
     if (messageInput.value) {
       socket.emit("message", messageInput.value);
@@ -98,7 +98,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
 
   // mobile aside (chatlijst) tonen
-  function mobileAside () {
+  const mobileAside = () => {
     asideElement.classList.add("active");
   }
 
@@ -127,7 +127,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
 
   // berichten output
-  socket.on("message", function (msg) {
+  socket.on("message", (msg) => {
     const liMessage = document.createElement("li");
     liMessage.setAttribute("id", msg.uniqid);
     liMessage.innerHTML = `<div><strong>${msg.naam}</strong><small>${msg.time}</small></div><p>${msg.bericht}
@@ -154,7 +154,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
   });
 
   // room info output
-  socket.on("loadedRoomData", function (roomData) {
+  socket.on("loadedRoomData", (roomData) => {
     // Onderstaande data weergeven in div
     roomInfoContainer.innerHTML = `
     <img src="${roomData.img}" alt="group picture">
@@ -180,7 +180,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
 
 
   // display server berichten
-  socket.on("systemMessage", function (msg) {
+  socket.on("systemMessage", (msg) => {
     const liMessage = document.createElement("li");
     liMessage.classList.add("servermsg");
     liMessage.innerHTML = `<div><strong>${msg.naam}</strong><small>${msg.time}</small></div>${msg.bericht}`;
@@ -189,7 +189,7 @@ if ((window.location.href.indexOf("messages") > -1)) {
   });
 
   // display lijst met users in room
-  socket.on("updateusers", function (users) {
+  socket.on("updateusers", (users) => {
     usersList.innerHTML = "";
     users.forEach((user) => {
       const liUser = document.createElement("li");
