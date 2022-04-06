@@ -35,8 +35,8 @@ gulp.task("start", (done) => (
 ));
 
 
-// gulp.task("default", gulp.series("css", "start"));
+gulp.task("default", gulp.series("css", "start"));
 
-gulp.task('default', gulp.series('css'));
+// gulp.task('default', gulp.series('css'));
 
 // gulp.task('build', gulp.series('css'));
