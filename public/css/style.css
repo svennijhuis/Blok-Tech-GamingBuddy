@@ -10,7 +10,7 @@
     --secundair: rgb(230, 230, 230);
     --tertiair: #fff;
 
-    --messageform: #D3D3D3;
+    --messageform: rgb(230, 230, 230);
     --loginform: #8fceff;
 
     --yourmsg: lightblue;
@@ -19,6 +19,7 @@
     --tekst: #000;
     --tekstalt: #fff;
     --placeholder: #a9a9a9;
+    --rgba: rgba(230, 230, 230, 0.9);
     
     --accentkleur: #2568FB;
 
@@ -33,7 +34,7 @@
         --tertiair: #404040;
         
         --loginform: #8fceff;
-        --messageform: #D3D3D3;
+        --messageform: #333333;
 
         --yourmsg: #2568FB;
         --servermsg: #cf6679;
@@ -41,6 +42,7 @@
         --tekst: #fff;
         --tekstalt: #000;
         --placeholder: #c3c3c3;
+        --rgba: rgba(0, 0, 0, 0.8);
     }
 }
 
