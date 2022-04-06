@@ -4,8 +4,24 @@ mee te kunnen chatten.
 Deze applicatie bevat een registreer & inlog functie, de mogelijkheid om je account informatie te wijzigen, je kunt filteren op chatrooms, daadwerkelijk chatten in chatrooms en
 zelfs de informatie van een room inzien en wijzigen.
 
-| :zap:Installatie | :memo:Documentatie | :heavy_exclamation_mark:License | :email:Contact |
-|---|---|---|---| 
+| 🚀Features | ✍🏼Topics | :zap:Installatie | :memo:Documentatie | :heavy_exclamation_mark:License | :email:Contact |
+|---|---|---|---|---|---|
+
+---
+
+## 🚀Features
+- Registreren & Inloggen - eigen profiel aanmaken
+- Profiel - aanpassen van de gebruikersgegevens
+- Filteren - opzoek naar chats in een andere taal? Geen probleem, gebruik de filter functie
+- Chatten - praat met andere gamers over je favoriete game(s)
+
+---
+
+## ✍🏼Topics
+- [Bundlers](https://github.com/svennijhuis/Blok-Tech-GamingBuddy/wiki/Topic:-Bundlers) - door Aris
+- [Multer](https://github.com/svennijhuis/Blok-Tech-GamingBuddy/wiki/Topic:-Multer) - door Laurens
+- [Passport.js](https://github.com/svennijhuis/Blok-Tech-GamingBuddy/wiki/Topic:-Passport.js) - door Nina
+- [Sending Emails](https://github.com/svennijhuis/Blok-Tech-GamingBuddy/wiki/Topic:-Sending-E-mails) - door Sven
 
 ---
 
