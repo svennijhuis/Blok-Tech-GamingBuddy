@@ -4,8 +4,6 @@ mee te kunnen chatten.
 Deze applicatie bevat een registreer & inlog functie, de mogelijkheid om je account informatie te wijzigen, je kunt filteren op chatrooms, daadwerkelijk chatten in chatrooms en
 zelfs de informatie van een room inzien en wijzigen.
 
----
-
 ### Concept
 Als je van gamen houd wil je graag contact onderhouden met andere gamers die hetzelfde spelen als jij. Daarom kun je bij onze applicatie een account aanmaken. Hierin geef je je naam, gebruikersnaam, email, wachtwoord en dergelijke informatie.
 Eenmaal aangemaakt kun je inloggen met je bestaande account. Vervolgens kun je zoeken naar een chat waarbij jij je wilt aansluiten. Hierbij kun je filteren zodat je snel een chat vind die bij jouw interesses past. 
