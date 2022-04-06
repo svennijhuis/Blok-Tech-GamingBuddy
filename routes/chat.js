@@ -29,7 +29,6 @@ let roomNaam;
 
 // render chat
 router.get("/", isLoggedIn, (req, res) => {
-  console.log(req.user);
   res.render("chat", {
     groepsnaam: req.query.room,
     user: req.user
